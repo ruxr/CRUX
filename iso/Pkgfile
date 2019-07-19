@@ -1,0 +1,30 @@
+# Description:	Linux CRUX distribution image
+# URL:		https://github.com/ruxr/CRUX
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	ALL cdrkit core syslinux 
+
+name=iso
+version=3.5
+release=1
+source=(README isolinux.cfg isolinux.msg)
+
+build() {
+	[ -s $PKGMK_PACKAGE_DIR/core#$version-*pkg.tar.* ]
+	sed -i "s/#VER#/$version/" isolinux.msg
+	/bin/mkdir -p ISO/{boot/isolinux,crux}
+	/bin/cp -r isolinux.* ISO/boot/isolinux
+	cp /usr/share/syslinux/{isolinux.bin,ldlinux.c32} ISO/boot/isolinux
+	cp /boot/{vmlinuz,initrd} ISO/boot
+	cp $PKGMK_PACKAGE_DIR/*#* $PKGMK_PACKAGE_DIR/PKG.* ISO/crux
+	date +$version-%Y%M%d >ISO/crux-media
+	cp README ISO
+	D=$SRC/ISO/boot
+	echo -e "$D 100\n$D/isolinux 200\n$D/isolinux/isolinux.bin 300" >iso
+	genisoimage -R -l -J -V CRUX-$version -A CRUX \
+		-b boot/isolinux/isolinux.bin -c boot/isolinux/isolinux.boot \
+		-no-emul-boot -boot-load-size 4 -boot-info-table \
+		-sort iso -input-charset utf-8 -o CRUX-$version.iso ISO
+	isohybrid CRUX-$version.iso
+	mv CRUX-$version.iso $PKGMK_PACKAGE_DIR
+	mkdir $PKG/boot
+}

@@ -1,0 +1,44 @@
+### Steps for installation/upgrade CRUX:
+1. Boot from CDROM or USB with this image
+2. Check & set (if necessary) the correct time on the host:
+  date [MMDDhhmm[[CC]YY]
+3. Create & format (if necessary) the partition(s) which you want use:
+  cfdisk /dev/sda
+  mkfs.ext4 /dev/sda1
+  mkswap /dev/sda2
+4. Mount the partition on which you want to install this distribution:
+  mount /dev/sda1 /mnt
+5. Activate your swap partition:
+  swapon /dev/sda2
+6. Run the script to install/upgrade base packages and kernel:
+  pkguse -s -r /mnt -u /media/crux BASE
+7. "chroot" into your CRUX installation:
+  setup-chroot
+### Install:
+1. Edit /etc/fstab, example:
+  /dev/sda1   /         ext4     defaults                         0  1
+  /dev/sda2   swap      swap     defaults                         0  0
+  /dev/cdrom  /cdrom    iso9660  ro,user,noauto,unhide            0  0
+  devpts      /dev/pts  devpts   noexec,nosuid,gid=tty,mode=0620  0  0
+  tmp         /tmp      tmpfs    defaults                         0  0
+  shm         /dev/shm  tmpfs    defaults                         0  0
+2. Edit /etc/lilo.conf, example:
+  lba32
+  install=text
+  boot=/dev/sda
+  image=/boot/vmlinuz
+    label=CRUX
+    initrd=/boot/initrd
+    root=/dev/sda1
+    append=quiet
+    read-only
+3. Install boot loader by lilo
+4. Edit /etc/rc.conf
+5. Set the root password and create admin account, example:
+  useradd -G root -s /bin/bash -m -c Administrator admin
+  passwd admin
+### Upgrade:
+1. Update boot loader by lilo
+2. Check out the rejects by rejmerge
+### Finish:
+1. Reboot into the installed/upgraded system

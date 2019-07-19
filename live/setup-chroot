@@ -1,0 +1,7 @@
+#!/bin/sh
+mount --bind /proc /mnt/proc
+mount --bind /sys /mnt/sys
+mount --rbind /dev /mnt/dev
+mount --bind /run /mnt/run
+mount --bind /tmp /mnt/tmp
+chroot /mnt /bin/sh

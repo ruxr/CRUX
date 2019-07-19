@@ -1,0 +1,5 @@
+#!/bin/sh
+/sbin/killall5 -15
+/bin/sleep 5
+/sbin/killall5 -9
+exec /sbin/init -t1 S

@@ -1,0 +1,89 @@
+# Description:	CRUX live-update script
+# URL:		https://github.com/ruxr/CRUX
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	coreutils dash openssh pkgutils sed shadow sysvinit wget
+
+name=live
+version=3.5
+release=1
+source=(live.sh inittab rc rc.shutdown rc.single setup-chroot)
+
+build() {
+	mkdir $PKG/boot rootfs
+	cd rootfs
+
+	Use() {
+		# coreutils
+		echo /bin/{mkdir,ln,rm,sleep} /usr/bin/chroot
+		# dash
+		echo /bin/dash
+		# glibc
+		echo /sbin/ldconfig
+		pkginfo -l glibc | sed '/lib\//!d
+			/^usr\/lib\/audit/d;/^usr\/lib\/gconv/d
+			/^usr\/lib\/getconf/d;/libBrokenLocale/d
+			/libmvec/d;/libcidn/d;/libpcprofile/d
+			/libthread_db/d;/nss_compat/d;/nss_db/d
+			/nss_hesiod/d;/nss_nis/d;/\/$/d;s%^%/%'
+		# linux-pam
+		pkginfo -l linux-pam | sed '/^sbin/d;/^usr/d;/\.la$/d
+			/\/$/d;;s%^%/%'
+		# ncurses
+		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
+		# openssh
+		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd
+		# pkguse
+		[ ! -x /usr/sbin/pkguse ] || echo /usr/sbin/pkguse
+		# pkgutils
+		echo /usr/bin/{pkgadd,pkginfo,pkgrm}
+		# sed
+		echo /bin/sed
+		# shadow
+		echo /bin/login /usr/bin/su /etc/pam.d/{login,su}
+		# sysvinit
+		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
+		# tar
+		echo /bin/tar
+		# util-linux
+		echo /bin/{mount,umount} /sbin/agetty
+		# wget
+		echo /usr/bin/wget
+		# xz
+		echo /usr/bin/xz
+	}
+	Req() {
+		local A F N
+		A="$*" N=; shift
+		for F do
+			if [ ! -f $F ]; then echo Missing $F; exit 1; fi
+			echo $F
+			F=$([ -L $F ] && readlink -f $F || ldd $F 2>/dev/null |
+				sed '/\//!d;s%^[^/]*/%/%;s/ .*//;s%/\./%/%g
+					s%[^/]*/\.\./%%g;s%/lib64/%/lib/%')
+			for F in $F; do
+				case " $A$N " in *\ $F\ *) continue;; esac
+				N=$N\ $F
+			done
+		done
+		[ -z "$N" ] || Req "$A" $N
+	}
+
+	Req "" $(Use) >../live.use
+	tar -cf - -T ../live.use | tar -xf -
+	mv bin/dash bin/sh
+
+	install -d dev mnt proc run sys usr/lib var/{cache,empty,lib,log,run}
+	install -dm 1777 tmp var/{lock,tmp}
+	ln -s lib lib64
+	ln -s lib usr/lib64
+	ln -s /proc/mounts etc/mtab
+	touch etc/fstab
+	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
+	echo /bin/sh >etc/shells
+	install -m 644 $SRC/inittab etc
+	install $SRC/rc{,.shutdown,.single} etc
+	install $SRC/setup-chroot bin
+
+	ldconfig -r $(pwd -P)
+	{ cat $SRC/live.sh; tar -cJf - *; } >$PKG/boot/CRUX-$version-live.run
+}

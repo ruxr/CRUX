@@ -1,0 +1,7 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md3+xt1uios+Jis9jYkzvnc31RLTdBI3u5cip9FXkQwTYWCwtJwM9r0VDfN/YnaqR9nDhJmWWuLz7i8j7pG+u6AwA=
+SHA256 (Pkgfile) = 76dc9e0b9bde8cc0185d963c881d6e53b3e8a85f3528e5e146747cbda2259ab3
+SHA256 (.footprint) = 7f49b4132d7fb9b9a98d37f79ccfdea9355d0377fb32683b0d478848600b7e57
+SHA256 (README) = 2d144bbd94207055424620ac61f5830ea9ff84657bc7ed1ce7ea16ef5e264fe5
+SHA256 (isolinux.cfg) = bc6c7d39659a112b22e2f359a68d70bbd28e433a113d8c066be34259af009754
+SHA256 (isolinux.msg) = d79653b68c3492416aee42819ec2e35830661bbd63167e121cb1621fdf474d30

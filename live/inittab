@@ -1,0 +1,7 @@
+id:2:initdefault:
+rc::sysinit:/etc/rc
+rs:S1:wait:/etc/rc.single
+rd:06:wait:/etc/rc.shutdown
+ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
+c2:2:respawn:/sbin/agetty 38400 tty2 linux

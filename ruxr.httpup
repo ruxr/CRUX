@@ -1,0 +1,6 @@
+#
+# /etc/ports/ruxr.httpup: Roman Oreshnikov's port collection
+#
+
+ROOT_DIR=/usr/ports/ruxr
+URL=https://raw.githubusercontent.com/ruxr/CRUX/master

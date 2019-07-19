@@ -1,0 +1,16 @@
+# Description:	Russian system locales
+# URL:		https://github.com/ruxr/CRUX
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	glibc
+
+. /usr/ports/core/glibc/Pkgfile
+name=locale
+#version
+#release
+source=()
+
+build() {
+	/bin/mkdir -p $PKG/usr/lib/locale
+	/usr/bin/localedef -i ru_RU -f UTF-8 ru_RU.UTF-8 --prefix=$PKG
+	/usr/bin/localedef -i ru_RU -f KOI8-R ru_RU.KOI8-R --prefix=$PKG
+}

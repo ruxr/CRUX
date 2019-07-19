@@ -1,0 +1,6 @@
+#!/bin/sh
+if /bin/stty -F /dev/ttyS0 >/dev/null 2>&1; then
+	exec /sbin/agetty 38400 ttyS0 vt100
+else
+	exec /bin/sleep 365d
+fi

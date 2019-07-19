@@ -1,0 +1,20 @@
+# Description:	A set of support scripts for building Linux CRUX distribution
+# URL:		https://github.com/ruxr/Pkgnew
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Build also:	pkguse
+
+name=pkgnew
+version=1.19.4
+release=1
+source=(https://github.com/ruxr/Pkgnew/releases/download/V$version/Pkgnew-$version.tar.xz)
+
+build() {
+	cd Pkgnew-$version
+	make DESTDIR=$PKG install
+}
+
+buildalso() {
+	mkdir -p pkguse/usr/{sbin,share/man/man8}
+	mv $name/usr/sbin/pkguse pkguse/usr/sbin
+	mv $name/usr/share/man/man8/pkguse.8* pkguse/usr/share/man/man8
+}

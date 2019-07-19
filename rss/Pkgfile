@@ -1,0 +1,14 @@
+# Description:	Reports/Restore shell scripts for administration
+# URL:		https://github.com/ruxr/Rss
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	sqlite3 xdelta3 xz
+
+name=rss
+version=1.19.3
+release=1
+source=(https://github.com/ruxr/Rss/releases/download/V$version/Rss-$version.tar.bz2)
+
+build() {
+	cd Rss-$version
+	make DESTDIR=$PKG install
+}

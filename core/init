@@ -1,0 +1,43 @@
+#!/bin/sh
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+# Start udev
+mount -t devtmpfs -o \
+	exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
+mount -t tmpfs -o mode=0755,nosuid,nodev,exec tmpfs /run
+mkdir /dev/pts /dev/shm
+udevd --daemon
+udevadm trigger --type=subsystems --action=add
+udevadm trigger --type=devices --action=add
+udevadm settle
+# Get root device
+R=$(sed 's/.* \?root=\([^ ]*\).*/\1/p;d' /proc/cmdline)
+case $R in
+/dev/*);;
+[0-9a-fA-F]*) R=$(readlink -e /dev/block/$((0x0$R>>8)):$((0x0$R&0xff)));;
+UUID=*) R=$(readlink -e /dev/disk/by-uuid/${R#UUID=});;
+*) R=
+esac
+# Search init if root device was specified on the command line
+if [ -n "$R" ]; then
+	if mount $R /media; then
+		if [ -x /media/sbin/init ]; then
+			echo Switching root to $R ...
+			udevadm control --exit
+			exec switch_root /media /sbin/init
+		fi
+		echo Specified root device $R cannot be used!
+		umount /media
+	else
+		echo Unable to mount the specified root device $R!
+	fi
+	echo Falling back to the boot-media ...
+fi
+# Search for and mount the CRUX media
+for R in $(sed 's/.* //;/^s/!d' /proc/partitions); do
+	if mount -r /dev/$R /media 2>/dev/null; then
+		[ -f /media/crux-media ] && break
+		umount /media
+	fi
+done
+exec /sbin/init

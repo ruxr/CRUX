@@ -1,0 +1,7 @@
+#!/bin/sh
+/sbin/killall5 -15
+/bin/sleep 5
+/sbin/killall5 -9
+/bin/umount -l /mnt/dev/pts /mnt/dev/shm /mnt/dev /mnt/tmp \
+	/mnt/run /mnt/sys /mnt/proc
+/usr/sbin/sshd

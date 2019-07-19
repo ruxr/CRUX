@@ -1,0 +1,160 @@
+# Description:	CRUX Linux kernel
+# URL:		https://github.com/ruxr/CRUX
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	coreutils dash dhcpcd e2fsprogs inetutils iproute2 pkgutils sed shadow sysvinit wget
+# Post-install:	yes
+
+name=core
+version=3.5
+release=1
+REL=$(uname -r)
+source=(core.sh dhcpcd-run-hooks group init inittab inputrc issue nsswitch.conf
+	passwd rc rc.shutdown rc.single seconsole setup-chroot shadow
+	https://cdn.kernel.org/pub/linux/kernel/v${REL%%.*}.x/linux-$REL.tar.xz)
+
+build() {
+	DIR=/usr/src/linux-$REL
+
+	# Build kernel
+	if [ -d $DIR ]; then
+		rm -r linux-$REL
+	else
+		rm -rf /usr/src/linux-*
+		mkdir -p /usr/src
+		mv linux-$REL /usr/src
+		make -C $DIR mrproper
+		if [ -s /boot/config ]; then
+			cp /boot/config $DIR/.config
+			make -C $DIR olddefconfig
+		else
+			make -C $DIR defconfig
+			make -C $DIR localmodconfig
+		fi
+	fi
+	make -C $DIR all
+
+	# Create initrd
+	Use() {
+		# coreutils
+		echo /bin/{date,ln,mkdir,readlink,rm,sleep,stty} /usr/bin/chroot
+		# dash
+		echo /bin/dash
+		# dhcpcd
+		echo /sbin/dhcpcd /lib/dhcpcd/dev/udev.so
+		# e2fsprogs
+		echo /sbin/mkfs.ext4 /etc/mke2fs.conf
+		# eudev
+		echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
+			sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
+		# glibc
+		pkginfo -l glibc | sed '/lib\//!d
+			/^usr\/lib\/audit/d;/^usr\/lib\/gconv/d
+			/^usr\/lib\/getconf/d;/libBrokenLocale/d
+			/libmvec/d;/libcidn/d;/libpcprofile/d
+			/libthread_db/d;/nss_compat/d;/nss_db/d
+			/nss_hesiod/d;/nss_nis/d;/\/$/d;s%^%/%'
+		echo /sbin/ldconfig
+		# inetutils
+		echo /bin/hostname
+		# iproute2
+		echo /sbin/ip /etc/iproute2/*
+		# kmod
+		echo /sbin/*mod*
+		# linux-pam
+		pkginfo -l linux-pam | sed '/^sbin/d;/^usr/d
+			/\.la$/d;/\/$/d;;s%^%/%'
+		# ncurses
+		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
+		# pkgnew
+		echo /usr/sbin/pkguse
+		# pkgutils
+		echo /usr/bin/{pkgadd,pkginfo,pkgrm}
+		# sed
+		echo /bin/sed
+		# shadow
+		echo /bin/login /etc/pam.d/login
+		# sysvinit
+		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
+		# tar
+		echo /bin/tar
+		# util-linux
+		echo /bin/{mount,umount} \
+			/sbin/{agetty,cfdisk,mkswap,swapon,switch_root}
+		# wget
+		echo /usr/bin/wget
+		# xz
+		echo /usr/bin/xz
+	}
+	Req() {
+		local A F N
+		A="$*" N=; shift
+		for F do
+			if [ ! -f $F ]; then echo Missing $F; exit 1; fi
+			echo $F
+			F=$([ -L $F ] && readlink -f $F || ldd $F 2>/dev/null |
+				sed '/\//!d;s%^[^/]*/%/%;s/ .*//;s%/\./%/%g
+					s%[^/]*/\.\./%%g;s%/lib64/%/lib/%')
+			for F in $F; do
+				case " $A$N " in *\ $F\ *) continue;; esac
+				N=$N\ $F
+			done
+		done
+		[ -z "$N" ] || Req "$A" $N
+	}
+
+	mkdir rootfs
+	cd rootfs
+	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
+	rm lib/modules/$REL/{build,source}
+
+	# May add yours modules from linux-firmware package
+	# cp -r /lib/firmware lib
+
+	install -d dev etc media mnt proc run sys usr \
+		var/{cache,empty,lib{,/dhcpcd},log,run}
+	install -dm 1777 tmp var/{lock,tmp}
+	ln -s lib lib64
+	ln -s lib usr/lib64
+	ln -s /proc/mounts etc/mtab
+
+	Req "" $(Use) >../initrd.use
+	tar -cf - -T ../initrd.use | tar -xf -
+
+	mv bin/dash bin/sh
+
+	# Opimize eudev files
+	sed -i '/^#/d;/^$/d' etc/udev/hwdb.d/*
+	sed -i '/^#/d;/^$/d' lib/udev/rules.d/*
+
+	echo -e clientid\\noption domain_name_servers, domain_name, \
+		domain_search >etc/dhcpcd.conf
+	echo -e devpts /dev/pts devpts noexec,nosuid,gid=tty,mode=0620 \
+		0 0\\ntmpfs /tmp tmpfs defaults 0 0 >etc/fstab
+	echo 127.0.0.1 localhost >etc/hosts
+	echo -e order hosts,bind\\nmulti on >etc/host.conf
+	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
+	echo /bin/sh >etc/shells
+	touch etc/{motd,resolv.conf}
+	# touch etc/ld.so.conf etc/udev/udev.conf
+	install -m644 $SRC/{group,inittab,inputrc,issue,nsswitch.conf,passwd} \
+		etc
+	install -m640 $SRC/shadow etc
+	install $SRC/rc{,.shutdown,.single} etc
+	install $SRC/{seconsole,setup-chroot} bin
+	install $SRC/dhcpcd-run-hooks lib/dhcpcd
+	install $SRC/init ./init
+
+	ldconfig -r $(pwd -P)
+	find . | sort | cpio -o -H newc | gzip -9 >$SRC/initrd-$REL
+	cd ..
+
+	mkdir -p $PKG/boot core/boot
+	cd core
+	mv $SRC/initrd-$REL boot
+	cp $DIR/.config boot/config-$REL
+	cp $DIR/System.map boot/System.map-$REL
+	cp $DIR/arch/x86/boot/bzImage boot/vmlinuz-$REL
+	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
+	{ sed "s/#REL#/$REL/g" $SRC/core.sh; tar -cJf - *
+	} >$PKG/boot/CRUX-$version-core.run
+}

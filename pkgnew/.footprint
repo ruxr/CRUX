@@ -1,0 +1,9 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/sbin/
+-r-xr-xr-x	root/root	usr/sbin/pkgnew
+-r-xr-xr-x	root/root	usr/sbin/pkguse
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/pkgnew.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/pkguse.8.gz

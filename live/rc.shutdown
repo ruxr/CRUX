@@ -1,0 +1,7 @@
+#!/bin/sh
+echo The system is coming down. Please wait
+/sbin/killall5 -15
+/bin/sleep 5
+/sbin/killall5 -9
+/bin/umount -a -r
+[ "$RUNLEVEL" = 0 ] && /sbin/poweroff -d -f -i || /sbin/reboot -d -f -i
