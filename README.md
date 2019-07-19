@@ -12,7 +12,7 @@
 
 | Port | Description |
 |---|---|
-! core | Linux kernel |
+| core | Linux kernel |
 | iso | CRUX installation image |
 | live | Live-update script |
 | locale | Russian system locales |
@@ -23,7 +23,6 @@
 
 ```bash
 cd /etc/ports
-# use httpup
 wget --no-ch https://raw.githubusercontent.com/ruxr/CRUX/master/ruxr.{httpup,pub}
 ports -u ruxr
 cd /usr/ports/ruxr/pkgnew
@@ -65,7 +64,7 @@ and copy required files:
 $ cp /boot/{vmlinuz,initrd} /var/tftp/boot/
 ```
 
-4. To update Linux live to the CRUX-3.5, do:
+4. To update Linux live to the *CRUX-3.5*, do:
 ```
 $ wget http://crux/CRUX-3.5/live#3.5-1.pkg.tar.xz
 $ pkgadd live#3.5-1.pkg.tar.xz
