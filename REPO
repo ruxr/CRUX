@@ -29,9 +29,9 @@ f:7010ac8410f0efdcd2f31d6382ec0650:iso/Pkgfile
 f:7395400f48090adf2310238eed7991b5:iso/README
 f:f47507db9f18e61d318ded0b5c00e9a8:iso/isolinux.cfg
 f:9fa4d36c11d681265278b05eddfeef15:iso/isolinux.msg
-f:83f18914b9c737ded76d00ceecfb9fc5:live/.footprint
-f:04c40e3ae6fee5c4572ed681015f922c:live/.signature
-f:986debea55024cb1fce7d2f1a67d320b:live/Pkgfile
+f:69a3474d06f47d14f6d94bffc89dc23f:live/.footprint
+f:64d7567a903f5455be35675fa7c19def:live/.signature
+f:7148a481d7d556421fdab3bb75807d6c:live/Pkgfile
 f:d05e33c0475e2fd5d9bcf235cee76ef8:live/README
 f:a22f97d2162d9fe72f4d21c351e15ddf:live/inittab
 f:36d350389fcda45a93294422e94e0362:live/live.sh

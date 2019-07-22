@@ -85,5 +85,6 @@ build() {
 	install $SRC/setup-chroot bin
 
 	ldconfig -r $(pwd -P)
-	{ cat $SRC/live.sh; tar -cJf - *; } >$PKG/boot/CRUX-$version-live.run
+	{ cat $SRC/live.sh; tar -cJf - *; } >../CRUX-$version-live.run
+	mv ../CRUX-$version-live.run $PKGMK_PACKAGE_DIR
 }
