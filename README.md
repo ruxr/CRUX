@@ -67,5 +67,5 @@ $ cp /boot/{vmlinuz,initrd} /var/tftp/boot/
 4. To update Linux live to the *CRUX-3.5*, do:
 ```
 $ wget http://crux/CRUX-3.5/CRUX-3.5-live.run
-$ sh /boot/CRUX-3.5-live.run
+$ sh CRUX-3.5-live.run
 ```
