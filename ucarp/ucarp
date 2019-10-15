@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# /etc/rc.d/ucarp: ucarp(8) management
+#
+
+. /etc/ucarp.conf
+
+SSD=/sbin/start-stop-daemon
+PRG=/usr/sbin/ucarp
+PID=/var/run/ucarp.pid
+OPT="-nz -u $0 -d $0 $UCARP"
+
+case $* in
+start)
+	[ -z "$UCARP" ] || $SSD --start --pidfile $PID -bm --exec $PRG -- $OPT
+	;;
+stop)
+	$SSD --stop --pidfile $PID --remove-pidfile --retry 10
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+status)
+	$SSD --status --pidfile $PID
+	case $? in
+	0) echo $PRG is running;;
+	1) echo $PRG is not running but the pid file $PID exists;;
+	3) echo $PRG is not running;;
+	4) echo Unable to determine $PRG status;;
+	esac
+	;;
+standby)
+	$SSD --stop --pidfile $PID --signal USR2
+	;;
+*)
+	if [ -f $PID -a $# = 2 ]; then
+		exec 2>/dev/null
+		if /sbin/ip addr show dev "$1" secondary |
+			/bin/sed -n "/ $2\//!d;q1"; then
+			/sbin/ip addr add "$2"/24 dev "$1"
+			UcarpUp
+		else
+			/sbin/ip addr del "$2"/24 dev "$1"
+			UcarpDown
+		fi
+		exit
+	fi
+	echo "Usage: $0 [start|stop|restart|status|standby]"
+	;;
+esac

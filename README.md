@@ -18,6 +18,7 @@
 | locale | Russian system locales |
 | pkgnew | A set of shell scripts for administering packages |
 | rss | Reports/Restore shell scripts for administration |
+| ucarp | Userspace implementation of the CARP protocol |
 
 ## Quick start
 

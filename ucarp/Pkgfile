@@ -1,0 +1,26 @@
+# Description:	Userspace implementation of the CARP protocol
+# URL:		https://github.com/jedisct1/UCarp
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	libpcap start-stop-daemon
+
+name=ucarp
+version=1.5.2
+release=1
+source=(https://download.pureftpd.org/pub/$name/$name-$version.tar.bz2
+	01-fix-getopt.patch 02-fix-downscript-on-error.patch
+	ucarp.8 ucarp ucarp.conf)
+
+build() {
+	cd $name-$version
+
+	patch -p1 -N -i $SRC/01-fix-getopt.patch
+	patch -p1 -N -i $SRC/02-fix-downscript-on-error.patch
+
+	./configure --prefix=/usr --disable-nls
+	make
+	make DESTDIR=$PKG install
+
+	install -D $SRC/ucarp $PKG/etc/rc.d/ucarp
+	install -Dm 640 $SRC/ucarp.conf $PKG/etc/ucarp.conf
+	install -Dm 644 $SRC/ucarp.8 $PKG/usr/share/man/man8/ucarp.8
+}
