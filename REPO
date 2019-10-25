@@ -44,8 +44,8 @@ f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
 f:3135d941358e3587e8489db7aa433389:locale/.signature
 f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
 f:2317e8dce0e960f0719926f486dccc35:pkgnew/.footprint
-f:af80e82c346dfaecb0925da0b48a2416:pkgnew/.signature
-f:d505edc6fad8d99f846edd7c51c30f74:pkgnew/Pkgfile
+f:0eb97d7463ed03736e7c42835030e624:pkgnew/.signature
+f:c3472316f2c36cfa40068dc08ed88426:pkgnew/Pkgfile
 f:53141d046bc17c5bcb9d3ce5a37d2d80:rss/.footprint
 f:9a715d9973485e1cbccf6dde347fef4f:rss/.signature
 f:2642f1a77a72e51604b843c497551887:rss/Pkgfile
