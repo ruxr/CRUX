@@ -6,12 +6,12 @@ d:pkgnew
 d:rss
 d:ucarp
 f:869b6eef29bd1dc866e8b6bbb4941fd6:core/.footprint
-f:aafdf1277ab22faa37536e1485d01c0e:core/.signature
+f:c23b90d2e63250e70e676ab4b733f7b1:core/.signature
 f:60874da40335d364e31b39b4e5c15bdf:core/Pkgfile
 f:795979954be749fd8f2fe3aacb018ca5:core/core.sh
 f:e62e12f29107b34ac56d0fe7972a0717:core/dhcpcd-run-hooks
 f:370c1efaa9f7ee17730d188557c3abde:core/group
-f:d4ecacbadc56575d4324e7baf6b00f97:core/init
+f:e60b1d8a0b50be40800f29dff83c5db7:core/init
 f:619c99b92fde3697b1c0154a57f40070:core/inittab
 f:74935df361514427629320e6fc358101:core/inputrc
 f:7a7dbf82bb0a16c33f6bba709437e386:core/issue

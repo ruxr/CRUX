@@ -12,28 +12,33 @@ udevadm trigger --type=devices --action=add
 udevadm settle
 # Get root device
 R=$(sed 's/.* \?root=\([^ ]*\).*/\1/p;d' /proc/cmdline)
-case $R in
-/dev/*);;
-[0-9a-fA-F]*) R=$(readlink -e /dev/block/$((0x0$R>>8)):$((0x0$R&0xff)));;
-UUID=*) R=$(readlink -e /dev/disk/by-uuid/${R#UUID=});;
-*) R=
-esac
+[ -n "$R" ] && I="1 2 3 4 5"
+for I in $I; do
+	case $R in
+	/dev/*) D=$R;;
+	[0-9a-fA-F]*) D=$(readlink -e /dev/block/$((0x0$R>>8)):$((0x0$R&0xff)));;
+	UUID=*) D=$(readlink -e /dev/disk/by-uuid/${R#UUID=});;
+	*) echo Unknown device type $R; break
+	esac
+	[ -z "$D" ] && sleep 1 || break
+done
 # Search init if root device was specified on the command line
-if [ -n "$R" ]; then
-	if mount $R /media; then
+if [ -n "$D" ]; then
+	if mount $D /media; then
 		if [ -x /media/sbin/init ]; then
-			echo Switching root to $R ...
+			echo Switching root to $D ...
 			udevadm control --exit
 			exec switch_root /media /sbin/init
 		fi
-		echo Specified root device $R cannot be used!
+		echo Specified root device $D cannot be used!
 		umount /media
 	else
-		echo Unable to mount the specified root device $R!
+		echo Unable to mount the specified root device $D!
 	fi
 	echo Falling back to the boot-media ...
 fi
 # Search for and mount the CRUX media
+[ -z "$R" ] && sleep 3
 for R in $(sed 's/.* //;/^s/!d' /proc/partitions); do
 	if mount -r /dev/$R /media 2>/dev/null; then
 		[ -f /media/crux-media ] && break
