@@ -6,9 +6,9 @@ d:pkgnew
 d:rss
 d:ucarp
 f:869b6eef29bd1dc866e8b6bbb4941fd6:core/.footprint
-f:c23b90d2e63250e70e676ab4b733f7b1:core/.signature
+f:34aee1aaa030560e0ae3dc245f26a7ba:core/.signature
 f:60874da40335d364e31b39b4e5c15bdf:core/Pkgfile
-f:795979954be749fd8f2fe3aacb018ca5:core/core.sh
+f:121d5c2d24d6e04d1b2771d9a013926e:core/core.sh
 f:e62e12f29107b34ac56d0fe7972a0717:core/dhcpcd-run-hooks
 f:370c1efaa9f7ee17730d188557c3abde:core/group
 f:e60b1d8a0b50be40800f29dff83c5db7:core/init
@@ -44,8 +44,8 @@ f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
 f:3135d941358e3587e8489db7aa433389:locale/.signature
 f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
 f:2317e8dce0e960f0719926f486dccc35:pkgnew/.footprint
-f:b9cdb83624d91d3b419eafc9c7c322d6:pkgnew/.signature
-f:f48d4bbaa032039e41f65f0d325150ba:pkgnew/Pkgfile
+f:f050514037c5cebca0c1b5d8508b1b7c:pkgnew/.signature
+f:e95676aa5e9be92d4271a5dcfe8201d2:pkgnew/Pkgfile
 f:53141d046bc17c5bcb9d3ce5a37d2d80:rss/.footprint
 f:9a715d9973485e1cbccf6dde347fef4f:rss/.signature
 f:2642f1a77a72e51604b843c497551887:rss/Pkgfile
