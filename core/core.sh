@@ -18,6 +18,5 @@ for F in $1/lib/modules/*; do
 	case " $V #REL# " in *\ ${F##*/}\ *) continue;; esac
 	/bin/rm -rf $F $1/boot/*-${F##*/}
 done
-[ "x${1:-/}" = x/ ] && /sbin/lilo
 [ $# = 0 ] || exec /bin/rm $0
 exit
