@@ -19,6 +19,7 @@
 | pkgnew | A set of shell scripts for administering packages |
 | rss | Reports/Restore shell scripts for administration |
 | ucarp | Userspace implementation of the CARP protocol |
+| xorg-font-paratype-ttf | ParaType font family with extended cyrillic and latin character sets |
 
 ## Quick start
 

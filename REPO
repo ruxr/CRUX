@@ -5,6 +5,7 @@ d:locale
 d:pkgnew
 d:rss
 d:ucarp
+d:xorg-font-paratype-ttf
 f:869b6eef29bd1dc866e8b6bbb4941fd6:core/.footprint
 f:34aee1aaa030560e0ae3dc245f26a7ba:core/.signature
 f:60874da40335d364e31b39b4e5c15bdf:core/Pkgfile
@@ -57,3 +58,7 @@ f:30b4be13ea7c910c53d64b4c0696ae11:ucarp/Pkgfile
 f:a2eea34434babe246fed4623acd88318:ucarp/ucarp
 f:2ccfdc464b88c437b38bd0324cf1fef3:ucarp/ucarp.8
 f:79d8b7037f93bd7ca7af000bad333692:ucarp/ucarp.conf
+f:348c9b01d003a781a4336e2b6bb8f312:xorg-font-paratype-ttf/.footprint
+f:aed0332acb2984b30f47822e16f92543:xorg-font-paratype-ttf/.signature
+f:224b19c14db014eccbe7c6f32601b13a:xorg-font-paratype-ttf/Pkgfile
+f:8a30087027e320d7b680f58a5f3d7fb0:xorg-font-paratype-ttf/post-install

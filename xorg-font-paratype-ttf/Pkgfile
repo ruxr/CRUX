@@ -1,0 +1,21 @@
+# Description:	ParaType font family with extended cyrillic and latin character sets
+# URL:		https://company.paratype.com/pt-sans-pt-serif
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	xorg-mkfontscale
+# Post-install:	yes
+
+name=xorg-font-paratype-ttf
+version=2.005
+release=1
+source=(
+	http://rus.paratype.ru/system/attachments/629/original/ptsans.zip
+	http://rus.paratype.ru/system/attachments/632/original/ptsansexpert.zip
+	http://rus.paratype.ru/system/attachments/634/original/ptserif.zip
+	http://rus.paratype.ru/system/attachments/635/original/ptserifexpert.zip
+	http://rus.paratype.ru/system/attachments/631/original/ptmono.zip
+)
+
+build() {
+	install -d $PKG/usr/share/fonts/X11/TTF
+	install -m644 *.ttf $PKG/usr/share/fonts/X11/TTF
+}
