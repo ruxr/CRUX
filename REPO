@@ -7,8 +7,8 @@ d:rss
 d:ucarp
 d:xorg-font-paratype-ttf
 f:869b6eef29bd1dc866e8b6bbb4941fd6:core/.footprint
-f:34aee1aaa030560e0ae3dc245f26a7ba:core/.signature
-f:60874da40335d364e31b39b4e5c15bdf:core/Pkgfile
+f:6525dcea426da9c513bdc348a5511a8c:core/.signature
+f:d8dc06a49d242f6debf547ef58ea37d3:core/Pkgfile
 f:121d5c2d24d6e04d1b2771d9a013926e:core/core.sh
 f:e62e12f29107b34ac56d0fe7972a0717:core/dhcpcd-run-hooks
 f:370c1efaa9f7ee17730d188557c3abde:core/group
@@ -16,6 +16,7 @@ f:e60b1d8a0b50be40800f29dff83c5db7:core/init
 f:619c99b92fde3697b1c0154a57f40070:core/inittab
 f:74935df361514427629320e6fc358101:core/inputrc
 f:7a7dbf82bb0a16c33f6bba709437e386:core/issue
+f:5d08cd2e61762218425ff5db9a366d01:core/login.pam
 f:a0651d796deb40c03867df529204e3f9:core/nsswitch.conf
 f:95a115ac6f8841ebe5b6425def8c7ae5:core/passwd
 f:7d98e2ef12ae554903bac0e46457225b:core/post-install
