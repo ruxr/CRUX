@@ -6,10 +6,10 @@
 
 name=core
 version=3.5
-release=1
+release=2
 REL=$(uname -r)
 source=(core.sh dhcpcd-run-hooks group init inittab inputrc issue nsswitch.conf
-	passwd rc rc.shutdown rc.single seconsole setup-chroot shadow
+	passwd rc rc.shutdown rc.single seconsole setup-chroot shadow login.pam
 	https://cdn.kernel.org/pub/linux/kernel/v${REL%%.*}.x/linux-$REL.tar.xz)
 
 build() {
@@ -47,12 +47,10 @@ build() {
 		echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
 			sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
 		# glibc
-		pkginfo -l glibc | sed '/lib\//!d
-			/^usr\/lib\/audit/d;/^usr\/lib\/gconv/d
-			/^usr\/lib\/getconf/d;/libBrokenLocale/d
-			/libmvec/d;/libcidn/d;/libpcprofile/d
-			/libthread_db/d;/nss_compat/d;/nss_db/d
-			/nss_hesiod/d;/nss_nis/d;/\/$/d;s%^%/%'
+		pkginfo -l glibc | sed '/lib\//!d;/\/$/d
+			/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
+			/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
+			/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
 		echo /sbin/ldconfig
 		# inetutils
 		echo /bin/hostname
@@ -61,8 +59,7 @@ build() {
 		# kmod
 		echo /sbin/*mod*
 		# linux-pam
-		pkginfo -l linux-pam | sed '/^sbin/d;/^usr/d
-			/\.la$/d;/\/$/d;;s%^%/%'
+		echo /lib/security/pam_unix.so
 		# ncurses
 		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
 		# pkgnew
@@ -72,7 +69,7 @@ build() {
 		# sed
 		echo /bin/sed
 		# shadow
-		echo /bin/login /etc/pam.d/login
+		echo /bin/login
 		# sysvinit
 		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
 		# tar
@@ -139,6 +136,7 @@ build() {
 	install -m644 $SRC/{group,inittab,inputrc,issue,nsswitch.conf,passwd} \
 		etc
 	install -m640 $SRC/shadow etc
+	install -Dm640 $SRC/login.pam etc/pam.d/login
 	install $SRC/rc{,.shutdown,.single} etc
 	install $SRC/{seconsole,setup-chroot} bin
 	install $SRC/dhcpcd-run-hooks lib/dhcpcd
