@@ -5,7 +5,7 @@
 
 name=live
 version=3.5
-release=1
+release=2
 source=(live.sh inittab rc rc.shutdown rc.single setup-chroot)
 
 build() {
@@ -19,19 +19,18 @@ build() {
 		echo /bin/dash
 		# glibc
 		echo /sbin/ldconfig
-		pkginfo -l glibc | sed '/lib\//!d
-			/^usr\/lib\/audit/d;/^usr\/lib\/gconv/d
-			/^usr\/lib\/getconf/d;/libBrokenLocale/d
-			/libmvec/d;/libcidn/d;/libpcprofile/d
-			/libthread_db/d;/nss_compat/d;/nss_db/d
-			/nss_hesiod/d;/nss_nis/d;/\/$/d;s%^%/%'
+		pkginfo -l glibc | sed '/lib\//!d;/\/$/d
+			/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
+			/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
+			/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
 		# linux-pam
-		pkginfo -l linux-pam | sed '/^sbin/d;/^usr/d;/\.la$/d
-			/\/$/d;;s%^%/%'
+		echo /lib/security/pam_{lastlog,motd,rootok,securetty,unix}.so \
+			/etc/pam.d/common-*
 		# ncurses
 		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
 		# openssh
-		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd
+		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd \
+			/etc/pam.d/sshd
 		# pkguse
 		[ ! -x /usr/sbin/pkguse ] || echo /usr/sbin/pkguse
 		# pkgutils
