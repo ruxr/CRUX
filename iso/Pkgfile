@@ -1,23 +1,167 @@
 # Description:	Linux CRUX distribution image
 # URL:		https://github.com/ruxr/CRUX
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	ALL cdrkit core syslinux 
+# Depends on:	ALL cdrkit core syslinux
 
 name=iso
 version=3.5
-release=1
-source=(README isolinux.cfg isolinux.msg)
+release=2
+source=(README dhcpcd-run-hooks group init inittab inputrc
+	isolinux.cfg isolinux.msg issue login.pam nsswitch.conf passwd
+	rc rc.shutdown rc.single seconsole setup setup-chroot shadow)
 
 build() {
-	[ -s $PKGMK_PACKAGE_DIR/core#$version-*pkg.tar.* ]
-	sed -i "s/#VER#/$version/" isolinux.msg
+	DIR=$(echo /usr/src/linux-*)
+	case $DIR in *[*\ ]*) exit 1;; esac
+	[ -s $DIR/arch/x86/boot/bzImage ]
+
+	# Create initramfs
+	Use() {
+		# coreutils
+		echo /bin/{date,ln,mkdir,readlink,rm,sleep,stty} /usr/bin/chroot
+		# dash
+		echo /bin/dash
+		# dosfstools
+		echo /sbin/mkfs.fat
+		# dhcpcd
+		echo /sbin/dhcpcd /lib/dhcpcd/dev/udev.so
+		# e2fsprogs
+		echo /sbin/mkfs.ext4 /etc/mke2fs.conf
+		# eudev
+		echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
+			sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
+		# glibc
+		pkginfo -l glibc | sed '/lib\//!d;/\/$/d
+			/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
+			/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
+			/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
+		echo /sbin/ldconfig
+		# inetutils
+		echo /bin/hostname
+		# iproute2
+		echo /sbin/ip /etc/iproute2/*
+		# kmod
+		echo /sbin/*mod*
+		# linux-pam
+		echo /lib/security/pam_unix.so
+		# ncurses
+		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
+		# pkgnew
+		echo /usr/sbin/pkguse
+		# pkgutils
+		echo /usr/bin/{pkgadd,pkginfo,pkgrm}
+		# sed
+		echo /bin/sed
+		# shadow
+		echo /bin/login
+		# sysvinit
+		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
+		# tar
+		echo /bin/tar
+		# util-linux
+		echo /bin/{mount,umount} \
+			/sbin/{agetty,mkswap,sfdisk,switch_root}
+		# wget
+		echo /usr/bin/wget
+		# xz
+		echo /usr/bin/xz
+	}
+	Req() {
+		local A F N
+		A="$*" N=; shift
+		for F do
+			if [ ! -f $F ]; then echo Missing $F; exit 1; fi
+			echo $F
+			F=$([ -L $F ] && readlink -f $F || ldd $F 2>/dev/null |
+				sed '/\//!d;s%^[^/]*/%/%;s/ .*//;s%/\./%/%g
+					s%[^/]*/\.\./%%g;s%/lib64/%/lib/%')
+			for F in $F; do
+				case " $A$N " in *\ $F\ *) continue;; esac
+				N=$N\ $F
+			done
+		done
+		[ -z "$N" ] || Req "$A" $N
+	}
+
+	mkdir rootfs
+	cd rootfs
+	install -d dev etc media mnt proc run sys usr \
+		var/{cache,empty,lib{,/dhcpcd,/pkg},log,run}
+	install -dm 1777 tmp var/{lock,tmp}
+	ln -s lib lib64
+	ln -s lib usr/lib64
+	ln -s /proc/mounts etc/mtab
+
+	Req "" $(Use) >../initramfs.use
+	tar -cf - -T ../initramfs.use | tar -xf -
+
+	# Opimize eudev files
+	sed -i '/^#/d;/^$/d' etc/udev/hwdb.d/* lib/udev/rules.d/*
+
+	echo -e clientid\\noption domain_name_servers, domain_name, \
+		domain_search >etc/dhcpcd.conf
+	echo -e devpts /dev/pts devpts noexec,nosuid,gid=tty,mode=0620 \
+		0 0\\ntmpfs /tmp tmpfs defaults 0 0 >etc/fstab
+	echo 127.0.0.1 localhost >etc/hosts
+	echo -e order hosts,bind\\nmulti on >etc/host.conf
+	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
+	echo /bin/sh >etc/shells
+	touch etc/{motd,resolv.conf}
+	install -m644 $SRC/{group,inittab,inputrc,issue,nsswitch.conf,passwd} \
+		etc
+	install -m640 $SRC/shadow etc
+	install -Dm640 $SRC/login.pam etc/pam.d/login
+	install $SRC/rc{,.shutdown,.single} etc
+	install $SRC/{seconsole,setup,setup-chroot} bin
+	install $SRC/dhcpcd-run-hooks lib/dhcpcd
+	install $SRC/init ./init
+	mv bin/dash bin/sh
+	ldconfig -r $(pwd -P)
+
+	find . | awk '
+	/\/$/	{ next }
+	/^\./	{ sub("./", ""); if($1 != ".") a[$1] = ""; next }
+	/^$/	{ n = v = ""; next }
+		{
+		if(v) { if($1 in a) a[$1] = n }
+		else if(n) { p[n] = v = $1 } else { n = $1 }
+		}
+	END{
+		for(i in a) { n = a[i]; if(n) u[n] = n }
+		asort(u)
+		for(n in u) {
+			n = u[n]
+			print n "\n" p[n]
+			delete f
+			for(i in a) if(a[i] == n) delete a[f[i] = i]
+			asort(f)
+			for(i in f) print f[i]
+			print ""
+		}
+	}
+	' - /var/lib/pkg/db >var/lib/pkg/db
+
+	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
+	rm lib/modules/*/{build,source}
+
+	# May add yours modules from linux-firmware package
+	# cp -r /lib/firmware lib
+
+	find . | sort | cpio -o -H newc | gzip -9 >../initramfs
+	cd ..
+	rm -r rootfs
+
 	/bin/mkdir -p ISO/{boot/isolinux,crux}
+
+	sed -i "s/#VER#/$version/" isolinux.msg
 	/bin/cp -r isolinux.* ISO/boot/isolinux
 	cp /usr/share/syslinux/{isolinux.bin,ldlinux.c32} ISO/boot/isolinux
-	cp /boot/{vmlinuz,initrd} ISO/boot
-	cp $PKGMK_PACKAGE_DIR/*#* $PKGMK_PACKAGE_DIR/PKG.* ISO/crux
-	date +$version-%Y%M%d >ISO/crux-media
+	cp $DIR/arch/x86/boot/bzImage ISO/boot/vmlinuz
+	mv initramfs ISO/boot
 	cp README ISO
+
+	cp $PKGMK_PACKAGE_DIR/*#* $PKGMK_PACKAGE_DIR/PKG.* ISO/crux
+
 	D=$SRC/ISO/boot
 	echo -e "$D 100\n$D/isolinux 200\n$D/isolinux/isolinux.bin 300" >iso
 	genisoimage -R -l -J -V CRUX-$version -A CRUX \
@@ -26,5 +170,6 @@ build() {
 		-sort iso -input-charset utf-8 -o CRUX-$version.iso ISO
 	isohybrid CRUX-$version.iso
 	mv CRUX-$version.iso $PKGMK_PACKAGE_DIR
+
 	mkdir $PKG/boot
 }

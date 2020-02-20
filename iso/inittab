@@ -1,0 +1,10 @@
+id:2:initdefault:
+rc::sysinit:/etc/rc
+rs:S1:wait:/etc/rc.single
+rd:06:wait:/etc/rc.shutdown
+su:S:wait:/sbin/sulogin -p
+c1:2:respawn:/sbin/agetty --autologin root --noclear 38400 tty1 linux
+c2:2:respawn:/sbin/agetty 38400 tty2 linux
+c3:2:respawn:/sbin/agetty 38400 tty3 linux
+s1:2:respawn:/bin/seconsole
+ca::ctrlaltdel:/sbin/shutdown -t3 -r now

@@ -1,0 +1,178 @@
+#!/bin/sh
+#
+#	Setup new CRUX Linux
+#
+
+D=	# Disk
+PB=	# Boot partition
+PE=	# EFI partition
+PR=	# Root partition
+PS=	# Swap partition
+SD=	# Disk size
+SR=	# Root partition size
+SS=	# Swap partition size
+
+# Utils
+End() { trap 0; echo "$*" >&2; exit 1; }
+Ask() { read -p "$*? [Y/n]: " A; case $A in ""|[yY]) return;; esac; return 1; }
+Get() {
+	while read -p "$*: " A; do
+		case $A in *[!0-9]*);; *) break;; esac
+	done
+	[ -n "$A" ] && [ "$A" -gt 0 ] || A=0
+}
+Sel() {
+	while read -p "Select [1-$1]: " A; do
+		case $A in [1-$1]) return;; esac
+	done
+}
+
+#
+# Main
+#
+set -e
+trap "End Terminated due to error!" 0
+echo
+echo Setup CRUX #VER#
+echo
+sed '/MemTotal/!d' /proc/meminfo
+echo
+
+# Select disk
+while :; do
+	set -- $(sfdisk -l | sed 's%^Disk \(/dev/[^:]*\).*%\1%p;d')
+	case $# in
+	0)	End No hard drives to configure!;;
+	1)	A=1;;
+	*)	echo Avaible hard drives to configure:
+		I=1; for A do echo "$I. $A"; I=$(($I + 1)); done
+		Sel $#
+	esac
+	eval D=\$$A
+	[ $# = 1 ] || echo
+	sfdisk -l $D
+	echo
+	Ask Use the $D drive for configure && break || echo
+done
+echo
+Ask Clean $D before configure && NEW=y || NEW=
+echo
+
+# Select root partition
+if [ -z "$NEW" ]; then
+	set -- $(sfdisk -l $D | sed "s%^\($D[^ ]*\) .*%\1%p;d")
+	case $# in
+	0)	echo No hard disk partitions!; A=1 NEW=y;;
+	1)	A=1;;
+	*)	echo Available hard disk partitions for /:
+		I=1; for A do echo "$I. $A"; I=$(($I + 1)); done
+		Sel $#
+	esac
+	eval PR=\$$A
+	echo
+fi
+
+# Check UEFI
+[ -d /sys/firmware/efi ] && EFI=y || EFI=
+
+# Partition size calculation
+if [ -n "$NEW" ]; then
+	if [ -n "$EFI" ]; then
+		! Ask Create BIOS boot partition || EFI=b
+	fi
+	SD=$(sfdisk -l $D | sed "s%^Disk $D: \([0-9]*\)[^0-9].*%\1%p;d")
+	while :; do
+		SR=$SD
+		Get "Root partition size in gigabytes (max $SD)"
+		[ $A != 0 ] || break
+		if [ $A -lt $SD ]; then
+			SR=$A A=$(($SD - $A))
+			Get "Swap partition size in gigabytes (max $A)"
+			SS=$A
+			[ $(($SR + $SS)) -gt $SD ] || break
+		fi
+		echo Wrong partition size!
+	done
+	echo
+fi
+
+# Check date
+while ! Ask Now is $(date); do
+	Get "Enter a new date in the format MMDDhhmm[[CC]YY]"
+	[ $A = 0 ] || date "$A"
+done
+echo
+
+# Initialize disk
+if [ -n "$NEW" ]; then
+	N=1
+	if [ -n "$EFI" ]; then
+		[ "$EFI" = y ] || PB=$D$N N=$(($N + 1))
+		PE=$D$N N=$(($N + 1))
+	fi
+	PR=$D$N N=$(($N + 1))
+	[ -z "$SS" ] || PS=$D$N
+	echo Disk cleanup $D ...
+	sfdisk --delete $D
+	echo Partitioning on $D ...
+	{
+	if [ -n "$EFI" ]; then
+		echo label: gpt
+		# BIOS boot partition
+		[ "$EFI" = y ] ||
+			echo "\t,\t1M,\t21686148-6449-6E6F-744E-656564454649"
+		# EFI partition bootable
+		echo "\t,\t1M,\tU,\t*"
+	else
+		echo label: dos
+	fi
+	# Linux partition
+	[ -z "$SS" ] && SR= || SR=${SR}G
+	[ -n "$EFI" ] && echo "\t,\t$SR,\tL" ||
+		echo "\t,\t$SR,\tL,\t*"	# bootable
+	# Linux swap partition
+	if [ -n "$SS" ]; then
+		[ $SS = 0 ] && SS= || SS=${SS}G
+		echo "\t,\t$SS,\tS"
+	fi
+	} | sfdisk $D
+	echo Formatting partitions ...
+	[ -z "$EFI" ] || mkfs.fat $PE
+	mkfs.ext4 $PR
+	[ -z "$PS" ] || mkswap $PS
+fi
+
+# Install/Upgrade BASE packages
+mount $PR /mnt
+[ -d /media/crux ] && U="-u /media/crux" || U=
+pkguse $U -r /mnt -s BASE
+
+if [ -n "$NEW" ]; then
+	echo Edit /etc/fstab
+	sed -i "s%^#/dev/#EXT4FS_ROOT#%$PR%${PS:+s%^#/dev/#SWAP#%$PS%}" \
+		/mnt/etc/fstab
+
+	echo Get grub2
+	pkguse $U -si grub2 ${EFI:+grub2-efi}
+
+	echo Install bootloader
+	if [ -n "$EFI" ]; then
+		mount $PE /mnt/mnt
+		grub-install -s --install-modules="normal ext2 linux" \
+			--target=x86_64-efi --efi-directory=/mnt/mnt \
+			--boot-directory=/mnt $D
+	else
+		grub-install -s --install-modules="normal ext2 linux" \
+			--boot-directory=/mnt $D
+	fi
+	rm -r /mnt/grub/fonts /mnt/grub/grubenv /mnt/grub/*/modinfo.sh
+	{
+	echo "#\n# /boot/grub/grub.cfg - Grub2 configuration file\n#\n"
+	echo "linux /boot/vmlinuz root=$PR ro quiet"
+	echo "initrd /boot/initrd"
+	echo "boot"
+	} >/mnt/grub/grub.cfg
+fi
+
+echo Switch to the new CRUX Linux
+exec setup-chroot

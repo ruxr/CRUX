@@ -1,0 +1,42 @@
+#!/bin/sh
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t devtmpfs dev /dev
+mount -t tmpfs tmpfs /run
+mkdir /dev/pts
+udevd --daemon
+udevadm trigger -t subsystems -c add
+udevadm trigger -c add
+udevadm settle
+R=$(sed 's/.* \?root=\([^ ]*\).*/\1/p;d' /proc/cmdline)
+for D in 1 2 3; do
+	case $R in
+	UUID=*) D=/dev/disk/by-uuid/${R#UUID=};;
+	[0-9a-fA-F]*) D=/dev/block/$((0x0$R>>8)):$((0x0$R&0xff));;
+	*) D=$R
+	esac
+	D=$(readlink -e "$D")
+	if [ -n "$D" ]; then
+		if mount $D /mnt; then
+			if [ -x /mnt/sbin/init ]; then
+				echo Switching root to $D ...
+				udevadm control --exit
+				exec switch_root /mnt /sbin/init
+			fi
+			echo Specified root device $D cannot be used!
+			umount /mnt
+		else
+			echo Unable to mount the specified root device $D!
+		fi
+		echo Falling back to the boot-media ...
+		break
+	fi
+	sleep 1
+done
+for D in $(sed '1,2d;s%.* \([^ ]*\)$%/dev/\1%' /proc/partitions); do
+	if mount -r $D /media 2>/dev/null; then
+		[ -d /media/crux ] && break
+		umount /media
+	fi
+done
+exec /sbin/init
