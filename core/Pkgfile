@@ -1,15 +1,14 @@
 # Description:	CRUX Linux kernel
 # URL:		https://github.com/ruxr/CRUX
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	coreutils dash dhcpcd e2fsprogs inetutils iproute2 pkgutils sed shadow sysvinit wget
+# Depends on:	coreutils dash eudev kmod sed util-linux
 # Post-install:	yes
 
 name=core
 version=3.5
-release=2
+release=3
 REL=$(uname -r)
-source=(core.sh dhcpcd-run-hooks group init inittab inputrc issue nsswitch.conf
-	passwd rc rc.shutdown rc.single seconsole setup-chroot shadow login.pam
+source=(core.sh init
 	https://cdn.kernel.org/pub/linux/kernel/v${REL%%.*}.x/linux-$REL.tar.xz)
 
 build() {
@@ -36,51 +35,18 @@ build() {
 	# Create initrd
 	Use() {
 		# coreutils
-		echo /bin/{date,ln,mkdir,readlink,rm,sleep,stty} /usr/bin/chroot
+		echo /bin/{readlink,sleep}
 		# dash
 		echo /bin/dash
-		# dhcpcd
-		echo /sbin/dhcpcd /lib/dhcpcd/dev/udev.so
-		# e2fsprogs
-		echo /sbin/mkfs.ext4 /etc/mke2fs.conf
 		# eudev
 		echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
 			sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
-		# glibc
-		pkginfo -l glibc | sed '/lib\//!d;/\/$/d
-			/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
-			/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
-			/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
-		echo /sbin/ldconfig
-		# inetutils
-		echo /bin/hostname
-		# iproute2
-		echo /sbin/ip /etc/iproute2/*
 		# kmod
 		echo /sbin/*mod*
-		# linux-pam
-		echo /lib/security/pam_unix.so
-		# ncurses
-		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
-		# pkgnew
-		echo /usr/sbin/pkguse
-		# pkgutils
-		echo /usr/bin/{pkgadd,pkginfo,pkgrm}
 		# sed
 		echo /bin/sed
-		# shadow
-		echo /bin/login
-		# sysvinit
-		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
-		# tar
-		echo /bin/tar
 		# util-linux
-		echo /bin/{mount,umount} \
-			/sbin/{agetty,cfdisk,mkswap,swapon,switch_root}
-		# wget
-		echo /usr/bin/wget
-		# xz
-		echo /usr/bin/xz
+		echo /bin/{mount,umount} /sbin/switch_root
 	}
 	Req() {
 		local A F N
@@ -107,12 +73,8 @@ build() {
 	# May add yours modules from linux-firmware package
 	# cp -r /lib/firmware lib
 
-	install -d dev etc media mnt proc run sys usr \
-		var/{cache,empty,lib{,/dhcpcd},log,run}
-	install -dm 1777 tmp var/{lock,tmp}
-	ln -s lib lib64
-	ln -s lib usr/lib64
-	ln -s /proc/mounts etc/mtab
+	install -d dev mnt proc run sys 
+	install $SRC/init .
 
 	Req "" $(Use) >../initrd.use
 	tar -cf - -T ../initrd.use | tar -xf -
@@ -120,27 +82,8 @@ build() {
 	mv bin/dash bin/sh
 
 	# Opimize eudev files
-	sed -i '/^#/d;/^$/d' etc/udev/hwdb.d/*
-	sed -i '/^#/d;/^$/d' lib/udev/rules.d/*
-
-	echo -e clientid\\noption domain_name_servers, domain_name, \
-		domain_search >etc/dhcpcd.conf
-	echo -e devpts /dev/pts devpts noexec,nosuid,gid=tty,mode=0620 \
-		0 0\\ntmpfs /tmp tmpfs defaults 0 0 >etc/fstab
-	echo 127.0.0.1 localhost >etc/hosts
-	echo -e order hosts,bind\\nmulti on >etc/host.conf
-	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
-	echo /bin/sh >etc/shells
-	touch etc/{motd,resolv.conf}
-	# touch etc/ld.so.conf etc/udev/udev.conf
-	install -m644 $SRC/{group,inittab,inputrc,issue,nsswitch.conf,passwd} \
-		etc
-	install -m640 $SRC/shadow etc
-	install -Dm640 $SRC/login.pam etc/pam.d/login
-	install $SRC/rc{,.shutdown,.single} etc
-	install $SRC/{seconsole,setup-chroot} bin
-	install $SRC/dhcpcd-run-hooks lib/dhcpcd
-	install $SRC/init ./init
+	sed -i '/^#/d;/^$/d;s/\(GROUP=\)"[^"]*"/\1"0"/' \
+		etc/udev/hwdb.d/* lib/udev/rules.d/*
 
 	ldconfig -r $(pwd -P)
 	find . | sort | cpio -o -H newc | gzip -9 >$SRC/initrd-$REL
@@ -154,5 +97,5 @@ build() {
 	cp $DIR/arch/x86/boot/bzImage boot/vmlinuz-$REL
 	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
 	{ sed "s/#REL#/$REL/g" $SRC/core.sh; tar -cJf - *
-	} >$PKG/boot/CRUX-$version-core.run
+	} >$SRC/post-install
 }

@@ -1,48 +1,31 @@
 #!/bin/sh
 mount -t proc proc /proc
 mount -t sysfs sysfs /sys
-# Start udev
-mount -t devtmpfs -o \
-	exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
-mount -t tmpfs -o mode=0755,nosuid,nodev,exec tmpfs /run
-mkdir /dev/pts /dev/shm
+mount -t devtmpfs dev /dev
+mount -t tmpfs tmpfs /run
 udevd --daemon
-udevadm trigger --type=subsystems --action=add
-udevadm trigger --type=devices --action=add
+udevadm trigger -t subsystems -c add
+udevadm trigger -c add
 udevadm settle
-# Get root device
 R=$(sed 's/.* \?root=\([^ ]*\).*/\1/p;d' /proc/cmdline)
-[ -n "$R" ] && I="1 2 3 4 5"
-for I in $I; do
+for D in 1 2 3; do
 	case $R in
-	/dev/*) D=$R;;
-	[0-9a-fA-F]*) D=$(readlink -e /dev/block/$((0x0$R>>8)):$((0x0$R&0xff)));;
-	UUID=*) D=$(readlink -e /dev/disk/by-uuid/${R#UUID=});;
-	*) echo Unknown device type $R; break
+	UUID=*) D=/dev/disk/by-uuid/${R#UUID=};;
+	[0-9a-fA-F]*) D=/dev/block/$((0x0$R>>8)):$((0x0$R&0xff));;
+	*) D=$R
 	esac
-	[ -z "$D" ] && sleep 1 || break
+	D=$(readlink -e "$D")
+	[ -z "$D" ] || break
+	sleep 1
 done
-# Search init if root device was specified on the command line
-if [ -n "$D" ]; then
-	if mount $D /media; then
-		if [ -x /media/sbin/init ]; then
-			echo Switching root to $D ...
-			udevadm control --exit
-			exec switch_root /media /sbin/init
-		fi
-		echo Specified root device $D cannot be used!
-		umount /media
-	else
-		echo Unable to mount the specified root device $D!
+for D in $D $(sed '1,2d;s%.* \([^ ]*\)$%/dev/\1%' /proc/partitions); do
+	mount $D /mnt || continue
+	if [ -x /mnt/sbin/init ]; then
+		echo Switching root to $D ...
+		udevadm control --exit
+		exec switch_root /mnt /sbin/init
 	fi
-	echo Falling back to the boot-media ...
-fi
-# Search for and mount the CRUX media
-[ -z "$R" ] && sleep 3
-for R in $(sed 's/.* //;/^s/!d' /proc/partitions); do
-	if mount -r /dev/$R /media 2>/dev/null; then
-		[ -f /media/crux-media ] && break
-		umount /media
-	fi
+	umount /mnt
 done
-exec /sbin/init
+echo Root device not found
+sleep 1h

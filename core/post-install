@@ -1,2 +1,0 @@
-#/bin/sh
-sh $1/boot/CRUX-3.5-core.run ${1:-/}
