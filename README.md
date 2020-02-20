@@ -58,12 +58,12 @@ $ ln -s $(bash -c '. /etc/pkgmk.conf; echo $PKGMK_PACKAGE_DIR') /var/www/crux/CR
 ```
 LABEL CRUX-3.5
 	kernel boot/vmlinuz
-	initrd boot/initrd
+	initrd boot/initramfs
 	append quiet
 ```
 and copy required files:
 ```
-$ cp /boot/{vmlinuz,initrd} /var/tftp/boot/
+$ bsdtar -C /var/tftp -xf /var/www/crux/CRUX-3.5/CRUX-3.5.iso boot/{vmlinuz,initramfs}
 ```
 
 4. To update Linux live to the *CRUX-3.5*, do:
