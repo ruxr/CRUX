@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md3/9a09S9xkhrXbIY270YvFytKWFjAlXbc5ZvL/69fWdo893pEP1aGFVh1cKNy4N8IXcFuBCe2KPFEBAzPU0InwM=
+SHA256 (Pkgfile) = 6b618ea13d46c1187304af4a836f055dc69d1e8fc4b699e0c6fbb29e041f353a
+SHA256 (.footprint) = a6605f6d1933367da9e8c1270ff1419e9aba0bcb630524d99a24cf65d8a61002
+SHA256 (DBD-SQLite-1.64.tar.gz) = f4ae8f7b50842305566aadd90f7bfd12a9e32b6c603a9b1c1529e73eb82aff01

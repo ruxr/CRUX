@@ -16,6 +16,8 @@
 | iso | CRUX installation image |
 | live | Live-update script |
 | locale | Russian system locales |
+| p5-dbi | Database independent interface for Perl |
+| p5-sqlite | Perl DBI driver for SQLite |
 | pkgnew | A set of shell scripts for administering packages |
 | rss | Reports/Restore shell scripts for administration |
 | ucarp | Userspace implementation of the CARP protocol |

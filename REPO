@@ -2,6 +2,8 @@ d:core
 d:iso
 d:live
 d:locale
+d:p5-dbi
+d:p5-sqlite
 d:pkgnew
 d:rss
 d:ucarp
@@ -46,6 +48,12 @@ f:db80448903211a9c9c1f7ab4b4c5c7bc:live/setup-chroot
 f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
 f:3135d941358e3587e8489db7aa433389:locale/.signature
 f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
+f:908fef3ade5753751c90417a51793787:p5-dbi/.footprint
+f:19fd405b87421ae2702a4a938ad8c83f:p5-dbi/.signature
+f:3398992058d2b67098c5e6866a9371fa:p5-dbi/Pkgfile
+f:d664ed9712ae2da289615526b8a4e69a:p5-sqlite/.footprint
+f:0ab9e562540347db6d6038fa99820548:p5-sqlite/.signature
+f:b2359d2339bb8dc61bb0c09a1e7c5002:p5-sqlite/Pkgfile
 f:2317e8dce0e960f0719926f486dccc35:pkgnew/.footprint
 f:457f2702494ee4fbcf26de263d4a5084:pkgnew/.signature
 f:c60099e0105ddbad392579557d256744:pkgnew/Pkgfile

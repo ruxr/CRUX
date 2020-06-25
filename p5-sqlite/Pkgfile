@@ -1,0 +1,34 @@
+# Description:	Perl DBI driver for SQLite
+# URL:		https://metacpan.org/release/DBD-SQLite
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	p5-dbi sqlite3
+# Build also:	p5-sqlite-dev
+
+name=p5-sqlite
+version=1.64
+release=1
+source=(https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-$version.tar.gz)
+
+build() {
+	cd DBD-SQLite-$version
+	perl Makefile.PL
+	make OPTIMIZE="$CFLAGS"
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/lib/perl5/site_perl/*/linux-thread-multi/auto/share/dist
+	find $PKG -type f \( \
+		-name '.packlist' -o \
+		-name '*.bs' -o \
+		-name 'autosplit.ix' -o \
+		-name 'perllocal.pod' \) -delete
+	find $PKG -depth -type d -empty -delete
+}
+
+buildalso() {
+	mkdir -p $name-dev/usr
+	mv $name/usr/share $name-dev/usr
+	( cd $name && find . -name "*.pod" ) |
+	while read F; do
+		D=$name-dev/${F%/*} && mkdir -p $D && mv $name/$F $D
+	done
+	find $name -depth -type d -empty -delete
+}
