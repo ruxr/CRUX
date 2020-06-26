@@ -1,0 +1,80 @@
+# Description:	Full featured cross platform office suite for russian (binary)
+# URL:		https://www.libreoffice.org
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	avahi cups desktop-file-utils gst-plugins-base gtk3 jdk
+# Post-install:	yes
+
+name=libreoffice-ru
+version=6.4.4
+release=1
+Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
+source=(
+	$Url/LibreOffice_${version}_Linux_x86-64_rpm.tar.gz
+	$Url/LibreOffice_${version}_Linux_x86-64_rpm_langpack_ru.tar.gz
+	)
+
+build() {
+	rm LibreOffice*/RPMS/*-{beanshell,es,firebird,fr,integration,librelogo,mediawiki,nlpsolver,onlineupdate,ooofonts,python,pyuno,sdbc}-*
+
+	for rpm in LibreOffice*/RPMS/*.rpm; do
+		bsdtar -p -o -C $PKG -xf $rpm
+	done
+
+	find $PKG \( \
+		-iname 'readme*' -o \
+		-iname 'credits*' -o \
+		-iname 'changelog*' -o \
+		-name 'COPY*' -o \
+		-name 'LICENSE*' -o \
+		-name NOTICE -o \
+		-name WordNet_license.txt -o \
+		-name 'example_*' -o \
+		-name license.txt -o \
+		-name package.txt \
+	\) -delete
+
+	find $PKG/opt/libreoffice*/help/media/icon-themes/cmd -type d \
+		! -name cmd ! -name 32 ! -name ru | xargs rm -r
+
+	D=$PKG/opt/libreoffice*/share
+
+	rm -r $D/{Scripts,basic}
+
+	find $D/autocorr -name "*.dat" ! -name "*ru*" ! -name "*[dh]sb*" \
+		! -name "*US*" -delete
+
+	rm $D/extensions/dict-en/{Eng,aff,en_{AU,CA,ZA},pac}*
+	find $D/extensions/dict-{en,ru} -name "*.properties" \
+		! -name "*_US.*" ! -iname "*_ru.*" -delete
+	sed -i 's%\(<value>\).*\(</value>\)%\1en-GB en-US\2%' \
+		$D/extensions/dict-en/Linguistic.xcu
+	sed -ni '/icon>/d;/png/d;/<name lang=/!p;/"en_US"/p;/"ru"/p' \
+		$D/extensions/dict-{en,ru}/description.xml
+	sed -ni '/xml:lang=/!p;/"en_US"/p;/"ru"/p' \
+		$D/extensions/dict-{en,ru}/dialog/OptionsDialog.xcu
+
+	find $D/fingerprint -name "*.lm" ! -name en.lm ! -name ru.lm -delete
+	sed -ni '/^\(#.*\)*$/d;/^en\./p;/^ru\./p' $D/fingerprint/fpdb.conf
+
+	find $D/gallery -name "*.str" | xargs \
+		sed -ni '/^\(#.*\)*$/d;/\[/!p;/\[en\]/p;/\[ru\]/p'
+
+	find $D/numbertext -name "*.sor" ! -name en.sor ! -name ru.sor \
+		! -name Roman.sor -delete 
+
+	find $D/wizards -type f ! -name "*_US*" ! -name "*_ru*" -delete
+
+	sed -ni '/^\(#.*\)*$/d;/^X-KDE/d;s/X-[^;]*;//g;/.\[/!p;/\[ru\]/p' \
+		$D/xdg/*.desktop
+
+	sed -ni '/xml:lang=/!p;/"ru"/p' \
+		$PKG/usr/share/mime/packages/libreoffice*.xml
+
+	rm -r $PKG/opt/libreoffice*/help
+
+	rm -r $PKG/usr/share/appdata/org.libreoffice* \
+		$PKG/usr/share/icons/{gnome,locolor}
+
+	find $PKG -name "*.py" -delete
+	find $PKG -depth -type d -empty -delete
+}

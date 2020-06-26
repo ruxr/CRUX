@@ -1,5 +1,6 @@
 d:core
 d:iso
+d:libreoffice-ru
 d:live
 d:locale
 d:p5-dbi
@@ -35,6 +36,11 @@ f:de0987fbca063717de5d374858dcd5b9:iso/seconsole
 f:cade8e985007c6319e77d63a85fa2e62:iso/setup
 f:14411d875a35faf6259f8dc4e108ca06:iso/setup-chroot
 f:2c5f4bb20308ae95ddc18c885b75c430:iso/shadow
+f:c85d19307c8eb732e2378bf93c87b99a:libreoffice-ru/.footprint
+f:a89245058732b01796d0ce1e2279fb00:libreoffice-ru/.nostrip
+f:bb3743942d14d7c68789b08fddfd471a:libreoffice-ru/.signature
+f:e383967cf1c79eeab709b15f5ee6469d:libreoffice-ru/Pkgfile
+f:772cfb8a66793d8a7c36bd1364890a2c:libreoffice-ru/post-install
 f:69a3474d06f47d14f6d94bffc89dc23f:live/.footprint
 f:d28d6795ec7df38efdaf0919a7eb1536:live/.signature
 f:a4f81babe506bca580c4d3e32ca783ae:live/Pkgfile

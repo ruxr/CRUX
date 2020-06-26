@@ -14,6 +14,7 @@
 |---|---|
 | core | Linux kernel |
 | iso | CRUX installation image |
+| libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
 | locale | Russian system locales |
 | p5-dbi | Database independent interface for Perl |
