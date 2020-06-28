@@ -5,6 +5,7 @@ d:libkeybinder
 d:libreoffice-ru
 d:live
 d:locale
+d:obconf
 d:p5-dbi
 d:p5-sqlite
 d:pkgnew
@@ -64,6 +65,9 @@ f:db80448903211a9c9c1f7ab4b4c5c7bc:live/setup-chroot
 f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
 f:3135d941358e3587e8489db7aa433389:locale/.signature
 f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
+f:7fd9158a36d838bf62aea841a1016aff:obconf/.footprint
+f:87061e74dc375e0de4296ce73a8a9977:obconf/.signature
+f:3741772f588a43a6161c22a893fc015e:obconf/Pkgfile
 f:908fef3ade5753751c90417a51793787:p5-dbi/.footprint
 f:19fd405b87421ae2702a4a938ad8c83f:p5-dbi/.signature
 f:3398992058d2b67098c5e6866a9371fa:p5-dbi/Pkgfile
