@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md36B3i2fmr4x0NfFHFIzyR+v6yG8dsqwSRfFx/wPerQyoCh6MUSdaCT4G97RycM6INoPtF/qfpOu+2x4hE7ppHAg=
+SHA256 (Pkgfile) = f1bad6a217d8162979cc1dc2a3b80b514d70204cef627077b5b0eab8a5cb8564
+SHA256 (.footprint) = 6b6fffae5d1ec38fb35387f560f9db9834fde19e730f580895ada16eee22b09a
+SHA256 (dcp1600cupswrapper-3.0.1-1.i386.rpm) = d89794cde2e054801df9bfb460a8d26e256479764837a2cbecf78fb0aae92a04
+SHA256 (dcp1600lpr-3.0.1-1.i386.rpm) = 2ba25e4008317b56fff54f3674953c65391c485f537523ab81e520ed46ff5fbb

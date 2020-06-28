@@ -1,0 +1,44 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/opt/
+drwxr-xr-x	root/root	etc/opt/brother/
+drwxr-xr-x	root/root	etc/opt/brother/Printers/
+drwxr-xr-x	root/root	etc/opt/brother/Printers/DCP1600/
+drwxr-xr-x	root/root	etc/opt/brother/Printers/DCP1600/inf/
+lrwxrwxrwx	root/root	etc/opt/brother/Printers/DCP1600/inf/brDCP1600rc -> /opt/brother/Printers/DCP1600/inf/brDCP1600rc
+drwxr-xr-x	root/root	opt/
+drwxr-xr-x	root/root	opt/brother/
+drwxr-xr-x	root/root	opt/brother/Printers/
+drwxr-xr-x	root/root	opt/brother/Printers/DCP1600/
+drwxr-xr-x	root/root	opt/brother/Printers/DCP1600/cupswrapper/
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/cupswrapper/brcupsconfig4
+-rw-r--r--	root/root	opt/brother/Printers/DCP1600/cupswrapper/brother-DCP1600-cups-en.ppd
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/cupswrapper/brother_lpdwrapper_DCP1600
+drwxr-xr-x	root/root	opt/brother/Printers/DCP1600/inf/
+-rw-r--r--	root/root	opt/brother/Printers/DCP1600/inf/brDCP1600func
+-rw-r--r--	root/root	opt/brother/Printers/DCP1600/inf/brDCP1600rc
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/inf/braddprinter
+-rw-r--r--	root/root	opt/brother/Printers/DCP1600/inf/paperinf
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/inf/setupPrintcap
+drwxr-xr-x	root/root	opt/brother/Printers/DCP1600/lpd/
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/lpd/brprintconflsr3
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/lpd/filter_DCP1600
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/lpd/psconvert2
+-rwxr-xr-x	root/root	opt/brother/Printers/DCP1600/lpd/rawtobr3
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/brprintconflsr3_DCP1600
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/cups/
+drwxr-xr-x	root/root	usr/lib/cups/filter/
+lrwxrwxrwx	root/root	usr/lib/cups/filter/brother_lpdwrapper_DCP1600 -> /opt/brother/Printers/DCP1600/cupswrapper/brother_lpdwrapper_DCP1600
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/cups/
+drwxr-xr-x	root/root	usr/share/cups/model/
+lrwxrwxrwx	root/root	usr/share/cups/model/brother-DCP1600-cups-en.ppd -> /opt/brother/Printers/DCP1600/cupswrapper/brother-DCP1600-cups-en.ppd
+drwxr-xr-x	root/root	usr/share/ppd/
+drwxr-xr-x	root/root	usr/share/ppd/brother/
+lrwxrwxrwx	root/root	usr/share/ppd/brother/brother-DCP1600-cups-en.ppd -> /opt/brother/Printers/DCP1600/cupswrapper/brother-DCP1600-cups-en.ppd
+drwxr-xr-x	root/root	var/
+drwxr-xr-x	root/root	var/spool/
+drwxr-xr-x	root/root	var/spool/lpd/
+drw-r--r--	root/root	var/spool/lpd/DCP1600/

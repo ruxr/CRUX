@@ -1,0 +1,11 @@
+#!/bin/sh
+
+URI=$(lpinfo -v | sed '/DCP-1600/!d;s/^[^ ]* //')
+if [ -z "$URI" ]; then
+	echo DCP-1600 not found!
+	exit 1
+fi
+lpadmin -p DCP1600 -E -v $URI \
+	-P /usr/share/ppd/brother/brother-DCP1600-cups-en.ppd
+/opt/brother/Printers/DCP1600/inf/setupPrintcap DCP1600 -i USB
+/opt/brother/Printers/DCP1600/inf/braddprinter -i DCP1600

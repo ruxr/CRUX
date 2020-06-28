@@ -1,0 +1,35 @@
+# Description:	Brother DCP-1600 printer driver
+# URL:		https://www.brother.com
+# Maintainer:   Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	cups-filters
+
+name=brother_dcp1600
+version=3.0.1
+release=1
+source=(file:///dcp1600cupswrapper-3.0.1-1.i386.rpm
+	file:///dcp1600lpr-3.0.1-1.i386.rpm)
+build() {
+	mv $SRC/{etc,opt,var} $PKG
+
+	mkdir -p $PKG/usr/bin $PKG/usr/lib/cups/filter \
+		$PKG/usr/share/cups/model $PKG/usr/share/ppd/brother
+
+	DIR=/opt/brother/Printers/DCP1600
+
+	ln -s $DIR/cupswrapper/brother_lpdwrapper_DCP1600 \
+		$PKG/usr/lib/cups/filter
+	ln -s $DIR/cupswrapper/brother-DCP1600-cups-en.ppd \
+		$PKG/usr/share/cups/model
+	ln -s $DIR/cupswrapper/brother-DCP1600-cups-en.ppd \
+		$PKG/usr/share/ppd/brother
+	ln -s $DIR/inf/brDCP1600rc $PKG/etc$DIR/inf
+	{
+	echo "[psconvert2]"
+	echo "pstops=/usr/lib/cups/filter/pstops"
+	} >>$PKG/$DIR/inf/brDCP1600func
+	{
+	echo "#!/bin/sh"
+	echo "$DIR/lpd/brprintconflsr3 -P DCP1600 \$*"
+	} >$PKG/usr/bin/brprintconflsr3_DCP1600
+	chmod 755 $PKG/usr/bin/brprintconflsr3_DCP1600
+}

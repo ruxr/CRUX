@@ -1,0 +1,3 @@
+Download files from https://www.brother.ru/support/dcp-1602r/downloads
+and put the file into the directory defined by PKGMK_SOURCE_DIR.
+See pkgmk.conf(5).
