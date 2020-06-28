@@ -1,0 +1,19 @@
+# Description:	freedesktop.org desktop menus for LXDE
+# URL:		https://wiki.lxde.org/en/Main_Page
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	intltool
+
+name=lxmenu-data
+version=0.1.5
+release=1
+source=(https://downloads.sourceforge.net/lxde/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --sysconfdir=/etc
+	make
+	make DESTDIR=$PKG install
+
+	sed -ni '/^\(#.*\)*$/d;/.\[/!p;/\[ru\]/p' \
+		$PKG/usr/share/desktop-directories/*
+}
