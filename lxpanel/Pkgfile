@@ -1,0 +1,42 @@
+# Description:	Desktop panel from LXDE project
+# URL:		https://wiki.lxde.org/en/LXPanel
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	libfm libkeybinder libwnck lxmenu-data menu-cache alsa-lib
+# Build also:	lxpanel-dev
+buildalso() {
+	mkdir -p $name-dev/usr/lib
+	mv $name/usr/include $name-dev/usr
+	mv $name/usr/lib/pkgconfig $name-dev/usr/lib
+}
+
+name=lxpanel
+version=0.10.0
+release=1
+source=(https://download.sourceforge.net/lxde/$name-$version.tar.xz
+	config panel.in xterm.patch)
+
+build() {
+	cd $name-$version
+
+	mv $SRC/config data/default
+	mv $SRC/panel.in data/default/panels
+	patch -p1 -i $SRC/xterm.patch
+
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
+		--with-plugins=none \
+		--disable-nls
+
+	#https://bugzilla.gnome.org/show_bug.cgi?id=656231
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+	make
+	make DESTDIR=$PKG install
+
+	rm -r	$PKG/etc/xdg/lxpanel/two_panels \
+		$PKG/usr/lib/lxpanel/*.la \
+		$PKG/usr/share/locale \
+		$PKG/usr/share/lxpanel/images/{c,f,gnome-[!l],mu,n,s,v,x}* \
+		$PKG/usr/share/lxpanel/ui/net* \
+		$PKG/usr/share/lxpanel/x*
+}

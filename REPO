@@ -5,6 +5,7 @@ d:libkeybinder
 d:libreoffice-ru
 d:live
 d:locale
+d:lxpanel
 d:obconf
 d:p5-dbi
 d:p5-sqlite
@@ -65,6 +66,12 @@ f:db80448903211a9c9c1f7ab4b4c5c7bc:live/setup-chroot
 f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
 f:3135d941358e3587e8489db7aa433389:locale/.signature
 f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
+f:7b1729153184764f898da05b68b463fb:lxpanel/.footprint
+f:d76477094c6d887c8fe11b84919f0869:lxpanel/.signature
+f:2187772b3ac4183c493d2d3b894f4a8d:lxpanel/Pkgfile
+f:969905c09537562b631866a46d33e0dc:lxpanel/config
+f:dc0d559ba5fad9b3c5000ee62d21d132:lxpanel/panel.in
+f:4fd5234978cf649014dfab08e5d92cf2:lxpanel/xterm.patch
 f:7fd9158a36d838bf62aea841a1016aff:obconf/.footprint
 f:87061e74dc375e0de4296ce73a8a9977:obconf/.signature
 f:3741772f588a43a6161c22a893fc015e:obconf/Pkgfile

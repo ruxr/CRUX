@@ -19,6 +19,7 @@
 | libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
 | locale | Russian system locales |
+| lxpanel | Desktop panel from LXDE project |
 | obconf | Openbox preferences manager |
 | p5-dbi | Database independent interface for Perl |
 | p5-sqlite | Perl DBI driver for SQLite |

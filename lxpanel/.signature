@@ -1,0 +1,8 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md3448BylHfVGp7eWbZvB3+9dF1zUr9x81WsxA9w/5AL0ZjQrzU3cIh3V54HQwE19VcrpbB7g5LhZsJxOSm98WoAk=
+SHA256 (Pkgfile) = 09b6da534a1ae2dcb0f489d6fce5c76ea64723a3b5d3f5ebf2d2214428493196
+SHA256 (.footprint) = c962fa9b5186f7634164ae33a92985fc502762403ef367379258cf8d0efa3ebd
+SHA256 (lxpanel-0.10.0.tar.xz) = 4678cc8c5f1962376005ebf71ec1ee810115ac2e0e565f8d2e67dc12d01a3a7e
+SHA256 (config) = a3f6080314b1ecdb8047bef4dfb9b67eb1b8e114e6ccbaf63d8aef887ea6a054
+SHA256 (panel.in) = 65f274f99c9f28812feab558b13d7f4de2926184ef7c4d06271951dd0b765d25
+SHA256 (xterm.patch) = 0068a0875aaf1f413a879ba05172363ca2d9fd2cbf3d3388288b43926c85afdd
