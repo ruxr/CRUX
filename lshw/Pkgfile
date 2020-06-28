@@ -1,0 +1,16 @@
+# Description:	Show detailed computer configuration information
+# URL:		https://ezix.org/project/wiki/HardwareLiSter
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+
+name=lshw
+version=B.02.19.2
+release=1
+source=(https://ezix.org/software/files/lshw-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	make DESTDIR=$PKG SBINDIR=/usr/bin install
+
+	rm -r $PKG/usr/share/locale
+}

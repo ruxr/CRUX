@@ -5,6 +5,7 @@ d:libkeybinder
 d:libreoffice-ru
 d:live
 d:locale
+d:lshw
 d:lxmenu-data
 d:lxpanel
 d:obconf
@@ -67,6 +68,9 @@ f:db80448903211a9c9c1f7ab4b4c5c7bc:live/setup-chroot
 f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
 f:3135d941358e3587e8489db7aa433389:locale/.signature
 f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
+f:8dd825ba404de9f11d9ed384a4b3ca37:lshw/.footprint
+f:6425746ba90988bffdda9b5c7249d9e8:lshw/.signature
+f:6a222de64295f4e968f5805f8e9884e4:lshw/Pkgfile
 f:e5de2bbdc8591228b991274c67ebe1a8:lxmenu-data/.footprint
 f:85a99ceff813d9f7bb0546e61760ee5d:lxmenu-data/.signature
 f:3534e1a6b1c1d53b1033a1b9e8042fc8:lxmenu-data/Pkgfile

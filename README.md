@@ -19,6 +19,7 @@
 | libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
 | locale | Russian system locales |
+| lshw | Show detailed computer configuration information |
 | lxmenu-data | Desktop menus for LXDE panel |
 | lxpanel | Desktop panel from LXDE project |
 | obconf | Openbox preferences manager |
