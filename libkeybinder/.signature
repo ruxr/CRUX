@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md37NZoKGTWJCu5FKv2IrIfGMCUqoNKhHhxmhrV/60Pxdwv4o1iPD1hW/bOMd9vjeqWJTGJ2BkV9k/UGZfu84PRQ0=
+SHA256 (Pkgfile) = a9c194d9b1265064237a1ef61e6aa2e99dafd33b141e48a6df2220ab4be28492
+SHA256 (.footprint) = 468a23da046d564aa1d0baaedff688aced21948d0b98caf9d685c6a6b5f51abe
+SHA256 (keybinder-0.3.1.tar.gz) = 879f07130ac64792ddb9fd758e6673119283bda37d75573787ae22af8684a240

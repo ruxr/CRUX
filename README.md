@@ -15,6 +15,7 @@
 | brother_dcp1600 | Brother DCP-1600 printer driver |
 | core | Linux kernel |
 | iso | CRUX installation image |
+| libkeybinder | A library for registering global keyboard shortcuts |
 | libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
 | locale | Russian system locales |
