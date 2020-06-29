@@ -15,6 +15,7 @@ d:p5-sqlite
 d:pkgnew
 d:rss
 d:ucarp
+d:wireshark2
 d:xorg-font-paratype-ttf
 f:8948458865e3af72ec65750fe9eb3657:brother_dcp1600/.footprint
 f:0caf642649af82276ef704df4e5522d7:brother_dcp1600/.signature
@@ -111,6 +112,10 @@ f:30b4be13ea7c910c53d64b4c0696ae11:ucarp/Pkgfile
 f:a2eea34434babe246fed4623acd88318:ucarp/ucarp
 f:2ccfdc464b88c437b38bd0324cf1fef3:ucarp/ucarp.8
 f:79d8b7037f93bd7ca7af000bad333692:ucarp/ucarp.conf
+f:57e3939f229b4f4152310ab196b73082:wireshark2/.footprint
+f:93e7efdb023ce698c1a8a0fa1a955c34:wireshark2/.signature
+f:c74e27d7b2eb9c2f2b1bdb6544ba27eb:wireshark2/Pkgfile
+f:57a3a5192abf02f8e71fe286b1ac1e3d:wireshark2/post-install
 f:348c9b01d003a781a4336e2b6bb8f312:xorg-font-paratype-ttf/.footprint
 f:aed0332acb2984b30f47822e16f92543:xorg-font-paratype-ttf/.signature
 f:224b19c14db014eccbe7c6f32601b13a:xorg-font-paratype-ttf/Pkgfile

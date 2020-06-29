@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Add your users to the wireshark group and allow them to capture network data
+#
+if [ -n "$(attr -l /usr/bin/dumpcap)" ]; then
+	getent group wireshark >/dev/null || groupadd -r wireshark
+	chgrp wireshark /usr/bin/dumpcap
+	chmod 754 /usr/bin/dumpcap
+	/sbin/setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
+else
+	echo Capabilities not supported on this system!
+	echo Capturing with wireshark will require root privileges.
+fi

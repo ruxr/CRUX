@@ -1,0 +1,37 @@
+# Description:	Network Sniffer with nice GTK+ UI
+# URL:		https://www.wireshark.org
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	gtk3 libpcap libpcre hicolor-icon-theme libgcrypt
+# Post-install:	yes
+# Build also:	wireshark2-dev
+buildalso() {
+	mkdir -p $name-dev/usr/lib
+	mv $name/usr/include $name-dev/usr
+	mv $name/usr/lib/pkgconfig $name-dev/usr/lib
+}
+
+name=wireshark2
+version=2.6.17
+release=1
+source=(https://www.wireshark.org/download/src/wireshark-$version.tar.xz)
+
+build() {
+	cd wireshark-$version
+
+	./configure --prefix=/usr \
+		--with-plugins=/usr/lib/wireshark/plugins \
+		--without-krb5 \
+		--with-qt=no \
+		--with-gtk=yes
+
+	make
+	make DESTDIR=$PKG install
+
+	# Don't remove these files, they are read by wireshark's about box.
+	#rm -f $PKG/usr/share/$name/{AUTHORS-SHORT,COPYING}
+
+	find $PKG -name "*.la" -delete
+
+	sed -ni '/^\(#.*\)*$/d;/.\[/!p;/\[ru\]/p' \
+		$PKG/usr/share/applications/wireshark-gtk.desktop
+}
