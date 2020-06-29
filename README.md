@@ -22,6 +22,7 @@
 | lshw | Show detailed computer configuration information |
 | lxmenu-data | Desktop menus for LXDE panel |
 | lxpanel | Desktop panel from LXDE project |
+| nvidia340 | NVIDIA Linux Display Driver (version 340) |
 | obconf | Openbox preferences manager |
 | p5-dbi | Database independent interface for Perl |
 | p5-sqlite | Perl DBI driver for SQLite |

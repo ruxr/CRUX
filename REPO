@@ -8,6 +8,7 @@ d:locale
 d:lshw
 d:lxmenu-data
 d:lxpanel
+d:nvidia340
 d:obconf
 d:p5-dbi
 d:p5-sqlite
@@ -80,6 +81,13 @@ f:2187772b3ac4183c493d2d3b894f4a8d:lxpanel/Pkgfile
 f:969905c09537562b631866a46d33e0dc:lxpanel/config
 f:dc0d559ba5fad9b3c5000ee62d21d132:lxpanel/panel.in
 f:4fd5234978cf649014dfab08e5d92cf2:lxpanel/xterm.patch
+f:f7e375d81c5bef9137c54f9547443d68:nvidia340/.footprint
+f:dbad65c3fd9668afa600e2131755a8ee:nvidia340/.signature
+f:4511024cc556d0c6e7c467b6789524e2:nvidia340/90-nvidia-uvm.rules
+f:4a7dc5baf7b5a193deba63ee873a1c8d:nvidia340/Pkgfile
+f:b16781359851b9892583f491acadf563:nvidia340/kmem_cache_create_usercopy.patch
+f:d4a4794776dad5490d3f37f0b4edfeb5:nvidia340/unregister_procfs_on_failure.patch
+f:3dda055f5f9246a05a826a7830a39e57:nvidia340/vm-fault.patch
 f:7fd9158a36d838bf62aea841a1016aff:obconf/.footprint
 f:87061e74dc375e0de4296ce73a8a9977:obconf/.signature
 f:3741772f588a43a6161c22a893fc015e:obconf/Pkgfile

@@ -1,0 +1,101 @@
+# Description:	NVIDIA Linux Display Driver (version 340)
+# URL:		https://www.nvidia.com
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	gtk
+
+name=nvidia340
+version=340.108
+release=1
+NV=NVIDIA-Linux-x86_64-$version
+source=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$version/$NV.run
+	90-nvidia-uvm.rules
+	kmem_cache_create_usercopy.patch
+	unregister_procfs_on_failure.patch
+	vm-fault.patch)
+
+build() {
+	sh $NV.run --extract-only
+	cd $NV
+
+	# libraries
+	install -d $PKG/usr/lib/{tls,vdpau}
+	install libGL.so.$version \
+		libOpenCL.so.1.0.0 \
+		libcuda.so.$version \
+		libnvcuvid.so.$version \
+		libnvidia-cfg.so.$version \
+		libnvidia-compiler.so.$version \
+		libnvidia-encode.so.$version \
+		libnvidia-fbc.so.$version \
+		libnvidia-glcore.so.$version \
+		libnvidia-ifr.so.$version \
+		libnvidia-ml.so.$version \
+		libnvidia-opencl.so.$version \
+		libnvidia-tls.so.$version \
+			$PKG/usr/lib
+	install tls/libnvidia-tls.so.$version $PKG/usr/lib/tls
+	install libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau
+
+	ln -s libOpenCL.so.1.0.0 $PKG/usr/lib/libOpenCL.so
+	ln -s libOpenCL.so.1.0.0 $PKG/usr/lib/libOpenCL.so.1
+	ln -s libcuda.so.$version $PKG/usr/lib/libcuda.so.1
+	ln -s libnvcuvid.so.$version $PKG/usr/lib/libnvcuvid.so
+	ln -s libnvcuvid.so.$version $PKG/usr/lib/libnvcuvid.so.1
+	ln -s libnvidia-cfg.so.$version $PKG/usr/lib/libnvidia-cfg.so.1
+	ln -s libnvidia-encode.so.$version $PKG/usr/lib/libnvidia-encode.so.1
+	ln -s libnvidia-fbc.so.$version $PKG/usr/lib/libnvidia-fbc.so.1
+	ln -s libnvidia-ifr.so.$version $PKG/usr/lib/libnvidia-ifr.so.1
+	ln -s libnvidia-opencl.so.$version $PKG/usr/lib/libnvidia-opencl.so.1
+	ln -s libnvidia-ml.so.$version $PKG/usr/lib/libnvidia-ml.so
+	ln -s libnvidia-ml.so.$version $PKG/usr/lib/libnvidia-ml.so.1
+	ln -s libvdpau_nvidia.so.$version $PKG/usr/lib/vdpau/libvdpau_nvidia.so
+	ln -s libvdpau_nvidia.so.$version \
+		$PKG/usr/lib/vdpau/libvdpau_nvidia.so.1
+
+	# xorg driver/extensions
+	install -d $PKG/usr/lib/xorg/modules/{drivers,extensions}
+	install nvidia_drv.so $PKG/usr/lib/xorg/modules/drivers
+	install libglx.so.$version $PKG/usr/lib/xorg/modules/extensions
+	install libnvidia-wfb.so.$version $PKG/usr/lib/xorg/modules
+
+	# nvidia programs amd man-pages
+	install -d $PKG/usr/{bin,share/man/man1}
+	install nvidia-{debugdump,persistenced,settings,smi,xconfig} \
+		$PKG/usr/bin
+	install -m0644 nvidia-{persistenced,settings,smi,xconfig}.1.gz \
+		$PKG/usr/share/man/man1
+
+	# desktop file and icon
+	install -d $PKG/usr/share/{applications,pixmaps}
+	sed -i 's%__UTILS_PATH__%/usr/bin%
+		s%__PIXMAP_PATH__%/usr/share/pixmaps%' nvidia-settings.desktop
+	install -m0644 nvidia-settings.desktop $PKG/usr/share/applications
+	install -m0644 nvidia-settings.png $PKG/usr/share/pixmaps
+
+	# opencl icd file
+	install -Dm0644 nvidia.icd $PKG/etc/OpenCL/vendors/nvidia.icd
+
+	# nvidia-uvm module udev rule
+	install -Dm0644 $SRC/90-nvidia-uvm.rules \
+		$PKG/lib/udev/rules.d/90-nvidia-uvm.rules
+
+	# nvidia-settings registry key file
+	install -d $PKG/usr/share/nvidia
+	install -m0644 nvidia-application-profiles-$version-key-documentation \
+		$PKG/usr/share/nvidia
+
+	# kernel module
+	cd kernel
+	patch -p1 -i $SRC/unregister_procfs_on_failure.patch
+	patch -p1 -i $SRC/kmem_cache_create_usercopy.patch
+	patch -p1 -i $SRC/vm-fault.patch
+	IGNORE_CC_MISMATCH=1 make module
+	install -Dm0644 nvidia.ko \
+		$PKG/lib/modules/`uname -r`/extra/nvidia.ko
+
+	# nvidia-uvm module
+	cd uvm
+	IGNORE_CC_MISMATCH=1 make module
+	install -Dm0644 nvidia-uvm.ko \
+		$PKG/lib/modules/`uname -r`/extra/nvidia-uvm.ko
+}
