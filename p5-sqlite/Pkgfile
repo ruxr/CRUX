@@ -5,7 +5,7 @@
 # Build also:	p5-sqlite-dev
 
 name=p5-sqlite
-version=1.64
+version=1.66
 release=1
 source=(https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-$version.tar.gz)
 
