@@ -11,9 +11,9 @@ buildalso() {
 }
 
 name=wireshark2
-version=2.6.19
+version=2.6.20
 release=1
-source=(https://www.wireshark.org/download/src/wireshark-$version.tar.xz)
+source=(https://www.wireshark.org/download/src/all-versions/wireshark-$version.tar.xz)
 
 build() {
 	cd wireshark-$version
