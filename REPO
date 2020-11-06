@@ -52,10 +52,10 @@ f:2c5f4bb20308ae95ddc18c885b75c430:iso/shadow
 f:5ded259a0393448e7fc8c23137245805:libkeybinder/.footprint
 f:5e40f803f5feee208d5c2c40a2f182d9:libkeybinder/.signature
 f:d2f8d8ead2011f96bfd282af493de1c4:libkeybinder/Pkgfile
-f:0a63e5cda4b99eb9649c03532c9047c0:libreoffice-ru/.footprint
+f:0d0dc9a1f55e87d2d04f2ee62c9012dc:libreoffice-ru/.footprint
 f:a89245058732b01796d0ce1e2279fb00:libreoffice-ru/.nostrip
-f:ee115c9457c228634d2b1d9cc1367643:libreoffice-ru/.signature
-f:77a14d913ae5a486367ad8ec85ae1a8b:libreoffice-ru/Pkgfile
+f:7eac97bb1eb8b0c234c85c6b3d6269b6:libreoffice-ru/.signature
+f:07865b4b1b03dbcbcb3ab1808ec133f5:libreoffice-ru/Pkgfile
 f:772cfb8a66793d8a7c36bd1364890a2c:libreoffice-ru/post-install
 f:69a3474d06f47d14f6d94bffc89dc23f:live/.footprint
 f:d28d6795ec7df38efdaf0919a7eb1536:live/.signature

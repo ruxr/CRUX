@@ -2231,6 +2231,7 @@ drwxr-xr-x	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/
 -rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/inspectortextpanel.ui
 -rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/interimdockparent.ui
 -rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/interimparent.ui
+-rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/interimtearableparent.ui
 -rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/labelbox.ui
 -rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/lightingwindow.ui
 -rw-r--r--	root/root	opt/libreoffice7.0/share/config/soffice.cfg/svx/ui/linkwarndialog.ui
