@@ -1,7 +1,7 @@
 # Description:	Desktop panel from LXDE project
 # URL:		https://wiki.lxde.org/en/LXPanel
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	libfm libkeybinder libwnck lxmenu-data menu-cache alsa-lib
+# Depends on:	libfm libkeybinder libwnck-gtk3 lxmenu-data menu-cache alsa-lib
 # Build also:	lxpanel-dev
 buildalso() {
 	mkdir -p $name-dev/usr/lib
@@ -11,8 +11,9 @@ buildalso() {
 
 name=lxpanel
 version=0.10.0
-release=1
+release=2
 source=(https://download.sourceforge.net/lxde/$name-$version.tar.xz
+	0001-Specify-GTK_REQUEST_CONSTANT_SIZE-Fixes-773.patch
 	config panel.in xterm.patch)
 
 build() {
@@ -21,10 +22,12 @@ build() {
 	mv $SRC/config data/default
 	mv $SRC/panel.in data/default/panels
 	patch -p1 -i $SRC/xterm.patch
+	patch -p1 -i $SRC/0001-Specify-GTK_REQUEST_CONSTANT_SIZE-Fixes-773.patch
 
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man \
 		--with-plugins=none \
+		--enable-gtk3 \
 		--disable-nls
 
 	#https://bugzilla.gnome.org/show_bug.cgi?id=656231
