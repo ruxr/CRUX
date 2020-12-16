@@ -49,9 +49,9 @@ f:de0987fbca063717de5d374858dcd5b9:iso/seconsole
 f:cade8e985007c6319e77d63a85fa2e62:iso/setup
 f:14411d875a35faf6259f8dc4e108ca06:iso/setup-chroot
 f:2c5f4bb20308ae95ddc18c885b75c430:iso/shadow
-f:5ded259a0393448e7fc8c23137245805:libkeybinder/.footprint
-f:5e40f803f5feee208d5c2c40a2f182d9:libkeybinder/.signature
-f:d2f8d8ead2011f96bfd282af493de1c4:libkeybinder/Pkgfile
+f:b82cc912d35cd44ce91a24eba702ad5f:libkeybinder/.footprint
+f:8f1d856dc54fb907f6f34e86d35f7442:libkeybinder/.signature
+f:c9322c4d06074a75d0f3f6207412d856:libkeybinder/Pkgfile
 f:0d0dc9a1f55e87d2d04f2ee62c9012dc:libreoffice-ru/.footprint
 f:a89245058732b01796d0ce1e2279fb00:libreoffice-ru/.nostrip
 f:7eac97bb1eb8b0c234c85c6b3d6269b6:libreoffice-ru/.signature

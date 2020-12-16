@@ -1,16 +1,16 @@
 # Description:	A library for registering global keyboard shortcuts
 # URL:		https://github.com/engla/keybinder/
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	gnome-common gtk
+# Depends on:	gnome-common gtk3
 # Build also:	libkeybinder-dev
 
 name=libkeybinder
-version=0.3.1
+version=0.3.2
 release=1
-source=(https://github.com/engla/keybinder/archive/keybinder-$version.tar.gz)
+source=(https://github.com/kupferlauncher/keybinder/releases/download/keybinder-3.0-v$version/keybinder-3.0-$version.tar.gz)
 
 build() {
-	cd keybinder-$version
+	cd keybinder-3.0-$version
 
 	./configure --prefix=/usr --disable-python
 	make
