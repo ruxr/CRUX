@@ -1,17 +1,17 @@
 # Description:	NVIDIA Linux Display Driver (version 340)
 # URL:		https://www.nvidia.com
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	gtk
+# Depends on:	gtk libglvnd core
 
 name=nvidia340
 version=340.108
-release=1
-NV=NVIDIA-Linux-x86_64-$version
-source=(http://us.download.nvidia.com/XFree86/Linux-x86_64/$version/$NV.run
+release=2
+NV=NVIDIA-Linux-x86_64-$version-no-compat32
+source=(https://us.download.nvidia.com/XFree86/Linux-x86_64/$version/$NV.run
 	90-nvidia-uvm.rules
-	kmem_cache_create_usercopy.patch
-	unregister_procfs_on_failure.patch
-	vm-fault.patch)
+	0001-kernel-5.7.patch
+	0002-kernel-5.8.patch
+	0003-kernel-5.9.patch)
 
 build() {
 	sh $NV.run --extract-only
@@ -85,17 +85,23 @@ build() {
 		$PKG/usr/share/nvidia
 
 	# kernel module
+	patch -Np1 -i ../0001-kernel-5.7.patch
+	patch -Np1 -i ../0002-kernel-5.8.patch
+	patch -Np1 -i ../0003-kernel-5.9.patch
+
+	SYSSRC=$(echo /usr/src/linux-*)
+	SYSVER=${SYSSRC#/usr/src/linux-}
+
 	cd kernel
-	patch -p1 -i $SRC/unregister_procfs_on_failure.patch
-	patch -p1 -i $SRC/kmem_cache_create_usercopy.patch
-	patch -p1 -i $SRC/vm-fault.patch
-	IGNORE_CC_MISMATCH=1 make module
-	install -Dm0644 nvidia.ko \
-		$PKG/lib/modules/`uname -r`/extra/nvidia.ko
+	make SYSSRC="$SYSSRC" module
 
 	# nvidia-uvm module
 	cd uvm
-	IGNORE_CC_MISMATCH=1 make module
-	install -Dm0644 nvidia-uvm.ko \
-		$PKG/lib/modules/`uname -r`/extra/nvidia-uvm.ko
+	make SYSSRC="$SYSRC" module
+
+	install -Dt $PKG/lib/modules/$SYSVER/extra -m644 \
+		$SRC/$NV/kernel/{nvidia,uvm/nvidia-uvm}.ko
+
+	echo "blacklist nouveau" |
+		install -Dm644 /dev/stdin $PKG/etc/modprobe.d/nvidia-340xx.conf
 }

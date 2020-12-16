@@ -1,9 +1,9 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md3667f6pgbakSJhURL0HXuKaolH7KKwiSTVLtW1YIfMslz67XfVTd/wcA7jMFZQ0ABjtnA15st7/+pLhIzPdwaAA=
-SHA256 (Pkgfile) = 910fca1a308ccae1156fe41fffd8de12644fd77445e2f8afe6a23abe6904889d
-SHA256 (.footprint) = c7dde3f4a3f0253b6afb79484128e7717f2b389c7f740c6cc2f63e2c8d880f5f
-SHA256 (NVIDIA-Linux-x86_64-340.108.run) = c671d4f1b7c09bc1af079b98b447adb06d704b04f802f7045a611fa50133b71b
+RWST1RjWg2md3wA4lvkklAQpRPnJjyG0dglPAGPYE8ZIVOWZYZZ7kua0Nze5CmeE4VWOD0rtjAs3aCKRGurWrFyoLPsRZc5qZgs=
+SHA256 (Pkgfile) = 4f125b369e99ded7a66ce8fd4968dfa84ee4808c7c455d3c58a82a08432674c1
+SHA256 (.footprint) = 4590edb8e2436f467d938550c4bf55e689a454458ecaa157ed124db0240db2fc
+SHA256 (NVIDIA-Linux-x86_64-340.108-no-compat32.run) = 995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77
 SHA256 (90-nvidia-uvm.rules) = c35c61cebf5bf9a112ac06539bdc670a388afa4b50a7f8223a114fbeafedb140
-SHA256 (kmem_cache_create_usercopy.patch) = 5e5280a5425e6f93efdacb2c51757799caf3ee62a5539de0dbaa79858f5171ac
-SHA256 (unregister_procfs_on_failure.patch) = c981dc01af43d9849d332596fb2cf20725c25d52843309348967d6a691b84318
-SHA256 (vm-fault.patch) = 9e43ef95d5e210ab3641b92cf25aa6d73e266b884be54321a9b1db7acfab17a8
+SHA256 (0001-kernel-5.7.patch) = c8bda5fb238fbebc5bf6ae4b7646e48b30a96b9060ced20d93c53c14ac3161f6
+SHA256 (0002-kernel-5.8.patch) = 10b91c8dbc269ff1d8e3e8a1866926c309ff3912d191a05cd5724a3139776f32
+SHA256 (0003-kernel-5.9.patch) = e06af37ffa2203698594e0f58816b809feced9b2374927e13b85fd5c18fa3114
