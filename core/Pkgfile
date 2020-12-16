@@ -5,8 +5,8 @@
 # Post-install:	yes
 
 name=core
-version=3.5
-release=3
+version=3.6
+release=1
 REL=$(uname -r)
 source=(core.sh init
 	https://cdn.kernel.org/pub/linux/kernel/v${REL%%.*}.x/linux-$REL.tar.xz)

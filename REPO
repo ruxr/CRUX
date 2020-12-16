@@ -23,13 +23,13 @@ f:1015d8c62fb185a970ae81788f521d7c:brother_dcp1600/Pkgfile
 f:a763b2ca4a29d3d0ebbff30ba5f6253c:brother_dcp1600/README
 f:6c6e0ba049c9c5b4fdcd852e9a565b40:brother_dcp1600/postinstall
 f:69a3474d06f47d14f6d94bffc89dc23f:core/.footprint
-f:c14fc912a9b5cd5449c3efb986f2ed59:core/.signature
-f:2de5e3017056ce1d5071cc120f3ea94c:core/Pkgfile
+f:7ccf40c25644524a08548901e0f83906:core/.signature
+f:f4a3f5a7da0733f2d9969035132ecceb:core/Pkgfile
 f:2272d839f785ca9ede34716bfb28e0a3:core/core.sh
 f:466bc3b0b74b61895af9bdb176e7872f:core/init
 f:69a3474d06f47d14f6d94bffc89dc23f:iso/.footprint
-f:4b8cc8a3f13f1578b688a7640f957b53:iso/.signature
-f:aabff280167c06888bf45b0932eaf64f:iso/Pkgfile
+f:6a50cb7d5e3660fa83a0b6870ad59e72:iso/.signature
+f:8382fb88f9294f766ca8cefa808800e6:iso/Pkgfile
 f:181027e1286c30ac8231d147b0ba4655:iso/README
 f:e62e12f29107b34ac56d0fe7972a0717:iso/dhcpcd-run-hooks
 f:370c1efaa9f7ee17730d188557c3abde:iso/group

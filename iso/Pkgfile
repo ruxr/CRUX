@@ -4,8 +4,8 @@
 # Depends on:	ALL cdrkit core syslinux
 
 name=iso
-version=3.5
-release=2
+version=3.6
+release=1
 source=(README dhcpcd-run-hooks group init inittab inputrc
 	isolinux.cfg isolinux.msg issue login.pam nsswitch.conf passwd
 	rc rc.shutdown rc.single seconsole setup setup-chroot shadow)
