@@ -45,7 +45,7 @@ pkgnew -bd pkgnew core live rss
 
 ## Notes
 
-1. Default URL for Linux CRUX distribution: *http://crux/CRUX-3.5*
+1. Default URL for Linux CRUX distribution: *http://crux/CRUX-3.6*
 
 2. To use **Apache HTTP** server as the *Linux CRUX* update service, check */etc/apache/httpd.conf*:
 
@@ -62,23 +62,23 @@ pkgnew -bd pkgnew core live rss
 and create symbolic link to *Linux CRUX* release:
 
 ```
-$ ln -s $(bash -c '. /etc/pkgmk.conf; echo $PKGMK_PACKAGE_DIR') /var/www/crux/CRUX-3.5
+$ ln -s $(bash -c '. /etc/pkgmk.conf; echo $PKGMK_PACKAGE_DIR') /var/www/crux/CRUX-3.6
 ```
 
 3. To set up a TFTP-server for *Linux CRUX*, check */var/tftp/pxelinux.cfg/default*:
 ```
-LABEL CRUX-3.5
+LABEL CRUX-3.6
 	kernel boot/vmlinuz
 	initrd boot/initramfs
 	append quiet
 ```
 and copy required files:
 ```
-$ bsdtar -C /var/tftp -xf /var/www/crux/CRUX-3.5/CRUX-3.5.iso boot/{vmlinuz,initramfs}
+$ bsdtar -C /var/tftp -xf /var/www/crux/CRUX-3.6/CRUX-3.6.iso boot/{vmlinuz,initramfs}
 ```
 
-4. To update Linux live to the *CRUX-3.5*, do:
+4. To update Linux live to the *CRUX-3.6*, do:
 ```
-$ wget http://crux/CRUX-3.5/CRUX-3.5-live.run
-$ sh CRUX-3.5-live.run
+$ wget http://crux/CRUX-3.6/CRUX-3.6-live.run
+$ sh CRUX-3.6-live.run
 ```
