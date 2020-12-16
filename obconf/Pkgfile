@@ -1,15 +1,23 @@
 # Description:	openbox preferences manager
 # URL:		http://openbox.org/wiki/Obconf
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	openbox libglade startup-notification
+# Depends on:	gtk3 openbox startup-notification
 
 name=obconf
 version=2.0.4
-release=1
-source=(http://openbox.org/dist/$name/$name-$version.tar.gz)
+release=2
+source=(http://openbox.org/dist/$name/$name-$version.tar.gz
+	stop-using-libglade.patch
+	switch-to-gtk3.patch)
 
 build () {
 	cd $name-$version
+
+	# Stop using libglade, and switch to GTK+ 3
+	patch -Np1 -i ../stop-using-libglade.patch
+	patch -Np1 -i ../switch-to-gtk3.patch
+	autoreconf -fi
+
 	./configure --prefix=/usr --disable-nls --disable-dependency-tracking
 	make
 	make DESTDIR=$PKG install
