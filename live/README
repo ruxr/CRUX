@@ -1,7 +1,7 @@
 Updating an installed Linux CRUX system on the fly is possible in local or
 remote mode.
 
-	# sh /boot/CRUX-3.5-live.run
+	# sh CRUX-3.6-live.run
 	Use /mnt as the root of the temporary system? [Y/n]
 	Switch to temporary system in /mnt? [Y/n]
 	{starting minimal system}
@@ -9,7 +9,7 @@ remote mode.
 Login as user from console or over ssh and become superuser (su).
 Update packages manually or with pkguse (pkguse -sr /mnt).
 
-	# setup_chroot
+	# setup-chroot
 	# rejmerge
 	# reboot
 

@@ -4,8 +4,8 @@
 # Depends on:	coreutils dash openssh pkgutils sed shadow sysvinit wget
 
 name=live
-version=3.5
-release=2
+version=3.6
+release=1
 source=(live.sh inittab rc rc.shutdown rc.single setup-chroot)
 
 build() {

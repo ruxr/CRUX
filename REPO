@@ -58,9 +58,9 @@ f:4d169e9b47cf61b1603ff298a9326163:libreoffice-ru/.signature
 f:ce366a2d41697f5d90f309bbf0c6f8e1:libreoffice-ru/Pkgfile
 f:772cfb8a66793d8a7c36bd1364890a2c:libreoffice-ru/post-install
 f:69a3474d06f47d14f6d94bffc89dc23f:live/.footprint
-f:d28d6795ec7df38efdaf0919a7eb1536:live/.signature
-f:a4f81babe506bca580c4d3e32ca783ae:live/Pkgfile
-f:d05e33c0475e2fd5d9bcf235cee76ef8:live/README
+f:fbe4a0b40e2f66fdc163e68c567f10ba:live/.signature
+f:559860d75c6c6397051968e7fa50a276:live/Pkgfile
+f:134182ee5720caf0dd54a52e253fc33e:live/README
 f:a22f97d2162d9fe72f4d21c351e15ddf:live/inittab
 f:36d350389fcda45a93294422e94e0362:live/live.sh
 f:3e2b31c72181b87149ff995e7202c0e3:live/rc
