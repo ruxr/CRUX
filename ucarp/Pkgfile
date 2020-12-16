@@ -5,7 +5,7 @@
 
 name=ucarp
 version=1.5.2
-release=1
+release=2
 source=(https://download.pureftpd.org/pub/$name/$name-$version.tar.bz2
 	01-fix-getopt.patch 02-fix-downscript-on-error.patch
 	ucarp.8 ucarp ucarp.conf)
@@ -15,6 +15,7 @@ build() {
 
 	patch -p1 -N -i $SRC/01-fix-getopt.patch
 	patch -p1 -N -i $SRC/02-fix-downscript-on-error.patch
+	sed -i 's/__packed//' src/ip_carp.h
 
 	./configure --prefix=/usr --disable-nls
 	make
