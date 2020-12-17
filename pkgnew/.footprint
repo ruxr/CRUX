@@ -1,7 +1,7 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/sbin/
--r-xr-xr-x	root/root	usr/sbin/pkgnew
--r-xr-xr-x	root/root	usr/sbin/pkguse
+-rwxr-xr-x	root/root	usr/sbin/pkgnew
+-rwxr-xr-x	root/root	usr/sbin/pkguse
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man8/
