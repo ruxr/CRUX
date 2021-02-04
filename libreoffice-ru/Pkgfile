@@ -5,8 +5,8 @@
 # Post-install:	yes
 
 name=libreoffice-ru
-version=7.0.3
-release=2
+version=7.1.0
+release=1
 Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
 source=(
 	$Url/LibreOffice_${version}_Linux_x86-64_rpm.tar.gz
@@ -71,9 +71,6 @@ build() {
 		$PKG/usr/share/mime/packages/libreoffice*.xml
 
 	rm -r $PKG/opt/libreoffice*/help
-
-	rm -r $PKG/usr/share/appdata/org.libreoffice* \
-		$PKG/usr/share/icons/{gnome,locolor}
 
 	find $PKG -name "*.py" -delete
 	find $PKG -depth -type d -empty -delete
