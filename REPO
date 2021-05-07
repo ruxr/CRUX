@@ -77,9 +77,9 @@ f:e5de2bbdc8591228b991274c67ebe1a8:lxmenu-data/.footprint
 f:85a99ceff813d9f7bb0546e61760ee5d:lxmenu-data/.signature
 f:3534e1a6b1c1d53b1033a1b9e8042fc8:lxmenu-data/Pkgfile
 f:7b1729153184764f898da05b68b463fb:lxpanel/.footprint
-f:1d5b9c4a86ecc7b762efdbf100ee6050:lxpanel/.signature
+f:b5a21b8e50c0e663240cda6b90e964c1:lxpanel/.signature
 f:40d429ef7be5dd5ab692facd02c2a050:lxpanel/0001-Specify-GTK_REQUEST_CONSTANT_SIZE-Fixes-773.patch
-f:a9aff7785dec9b55debe6068ea59f9fc:lxpanel/Pkgfile
+f:bad1d01f2309db5a6fb8217d69d81a4b:lxpanel/Pkgfile
 f:969905c09537562b631866a46d33e0dc:lxpanel/config
 f:dc0d559ba5fad9b3c5000ee62d21d132:lxpanel/panel.in
 f:4fd5234978cf649014dfab08e5d92cf2:lxpanel/xterm.patch

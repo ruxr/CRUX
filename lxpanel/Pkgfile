@@ -10,8 +10,8 @@ buildalso() {
 }
 
 name=lxpanel
-version=0.10.0
-release=2
+version=0.10.1
+release=1
 source=(https://download.sourceforge.net/lxde/$name-$version.tar.xz
 	0001-Specify-GTK_REQUEST_CONSTANT_SIZE-Fixes-773.patch
 	config panel.in xterm.patch)
