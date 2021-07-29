@@ -2772,7 +2772,7 @@ drwxr-xr-x	root/root	opt/libreoffice7.1/share/skia/
 drwxr-xr-x	root/root	opt/libreoffice7.1/share/template/
 drwxr-xr-x	root/root	opt/libreoffice7.1/share/template/common/
 drwxr-xr-x	root/root	opt/libreoffice7.1/share/template/common/draw/
--rw-r--r--	root/root	opt/libreoffice7.1/share/template/common/draw/bpmn.ott
+-rw-r--r--	root/root	opt/libreoffice7.1/share/template/common/draw/bpmn.otg
 drwxr-xr-x	root/root	opt/libreoffice7.1/share/template/common/internal/
 -rw-r--r--	root/root	opt/libreoffice7.1/share/template/common/internal/html.stw
 -rw-r--r--	root/root	opt/libreoffice7.1/share/template/common/internal/idxexample.odt
