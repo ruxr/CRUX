@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md328MENuZSWMwbFZSL3XwjlfyMSazcCMhsNR8mwKfAUN4fTCS+n+1ku2BrWkMGQ8lPMxwlC7/hUkC2iLv1DAnUgc=
+SHA256 (Pkgfile) = cf8c7d557fa7f5786768c2d8b8f15cbab0f073419972bd0469b6ee96ebf198c6
+SHA256 (.footprint) = aea9f39285087fd8c77320daa65102aa40ab060da64c284958396664e1d06097
+SHA256 (mrtg-2.17.8.tar.gz) = 1ac2e0af69e0ecdef755e798ca59834ab78ac185c2a5effdb7685c58f2ef01b4

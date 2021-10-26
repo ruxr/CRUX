@@ -22,6 +22,7 @@
 | live | Live-update script |
 | locale | Russian system locales |
 | lshw | Show detailed computer configuration information |
+| mrtg | Multirouter traffic grapher |
 | nvidia340 | NVIDIA Linux Display Driver (version 340) |
 | obconf | Openbox preferences manager |
 | p5-dbi | Database independent interface for Perl |
