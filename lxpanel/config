@@ -1,3 +1,0 @@
-[Command]
-Logout=/usr/bin/openbox --exit
-Terminal=/usr/bin/xterm
