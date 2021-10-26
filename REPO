@@ -1,5 +1,6 @@
 d:brother_dcp1600
 d:core
+d:dhcp
 d:iso
 d:libreoffice-ru
 d:live
@@ -24,6 +25,13 @@ f:7ccf40c25644524a08548901e0f83906:core/.signature
 f:f4a3f5a7da0733f2d9969035132ecceb:core/Pkgfile
 f:2272d839f785ca9ede34716bfb28e0a3:core/core.sh
 f:466bc3b0b74b61895af9bdb176e7872f:core/init
+f:0fe82bfdaed1187b70d399ac60d20813:dhcp/.footprint
+f:1df24f0234a133cf87fd3d9a1a7889bc:dhcp/.signature
+f:18a38a16ee061bf5bd295730874dc256:dhcp/0001-default-config.patch
+f:e93b92aa810bbf4440a0b8892f14472c:dhcp/0002-iproute2.patch
+f:b3f8b3f954410d8727ce17d8af0371c5:dhcp/0003-117-fixed-gcc-10-compilation-issues.patch
+f:89d9ee861303e869a5f035ec9e56e1a3:dhcp/Pkgfile
+f:0378d993b8ab77a021e7d6e5ad00b4d3:dhcp/dhcpd
 f:69a3474d06f47d14f6d94bffc89dc23f:iso/.footprint
 f:6a50cb7d5e3660fa83a0b6870ad59e72:iso/.signature
 f:8382fb88f9294f766ca8cefa808800e6:iso/Pkgfile

@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# /etc/rc.d/dhcpd: dhcpd(8) management
+#
+
+SSD=/sbin/start-stop-daemon
+PRG=/usr/sbin/dhcpd
+PID=/var/run/dhcpd.pid
+OPT=-q
+
+case $1 in
+start)
+	$SSD --start --pidfile $PID --exec $PRG -- $OPT
+	;;
+stop)
+	$SSD --stop --pidfile $PID --remove-pidfile --retry 10
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+reload)
+	$SSD --stop --pidfile $PID --signal HUP
+	;;
+status)
+	$SSD --status --pidfile $PID
+	case $? in
+	0) echo $PRG is running;;
+	1) echo $PRG is not running but the pid file $PID exists;;
+	3) echo $PRG is not running;;
+	4) echo Unable to determine the $PRG status;;
+	esac
+	;;
+*)
+	echo "Usage: $0 [start|stop|restart|reload|status]"
+	;;
+esac

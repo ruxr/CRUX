@@ -14,6 +14,7 @@
 |---|---|
 | brother_dcp1600 | Brother DCP-1600 printer driver |
 | core | Linux kernel |
+| dhcp | ISC DHCP server, client and relay agent |
 | iso | CRUX installation image |
 | libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
