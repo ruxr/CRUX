@@ -1,0 +1,21 @@
+# Description:	An enhanced version of the BSD tftp client/server
+# URL:		http://freshmeat.net/projects/tftp-hpa/
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+
+name=tftp-hpa
+version=5.2
+release=2
+source=(https://www.kernel.org/pub/software/network/tftp/$name/$name-$version.tar.xz
+	tftp-hpa-0.49-fortify-strcpy-crash.patch)
+
+build () {
+	cd $name-$version
+	CFLAGS+=' -fcommon'
+
+	patch -Np1 -i $SRC/tftp-hpa-0.49-fortify-strcpy-crash.patch
+	sed -i 's/^\(sigjmp_buf toplevel;\)/extern \1/' tftp/tftp.c
+
+	./configure --prefix=/usr --without-tcpwrappers
+	make
+	make INSTALLROOT=$PKG install
+}

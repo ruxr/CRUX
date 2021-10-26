@@ -18,6 +18,7 @@ d:p5-sqlite
 d:pkgnew
 d:rdesktop
 d:rss
+d:tftp-hpa
 d:ucarp
 d:wireshark2
 d:xorg-font-paratype-ttf
@@ -135,6 +136,10 @@ f:3ad827f32fc51182df25ad8773b05cea:rdesktop/Pkgfile
 f:53141d046bc17c5bcb9d3ce5a37d2d80:rss/.footprint
 f:02707f8993236fe84265ee57069c15f3:rss/.signature
 f:6a79f552fb67c3aae667e4bcef36c73a:rss/Pkgfile
+f:2764cc6c0e4154b1a45ac5521d75c970:tftp-hpa/.footprint
+f:9dd9cc85bc62ad47f7036823bd3c1d4d:tftp-hpa/.signature
+f:935724fdedc1a054da4e8644813b5088:tftp-hpa/Pkgfile
+f:22e8629ef19bc276a102c5d4d284c1bd:tftp-hpa/tftp-hpa-0.49-fortify-strcpy-crash.patch
 f:7e5a7c2772d6b44738f9828a991da723:ucarp/.footprint
 f:02b94991903e737bccc6e82a1b0fb87e:ucarp/.signature
 f:3f20699aaf2ef8139dcd337f1e7f06ab:ucarp/01-fix-getopt.patch
