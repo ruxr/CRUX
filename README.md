@@ -15,13 +15,10 @@
 | brother_dcp1600 | Brother DCP-1600 printer driver |
 | core | Linux kernel |
 | iso | CRUX installation image |
-| libkeybinder | A library for registering global keyboard shortcuts |
 | libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
 | locale | Russian system locales |
 | lshw | Show detailed computer configuration information |
-| lxmenu-data | Desktop menus for LXDE panel |
-| lxpanel | Desktop panel from LXDE project |
 | nvidia340 | NVIDIA Linux Display Driver (version 340) |
 | obconf | Openbox preferences manager |
 | p5-dbi | Database independent interface for Perl |
