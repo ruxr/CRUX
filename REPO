@@ -1,7 +1,6 @@
 d:brother_dcp1600
 d:core
 d:iso
-d:libkeybinder
 d:libreoffice-ru
 d:live
 d:locale
@@ -49,9 +48,6 @@ f:de0987fbca063717de5d374858dcd5b9:iso/seconsole
 f:cade8e985007c6319e77d63a85fa2e62:iso/setup
 f:14411d875a35faf6259f8dc4e108ca06:iso/setup-chroot
 f:2c5f4bb20308ae95ddc18c885b75c430:iso/shadow
-f:b82cc912d35cd44ce91a24eba702ad5f:libkeybinder/.footprint
-f:8f1d856dc54fb907f6f34e86d35f7442:libkeybinder/.signature
-f:c9322c4d06074a75d0f3f6207412d856:libkeybinder/Pkgfile
 f:e2e36f2d5a2fd118f623ac7aaa7b74cf:libreoffice-ru/.footprint
 f:a89245058732b01796d0ce1e2279fb00:libreoffice-ru/.nostrip
 f:71b749f8b88686050035d72460422cd5:libreoffice-ru/.signature
