@@ -1,0 +1,66 @@
+# Description:	SNMP daemon and client tools
+# URL:		http://net-snmp.sourceforge.net/
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	lm_sensors
+# Build also:	net-snmp-dev
+# Required user: snmp 72
+buildalso() {
+	rm $name/usr/lib/*.la
+	mkdir -p $name-dev/usr/{lib,share/man}
+	mv $name/usr/include $name-dev/usr
+	mv $name/usr/lib/*.a $name-dev/usr/lib
+	mv $name/usr/share/man/man3 $name-dev/usr/share/man
+}
+
+name=net-snmp
+version=5.9.1
+release=1
+source=(https://download.sourceforge.net/$name/$name-$version.tar.gz \
+	snmpd snmpd.conf snmptrapd snmptrapd.conf)
+
+build() {
+	cd $name-$version
+
+echo '2,5d1
+< #!/usr/bin/perl -w
+< 
+< #
+< # $Id$' | patch local/mib2c
+
+	export MAKEFLAGS=
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--enable-shared \
+		--enable-embedded-perl \
+		--with-perl-modules \
+		--without-rpm \
+		--with-openssl \
+		--with-mib-modules="ucd-snmp/lmsensorsMib smux agentx ucd-snmp/diskio" \
+		--with-sys-location="Unknown" \
+		--with-sys-contact="root@localhost" \
+		--with-default-snmp-version="3" \
+		--without-logfile \
+		--with-transports="UDP TCP Callback Alias" \
+		--with-persistent-directory=/var/lib/snmp \
+		--with-ldflags="-lsensors"
+
+	make -j1
+	make install INSTALL_PREFIX=$PKG DESTDIR=$PKG
+
+	# Clean up perl stuff: clean common junks first, ...
+	find $PKG -type f \( \
+		-name '.packlist' -o \
+		\( -name *.bs -a -empty \) -o \
+		-name 'Makefile.subs.pl' -o \
+		-name 'perllocal.pod' \) -delete
+	# ... less common ones and empty directories
+	find $PKG/usr -depth -type d -empty -delete
+	rm $PKG/usr/bin/fixproc $PKG/usr/share/man/man1/fixproc.1
+	rm $PKG/usr/include/net-snmp/library/README
+
+        install -d -o snmp -g snmp $PKG/var/lib/snmp
+	install -Dm644 $SRC/snmpd.conf $PKG/etc/snmp/snmpd.conf
+	install -D $SRC/snmpd $PKG/etc/rc.d/snmpd
+        install -Dm644 $SRC/snmptrapd.conf $PKG/etc/snmp/snmptrapd.conf
+        install -D $SRC/snmptrapd $PKG/etc/rc.d/snmptrapd
+}

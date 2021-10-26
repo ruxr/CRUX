@@ -23,6 +23,7 @@
 | locale | Russian system locales |
 | lshw | Show detailed computer configuration information |
 | mrtg | Multirouter traffic grapher |
+| net-snmp | SNMP daemon and client tools |
 | nvidia340 | NVIDIA Linux Display Driver (version 340) |
 | obconf | Openbox preferences manager |
 | p5-dbi | Database independent interface for Perl |
