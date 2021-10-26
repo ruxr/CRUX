@@ -1,0 +1,10 @@
+$TTL	10800
+@	IN	SOA	localhost. root.localhost. (
+			2014
+			86400
+			43200
+			604800
+			10800
+			)
+		A	127.0.0.1
+		NS	@

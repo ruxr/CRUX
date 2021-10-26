@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# /etc/rc.d/named: named(8) management
+#
+
+SSD=/sbin/start-stop-daemon
+PID=/var/run/named/named.pid
+PRG=/usr/sbin/named
+KEY=/etc/named/rndc.key
+OPT="-u named -c /etc/named/named.conf"
+
+case $1 in
+start)
+	[ -s $KEY ] || /usr/sbin/rndc-confgen | /bin/sed '2,5!d' >$KEY
+	$SSD --start --pidfile $PID --exec $PRG -- $OPT
+	;;
+stop)
+	$SSD --stop --pidfile $PID --user named --retry 10
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+reload)
+	$SSD --stop --pidfile $PID --user named --signal HUP
+	;;
+status)
+	$SSD --status --pidfile $PID --user named
+	case $? in
+	0) echo $PRG is running;;
+	1) echo $PRG is not running but the pid file $PID exists;;
+	3) echo $PRG is not running;;
+	4) echo Unable to determine $PRG status;;
+	esac
+	;;
+*)
+	echo "Usage: $0 [start|stop|restart|reload|status]"
+	;;
+esac

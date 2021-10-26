@@ -12,6 +12,7 @@
 
 | Port | Description |
 |---|---|
+| bind | ISC Berkeley Internet Name Domain Service |
 | brother_dcp1600 | Brother DCP-1600 printer driver |
 | core | Linux kernel |
 | dhcp | ISC DHCP server, client and relay agent |
