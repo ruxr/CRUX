@@ -30,6 +30,7 @@
 | p5-dbi | Database independent interface for Perl |
 | p5-sqlite | Perl DBI driver for SQLite |
 | pkgnew | A set of shell scripts for administering packages |
+| rdesktop | Open source client for Windows NT Terminal Server |
 | rss | Reports/Restore shell scripts for administration |
 | ucarp | Userspace implementation of the CARP protocol |
 | wireshark2 | Network Sniffer with nice GTK+ UI |

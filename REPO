@@ -16,6 +16,7 @@ d:obconf
 d:p5-dbi
 d:p5-sqlite
 d:pkgnew
+d:rdesktop
 d:rss
 d:ucarp
 d:wireshark2
@@ -128,6 +129,9 @@ f:fe06f5d60f19928b9b4483a6bb417448:p5-sqlite/Pkgfile
 f:1886fab58d97652be410cf8fc6b24411:pkgnew/.footprint
 f:acad7098d7c47b024d5ffe4137f58eb0:pkgnew/.signature
 f:8b9bb95198aeb4314a7579781184fd37:pkgnew/Pkgfile
+f:9ac3dcedba8bf263e61c46c34e65a1e7:rdesktop/.footprint
+f:2e3ae2b949a205825ec9a537fe221a70:rdesktop/.signature
+f:3ad827f32fc51182df25ad8773b05cea:rdesktop/Pkgfile
 f:53141d046bc17c5bcb9d3ce5a37d2d80:rss/.footprint
 f:02707f8993236fe84265ee57069c15f3:rss/.signature
 f:6a79f552fb67c3aae667e4bcef36c73a:rss/Pkgfile
