@@ -1,0 +1,19 @@
+# Description:	I2C Tools for Linux
+# URL:		https://i2c.wiki.kernel.org/index.php/I2C_Tools
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Build also:	i2c-tools-dev
+buildalso() {
+	mkdir -p $name-dev/usr/lib
+	mv $name/usr/include $name-dev/usr
+	mv $name/usr/lib/*.a $name-dev/usr/lib
+}
+
+name=i2c-tools
+version=4.3
+release=1
+source=(https://www.kernel.org/pub/software/utils/$name/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	make PREFIX=/usr DESTDIR=$PKG install
+}

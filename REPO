@@ -2,6 +2,7 @@ d:bind
 d:brother_dcp1600
 d:core
 d:dhcp
+d:i2c-tools
 d:iso
 d:libreoffice-ru
 d:live
@@ -41,6 +42,9 @@ f:e93b92aa810bbf4440a0b8892f14472c:dhcp/0002-iproute2.patch
 f:b3f8b3f954410d8727ce17d8af0371c5:dhcp/0003-117-fixed-gcc-10-compilation-issues.patch
 f:89d9ee861303e869a5f035ec9e56e1a3:dhcp/Pkgfile
 f:0378d993b8ab77a021e7d6e5ad00b4d3:dhcp/dhcpd
+f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
+f:12ffba03884b61f7ffad60086b10566f:i2c-tools/.signature
+f:83373c55fc7cd2cec6bc980109a969f2:i2c-tools/Pkgfile
 f:69a3474d06f47d14f6d94bffc89dc23f:iso/.footprint
 f:6a50cb7d5e3660fa83a0b6870ad59e72:iso/.signature
 f:8382fb88f9294f766ca8cefa808800e6:iso/Pkgfile

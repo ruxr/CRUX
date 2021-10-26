@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md3/tT0CPXZxosPfb5oCm3vApnY6gnyYA2fIUWvpXRcmmYK+2BVXbK20vR3B3D7xIgoTng9AxHra2ffyfMsFp/bwY=
+SHA256 (Pkgfile) = 097467663e8c5f7bdf08294a19db4abdc0521cdaabb7fe7aa117769c10a96372
+SHA256 (.footprint) = bf72ccd3fbb16ca92d99a76a72abb03ff3c3fae5448a9dbbf2878a8e2d8a40be
+SHA256 (i2c-tools-4.3.tar.xz) = 1f899e43603184fac32f34d72498fc737952dbc9c97a8dd9467fadfdf4600cf9
