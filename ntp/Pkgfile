@@ -1,0 +1,40 @@
+# Description:	Network Time Protocol software
+# URL:		https://www.ntp.org
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	libcap
+# Required user: ntp 77
+
+name=ntp
+version=4.2.8p15
+release=1
+source=(https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/$name-$version.tar.gz
+	ntpd ntp.conf ntp-64bit.diff)
+
+build () {
+	cd $name-$version
+	patch -p1 -i ../ntp-64bit.diff
+	sed -i '25611,25674d' configure
+
+	./configure \
+		--prefix=/usr \
+		--without-{crypto,ntpsnmpd,net-snmp-config,gtest} \
+		--disable-{autokey,debugging,ipv6,nls,saveconfig,all-clocks} \
+		--enable-LOCAL-CLOCK \
+		CFLAGS="$CFLAGS" \
+		LDFLAGS="$LDFLAGS"
+
+	make
+	make DESTDIR=$PKG install
+
+	mv $PKG/usr/bin/{ntpd,ntpq} $PKG/usr/sbin
+	rm -r $PKG/usr/{bin,libexec,share/{doc,ntp}}
+	for f in ntpd ntpq; do
+		mv $PKG/usr/share/man/man1/$f.1 $PKG/usr/share/man/man8/$f.8
+	done
+	rm -r $PKG/usr/share/man/man1
+	sed -i 's/^\(\.TH [^ ]*\) 1 \(.*\)User Commands$/\1 8 \2System Administration/' $PKG/usr/share/man/man8/*
+	install -Dm644 $SRC/ntp.conf $PKG/etc/ntp.conf
+	install -D $SRC/ntpd $PKG/etc/rc.d/ntpd
+	install -d -o ntp -g ntp $PKG/var/lib/ntp
+	install -m644 -o ntp -g ntp /dev/null $PKG/var/lib/ntp/ntp.drift
+}

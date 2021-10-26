@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# /etc/rc.d/ntpd: ntpd(8) management
+#
+
+SSD=/sbin/start-stop-daemon
+PRG=/usr/sbin/ntpd
+PID=/var/run/ntpd.pid
+OPT="-u ntp:ntp"
+
+case $1 in
+start)
+	$PRG $OPT -gqx
+	$SSD --start --pidfile $PID --exec $PRG -- $OPT
+	;;
+stop)
+	/sbin/hwclock -w
+	$SSD --stop --pidfile $PID --remove-pidfile --retry 10
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+status)
+	$SSD --status --pidfile $PID
+	case $? in
+	0) echo $PRG is running;;
+	1) echo $PRG is not running but the pid file $PID exists;;
+	3) echo $PRG is not running;;
+	4) echo Unable to determine $PRG status;;
+	esac
+	;;
+*)
+	echo "Usage: $0 [start|stop|restart|status]"
+	;;
+esac

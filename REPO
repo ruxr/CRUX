@@ -10,6 +10,7 @@ d:locale
 d:lshw
 d:mrtg
 d:net-snmp
+d:ntp
 d:nvidia340
 d:obconf
 d:p5-dbi
@@ -100,6 +101,12 @@ f:ce4586653e05b1189dfeb5c43f18caf8:net-snmp/snmpd
 f:fbf08c7861ec1fd473b9b50e0cdac6b0:net-snmp/snmpd.conf
 f:837125ddb491248680ac4784a73cf3c7:net-snmp/snmptrapd
 f:c84e4b484564143c791dc38d1138d3fd:net-snmp/snmptrapd.conf
+f:d8ad7cb64caaa9328381dbf62a47b079:ntp/.footprint
+f:e3cf7451845ae8d1c5ce889705f03f3f:ntp/.signature
+f:c896c3c702c51c32d9767b1b62dbdb0a:ntp/Pkgfile
+f:0c5675c46a226de4504f5b855326b6b7:ntp/ntp-64bit.diff
+f:e64376e98029488b5641d5d26fd28ba5:ntp/ntp.conf
+f:8fb606ba85b75af1a242fe5074fb804e:ntp/ntpd
 f:ebae5c0b0343841f3b82e0406bea4a9e:nvidia340/.footprint
 f:917d8526f6549a301eda9e849a4edd6a:nvidia340/.signature
 f:4be5a196c4a0b095771179e820f5cc88:nvidia340/0001-kernel-5.7.patch
