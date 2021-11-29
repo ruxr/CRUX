@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md31vhvp3Nk/0jyUN7CDWvRiIzaDBCBwpNb5hPKDD3F2tgEcnwMsHfmyE6lf+tAVMZUh1DTPtJ2BWdKnVaLK/CMAs=
-SHA256 (Pkgfile) = f331725b1ed27d7e7772135e38554d485247ad2b7fdb9cf73c994cda1425885a
+RWST1RjWg2md3+/4vEJv+UB22Kgyn1j44yN2pou84jH/IiaKYpoq8QXa2T5JA6kjMrjSvzIP9ZO1MJap8HPwjwEFq0H6fPSWOAg=
+SHA256 (Pkgfile) = 2f7325d6dcc4115dcd9ed54f4e3b975fb23d87e148eced4816a01aff7e2d4c96
 SHA256 (.footprint) = 11d4c26fab9875d15a3df3c17cc782939ac234bf8c91cabaf5db9943b9b52ea8
-SHA256 (bind-9.16.22.tar.xz) = 65e7b2af6479db346e2fc99bcfb6ec3240066468e09dbec575ebc7c57d994061
+SHA256 (bind-9.16.23.tar.xz) = dedb5e27aa9cb6a9ce3e872845887ff837b99e4e9a91a5e2fcd67cf6e1ef173c
 SHA256 (named.root) = edaceb37e7e500a474cb6f2aab5bd44c80cd5adda40057833439079a5a098335
 SHA256 (localhost) = 738afea24453b6e1dc7e017040339e33436c6a2ffde8302c1dcb295c5c511b4a
 SHA256 (named) = e24ef3148b52b5b2b85b256a2290e1fb7e5a26add36cff1dd455db01f5efade4

@@ -23,9 +23,9 @@ d:ucarp
 d:wireshark2
 d:xorg-font-paratype-ttf
 f:84db5a5ecbcb624e34e91c2f61155084:bind/.footprint
-f:a379ee245a45b0b02a70f9bb8b1aae86:bind/.signature
+f:d5e66f685226f8fc13d5d715b0bfbf48:bind/.signature
 f:101af2542cecc44cbcd143197b713313:bind/127.in-addr.arpa
-f:f91875b3d1c7c9df6dbe2c4d3f95b6cc:bind/Pkgfile
+f:d271d13a7f295bd088cb265aa6e9fdfb:bind/Pkgfile
 f:ad29978e62ec286befe582ad9ef1205e:bind/localhost
 f:99d5cc88d715cea42b72791495dca260:bind/named
 f:986be18673bc3a12c29a25fd9b788fd0:bind/named.conf
