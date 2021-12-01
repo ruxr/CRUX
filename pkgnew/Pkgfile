@@ -4,7 +4,7 @@
 # Build also:	pkguse
 
 name=pkgnew
-version=2.1
+version=2.1.1
 release=1
 source=(https://github.com/ruxr/Pkgnew/releases/download/V$version/Pkgnew-$version.tar.xz)
 
