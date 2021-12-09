@@ -18,6 +18,7 @@
 | dhcp | ISC DHCP server, client and relay agent |
 | i2c-tools | I2C Tools for Linux |
 | iso | CRUX installation image |
+| jwm | A lightweight window manager for the X11 Window System |
 | libreoffice-ru | Full featured cross platform office suite for russian (binary) |
 | live | Live-update script |
 | locale | Russian system locales |

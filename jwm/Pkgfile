@@ -1,0 +1,27 @@
+# Description:	A lightweight window manager for the X11 Window System
+# URL:		http://joewing.net/projects/jwm/
+# Depends on:	librsvg xorg-libxinerama xorg-libxmu xorg-libxpm
+
+name=jwm
+version=2.4.0
+release=1
+source=(http://joewing.net/projects/jwm/releases/jwm-$version.tar.xz
+	example.jwmrc exit.png folder.png restart.png)
+
+build() {
+	cd $name-$version
+
+	cp $SRC/example.jwmrc .
+	sed -i '/contrib/d' Makefile.in
+
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--disable-nls
+
+	make DESTDIR=$PKG install
+
+	mkdir -p $PKG/usr/share/pixmaps
+	install -m444 $SRC/*.png $PKG/usr/share/pixmaps
+}
