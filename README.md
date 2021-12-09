@@ -26,7 +26,6 @@
 | net-snmp | SNMP daemon and client tools |
 | ntp | Network Time Protocol software |
 | nvidia340 | NVIDIA Linux Display Driver (version 340) |
-| obconf | Openbox preferences manager |
 | p5-dbi | Database independent interface for Perl |
 | p5-sqlite | Perl DBI driver for SQLite |
 | pkgnew | A set of shell scripts for administering packages |

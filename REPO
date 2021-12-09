@@ -12,7 +12,6 @@ d:mrtg
 d:net-snmp
 d:ntp
 d:nvidia340
-d:obconf
 d:p5-dbi
 d:p5-sqlite
 d:pkgnew
@@ -116,11 +115,6 @@ f:e868ff40e412fae26b6a01929debdf04:nvidia340/0002-kernel-5.8.patch
 f:400ad257dcc26c607eb8c8c273693a01:nvidia340/0003-kernel-5.9.patch
 f:4511024cc556d0c6e7c467b6789524e2:nvidia340/90-nvidia-uvm.rules
 f:420e7867dfc394a2228a3cbf24e43e6a:nvidia340/Pkgfile
-f:ffc244ba59cc021fb5b06cd3d2ed4bfc:obconf/.footprint
-f:42218f099c6e95936c537ded1c57748c:obconf/.signature
-f:4cbabddadde358d940e69e4332571984:obconf/Pkgfile
-f:6be2148229280c3ba961f7aad928bc27:obconf/stop-using-libglade.patch
-f:fb2c56d8e62bfbadd6ed6a735b0e10c2:obconf/switch-to-gtk3.patch
 f:908fef3ade5753751c90417a51793787:p5-dbi/.footprint
 f:19fd405b87421ae2702a4a938ad8c83f:p5-dbi/.signature
 f:3398992058d2b67098c5e6866a9371fa:p5-dbi/Pkgfile
