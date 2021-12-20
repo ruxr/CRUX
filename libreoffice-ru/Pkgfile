@@ -5,9 +5,10 @@
 # Post-install:	yes
 
 name=libreoffice-ru
-version=7.2.1
+version=7.2.4
 release=1
 Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
+LOR=libreoffice${version%.[0-9]*}
 source=(
 	$Url/LibreOffice_${version}_Linux_x86-64_rpm.tar.gz
 	$Url/LibreOffice_${version}_Linux_x86-64_rpm_langpack_ru.tar.gz
@@ -33,10 +34,10 @@ build() {
 		-name package.txt \
 	\) -delete
 
-	find $PKG/opt/libreoffice*/help/media/icon-themes/cmd -type d \
+	find $PKG/opt/$LOR/help/media/icon-themes/cmd -type d \
 		! -name cmd ! -name 32 ! -name ru | xargs rm -r
 
-	D=$PKG/opt/libreoffice*/share
+	D=$PKG/opt/$LOR/share
 
 	rm -r $D/{Scripts,basic}
 
@@ -68,10 +69,15 @@ build() {
 		$D/xdg/*.desktop
 
 	sed -ni '/xml:lang=/!p;/"ru"/p' \
-		$PKG/usr/share/mime/packages/libreoffice*.xml
+		$PKG/usr/share/mime/packages/$LOR.xml
 
-	rm -r $PKG/opt/libreoffice*/help
+	rm -r $PKG/opt/$LOR/help
 
 	find $PKG -name "*.py" -delete
 	find $PKG -depth -type d -empty -delete
+
+	ln -s /opt/$LOR/program/soffice $PKG/usr/bin/soffice
+	mkdir -p $PKG/usr/share/pixmaps
+	ln -s /usr/share/icons/hicolor/32x32/apps/$LOR-startcenter.png \
+		$PKG/usr/share/pixmaps/soffice.png
 }

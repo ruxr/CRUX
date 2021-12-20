@@ -3093,6 +3093,7 @@ drwxr-xr-x	root/root	opt/libreoffice7.2/share/xslt/import/wordml/
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 lrwxrwxrwx	root/root	usr/bin/libreoffice7.2 -> /opt/libreoffice7.2/program/soffice
+lrwxrwxrwx	root/root	usr/bin/soffice -> /opt/libreoffice7.2/program/soffice
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/applications/
 lrwxrwxrwx	root/root	usr/share/applications/libreoffice7.2-base.desktop -> /opt/libreoffice7.2/share/xdg/base.desktop
@@ -3380,3 +3381,5 @@ drwxr-xr-x	root/root	usr/share/metainfo/
 drwxr-xr-x	root/root	usr/share/mime/
 drwxr-xr-x	root/root	usr/share/mime/packages/
 -rw-r--r--	root/root	usr/share/mime/packages/libreoffice7.2.xml
+drwxr-xr-x	root/root	usr/share/pixmaps/
+lrwxrwxrwx	root/root	usr/share/pixmaps/soffice.png -> /usr/share/icons/hicolor/32x32/apps/libreoffice7.2-startcenter.png
