@@ -1,5 +1,0 @@
-untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md3+kIJUIRGSjR95cNDdPpCuKBWUNcC/y+2+nSF9D43UamOiFMQhOu540OOfXCKazRxYcb3+q0LX7Ym11YI0G6rQ0=
-SHA256 (Pkgfile) = 690a069d3f69f3bb71c692ac9bfaa52763b756e5004f4c860da1dcc77058e415
-SHA256 (.footprint) = 6ebcc485a8b56c32cec0df28fc13c457d3f30e2e640145234438e5ecdb95c5d2
-SHA256 (wireshark-2.6.20.tar.xz) = c5703cf3357d73eaa537f146a60903c0cebf5bdc8d16b6b4ae9f0310da53cfaa

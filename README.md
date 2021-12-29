@@ -34,7 +34,6 @@
 | rss | Reports/Restore shell scripts for administration |
 | tftp-hpa | An enhanced version of the BSD tftp client/server |
 | ucarp | Userspace implementation of the CARP protocol |
-| wireshark2 | Network Sniffer with nice GTK+ UI |
 | xorg-font-paratype-ttf | ParaType font family with extended cyrillic and latin character sets |
 
 ## Quick start
