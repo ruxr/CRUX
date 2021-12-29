@@ -15,6 +15,7 @@ d:ntp
 d:nvidia340
 d:p5-dbi
 d:p5-sqlite
+d:p7-zip
 d:pkgnew
 d:rdesktop
 d:rss
@@ -129,6 +130,9 @@ f:3398992058d2b67098c5e6866a9371fa:p5-dbi/Pkgfile
 f:d664ed9712ae2da289615526b8a4e69a:p5-sqlite/.footprint
 f:398d681a6fe21b82eea829a57a4dae65:p5-sqlite/.signature
 f:fe06f5d60f19928b9b4483a6bb417448:p5-sqlite/Pkgfile
+f:549a71d71346c65ca6722fafb3142f3f:p7-zip/.footprint
+f:ed76f28de5f37816bf95039aa9738e97:p7-zip/.signature
+f:5fa3c8a0d30942e89a484cfb023cb575:p7-zip/Pkgfile
 f:1886fab58d97652be410cf8fc6b24411:pkgnew/.footprint
 f:3957004caec949dd7c438b2e85205c87:pkgnew/.signature
 f:1254f01e9ec1bd5ff6e052c8ce04ae11:pkgnew/Pkgfile
