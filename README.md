@@ -33,6 +33,7 @@
 | rdesktop | Open source client for Windows NT Terminal Server |
 | rss | Reports/Restore shell scripts for administration |
 | tftp-hpa | An enhanced version of the BSD tftp client/server |
+| uasm | A free MASM-compatible assembler based on JWasm |
 | ucarp | Userspace implementation of the CARP protocol |
 | xorg-font-paratype-ttf | ParaType font family with extended cyrillic and latin character sets |
 

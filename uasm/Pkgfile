@@ -1,0 +1,29 @@
+# Description:	A free MASM-compatible assembler based on JWasm
+# URL:		http://www.terraspace.co.uk/uasm.html
+
+name=uasm
+version=21.07
+release=1
+rev=c612f83d97a0cb192dfd983676743dabf662ed51
+source=(https://github.com/Terraspace/UASM/archive/$rev.tar.gz
+	uasm-nocolor dbgcv.patch)
+
+build() {
+	cd UASM-$rev
+
+	# fix `dbgcv.c:*:*: fatal error: direct.h: No such file or directory`
+	patch -Np1 -i ../dbgcv.patch
+
+	# fix #151
+	sed -i 's|#ifndef _TYPES_H_INCLUDED|#ifndef _TYPES_H_INCLUDED_|g' H/types.h
+
+	# enforce full RELRO
+	sed -i 's|-Wl,-Map,$(OUTD)/$(TARGET1).map$|-Wl,-Map,$(OUTD)/$(TARGET1).map -Wl,-z,now|g' gccLinux64.mak
+
+	# https://gcc.gnu.org/gcc-10/porting_to.html#common
+	sed -i "s|CC = gcc|CC = gcc -fcommon|g" gccLinux64.mak
+
+	make -f gccLinux64.mak
+
+	install -Dt $PKG/usr/bin GccUnixR/uasm ../uasm-nocolor
+}
