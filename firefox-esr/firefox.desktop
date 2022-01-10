@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Firefox
+GenericName=Web Browser
+Comment=Free web browser from Mozilla
+Exec=firefox %U
+Terminal=false
+Type=Application
+Icon=firefox
+Categories=Network;

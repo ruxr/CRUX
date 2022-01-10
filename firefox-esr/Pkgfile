@@ -1,0 +1,30 @@
+# Description: Firefox ESR binary
+# URL:         http://www.mozilla.com
+# Depends on:  gtk3 dbus-glib
+
+name=firefox-esr
+version=91.4.1esr
+release=1
+source=(http://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/firefox-$version.tar.bz2 \
+	policies.json firefox.desktop)
+
+build() {
+	cd firefox
+	install -d $PKG/usr/{lib,bin}
+	mv $SRC/firefox $PKG/usr/lib/firefox
+	ln -s /usr/lib/firefox/firefox $PKG/usr/bin/firefox
+	mkdir -p $PKG/usr/lib/firefox/lib
+
+	#We don't want these 'features'
+	rm -r $PKG/usr/lib/firefox/browser/features
+	# Disable autoupdate
+	mkdir $PKG/usr/lib/firefox/distribution
+
+	install -m644 $SRC/policies.json $PKG/usr/lib/firefox/distribution/
+
+	install -m644 -D $SRC/firefox.desktop \
+		$PKG/usr/share/applications/firefox.desktop
+	install -d $PKG/usr/share/pixmaps
+	ln -s /usr/lib/firefox/browser/chrome/icons/default/default32.png \
+		$PKG/usr/share/pixmaps/firefox.png
+}

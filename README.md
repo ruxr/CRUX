@@ -16,6 +16,7 @@
 | brother_dcp1600 | Brother DCP-1600 printer driver |
 | core | Linux kernel |
 | dhcp | ISC DHCP server, client and relay agent |
+| firefox-esr | Firefox Extended Support Release |
 | i2c-tools | I2C Tools for Linux |
 | iso | CRUX installation image |
 | jwm | A lightweight window manager for the X11 Window System |
