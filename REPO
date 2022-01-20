@@ -25,9 +25,9 @@ d:uasm
 d:ucarp
 d:xorg-font-paratype-ttf
 f:84db5a5ecbcb624e34e91c2f61155084:bind/.footprint
-f:215ab8aa12141d2fde215fa3cc93bfeb:bind/.signature
+f:32a42f32db5ed5e9c90ddc9e2e9923c4:bind/.signature
 f:101af2542cecc44cbcd143197b713313:bind/127.in-addr.arpa
-f:63238f1d3549a2e84c97ce5732256e4b:bind/Pkgfile
+f:c6af36b774342907d0497d3f82bb5e9a:bind/Pkgfile
 f:ad29978e62ec286befe582ad9ef1205e:bind/localhost
 f:99d5cc88d715cea42b72791495dca260:bind/named
 f:986be18673bc3a12c29a25fd9b788fd0:bind/named.conf
