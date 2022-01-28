@@ -1,10 +1,11 @@
 # Description:	ISC Berkeley Internet Name Domain Service
 # URL:		https://www.isc.org/bind
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	json-c libcap libuv openssl readline zlib
-# Build also:	bindutils
+# Depends on:	libcap libuv openssl readline zlib
+# Build also:	bindlib bindutils
 buildalso() {
-	rm -r $name/usr/{include,lib} $name/usr/share/man/man8/filter-aaaa.*
+	mkdir -p bindlib/usr
+	mv $name/usr/lib bindlib/usr
 	mkdir -p bindutils/usr/{bin,share/man/man1}
 	mv $name/usr/bin/{dig,host,nsupdate} bindutils/usr/bin
 	mv $name/usr/share/man/man1/{dig,host,nsupdate}.* \
@@ -12,7 +13,7 @@ buildalso() {
 }
 
 name=bind
-version=9.16.25
+version=9.18.0
 release=1
 source=(https://downloads.isc.org/isc/bind9/$version/$name-$version.tar.xz
 	named.root localhost named named.conf 127.in-addr.arpa)
@@ -24,14 +25,16 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc/named \
 		--localstatedir=/var \
-		--disable-linux-caps \
 		--enable-threads \
 		--enable-largefile \
 		--with-libxml2=no \
 		--with-gssapi=no \
-		--without-python
+                --with-json-c=no \
+                --with-python=no \
+		--disable-geoip \
+		--disable-doh
 
-	make && make DESTDIR=$PKG install
+	make DESTDIR=$PKG install
 
 	install -dm 770 -g named $PKG/var/named $PKG/var/run/named
 	install -Dm 640 -g named $SRC/named.conf $PKG/etc/named/named.conf
@@ -39,10 +42,13 @@ build() {
 	install -m 640 -g named $SRC/{127.in-addr.arpa,localhost,named.root} \
 		$PKG/var/named/
 	install -Dm 755 $SRC/named $PKG/etc/rc.d/named
-	for f in arpaname nslookup; do
+
+	for f in arpaname delv "dnssec-*" mdig nsec3hash nslookup; do
 		rm $PKG/usr/bin/$f $PKG/usr/share/man/man1/$f.1
 	done
-	for f in ddns-confgen "dnssec-*" nsec3hash tsig-keygen; do
+	for f in ddns-confgen tsig-keygen; do
 		rm -f $PKG/usr/sbin/$f $PKG/usr/share/man/man8/$f.8
 	done
+	rm -r $PKG/usr/{include,/lib/bind} $PKG/usr/share/man/man8/filter-a*
+	find $PKG/usr/lib -name "*.la" -delete
 }

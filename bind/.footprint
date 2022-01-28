@@ -7,37 +7,48 @@ drwxr-xr-x	root/root	etc/rc.d/
 -rwxr-xr-x	root/root	etc/rc.d/named
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
--rwxr-xr-x	root/root	usr/bin/delv
 -rwxr-xr-x	root/root	usr/bin/dig
 -rwxr-xr-x	root/root	usr/bin/host
--rwxr-xr-x	root/root	usr/bin/mdig
+-rwxr-xr-x	root/root	usr/bin/named-checkconf
+-rwxr-xr-x	root/root	usr/bin/named-checkzone
+-rwxr-xr-x	root/root	usr/bin/named-compilezone
+-rwxr-xr-x	root/root	usr/bin/named-journalprint
 -rwxr-xr-x	root/root	usr/bin/named-rrchecker
 -rwxr-xr-x	root/root	usr/bin/nsupdate
+drwxr-xr-x	root/root	usr/lib/
+-rwxr-xr-x	root/root	usr/lib/libbind9-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libbind9.so -> libbind9-9.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libdns-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libdns.so -> libdns-9.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libirs-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libirs.so -> libirs-9.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libisc-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libisc.so -> libisc-9.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libisccc-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libisccc.so -> libisccc-9.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libisccfg-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libisccfg.so -> libisccfg-9.18.0.so
+-rwxr-xr-x	root/root	usr/lib/libns-9.18.0.so
+lrwxrwxrwx	root/root	usr/lib/libns.so -> libns-9.18.0.so
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/named
--rwxr-xr-x	root/root	usr/sbin/named-checkconf
--rwxr-xr-x	root/root	usr/sbin/named-checkzone
-lrwxrwxrwx	root/root	usr/sbin/named-compilezone -> named-checkzone
--rwxr-xr-x	root/root	usr/sbin/named-journalprint
 -rwxr-xr-x	root/root	usr/sbin/rndc
 -rwxr-xr-x	root/root	usr/sbin/rndc-confgen
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
--rw-r--r--	root/root	usr/share/man/man1/delv.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/dig.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/host.1.gz
--rw-r--r--	root/root	usr/share/man/man1/mdig.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/named-checkconf.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/named-checkzone.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/named-compilezone.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/named-journalprint.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/named-rrchecker.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/nsupdate.1.gz
 drwxr-xr-x	root/root	usr/share/man/man5/
 -rw-r--r--	root/root	usr/share/man/man5/named.conf.5.gz
 -rw-r--r--	root/root	usr/share/man/man5/rndc.conf.5.gz
 drwxr-xr-x	root/root	usr/share/man/man8/
--rw-r--r--	root/root	usr/share/man/man8/named-checkconf.8.gz
--rw-r--r--	root/root	usr/share/man/man8/named-checkzone.8.gz
-lrwxrwxrwx	root/root	usr/share/man/man8/named-compilezone.8.gz -> named-checkzone.8.gz
--rw-r--r--	root/root	usr/share/man/man8/named-journalprint.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/named.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/rndc-confgen.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/rndc.8.gz
