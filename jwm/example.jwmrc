@@ -11,7 +11,7 @@
       <Program icon="xsane" label="Xsane">xsane</Program>
     </Menu>
     <Separator/>
-    <Program icon="lock" label="Lock">xscreensaver-command -lock</Program>
+    <Program icon="lock" label="Lock">xlock</Program>
     <Separator/>
     <Restart icon="restart" label="Restart"/>
     <Exit icon="exit" label="Exit" confirm="true"/>
