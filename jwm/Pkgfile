@@ -4,9 +4,9 @@
 
 name=jwm
 version=2.4.0
-release=1
+release=2
 source=(http://joewing.net/projects/jwm/releases/jwm-$version.tar.xz
-	example.jwmrc exit.png folder.png restart.png)
+	example.jwmrc exit.png folder.png lock.png restart.png)
 
 build() {
 	cd $name-$version
