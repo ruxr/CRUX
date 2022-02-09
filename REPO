@@ -50,8 +50,8 @@ f:b3f8b3f954410d8727ce17d8af0371c5:dhcp/0003-117-fixed-gcc-10-compilation-issues
 f:89d9ee861303e869a5f035ec9e56e1a3:dhcp/Pkgfile
 f:0378d993b8ab77a021e7d6e5ad00b4d3:dhcp/dhcpd
 f:c94ed2a0a97a1c58dbf9c518eb8792da:firefox-esr/.footprint
-f:4d0d75e98ea4dd42fde8d0086ec35bc0:firefox-esr/.signature
-f:2c6bdbc2af720d0c76085a14a94407ca:firefox-esr/Pkgfile
+f:cc74ee0d1630ec9994a7d7a8c576aa8b:firefox-esr/.signature
+f:ca4ef5da3e788bcaf4fef320cb1ded7e:firefox-esr/Pkgfile
 f:8081bb8fcc54a043457d0c71ed0bd062:firefox-esr/firefox.desktop
 f:a562967c078701d405eff29b0ae220b6:firefox-esr/policies.json
 f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
