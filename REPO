@@ -141,8 +141,8 @@ f:549a71d71346c65ca6722fafb3142f3f:p7-zip/.footprint
 f:ed76f28de5f37816bf95039aa9738e97:p7-zip/.signature
 f:5fa3c8a0d30942e89a484cfb023cb575:p7-zip/Pkgfile
 f:1886fab58d97652be410cf8fc6b24411:pkgnew/.footprint
-f:3957004caec949dd7c438b2e85205c87:pkgnew/.signature
-f:1254f01e9ec1bd5ff6e052c8ce04ae11:pkgnew/Pkgfile
+f:1d42e296b45c71cecd0674e4882fb065:pkgnew/.signature
+f:5d2cbf52562ac3a87b05d8a3cc4ef606:pkgnew/Pkgfile
 f:9ac3dcedba8bf263e61c46c34e65a1e7:rdesktop/.footprint
 f:2e3ae2b949a205825ec9a537fe221a70:rdesktop/.signature
 f:3ad827f32fc51182df25ad8773b05cea:rdesktop/Pkgfile
