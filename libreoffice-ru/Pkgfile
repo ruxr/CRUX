@@ -5,7 +5,7 @@
 # Post-install:	yes
 
 name=libreoffice-ru
-version=7.3.0
+version=7.3.1
 release=1
 Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
 LOR=libreoffice${version%.[0-9]*}
@@ -37,9 +37,11 @@ build() {
 	find $PKG/opt/$LOR/help/media/icon-themes/cmd -type d \
 		! -name cmd ! -name 32 ! -name ru | xargs rm -r
 
+	rm -r $PKG/opt/$LOR/program/wizards
+
 	D=$PKG/opt/$LOR/share
 
-	rm -r $D/{Scripts,basic}
+	rm -r $D/{Scripts,basic,xpdfimport/poppler_data}
 
 	find $D/autocorr -name "*.dat" ! -name "*ru*" ! -name "*[dh]sb*" \
 		! -name "*US*" -delete
