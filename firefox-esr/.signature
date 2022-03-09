@@ -1,7 +1,7 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md33tWzoq0yIWWbFwMttu87XTZDzmmGxkhwbYLVwNfTvTj34NJbU61XJeikmvCYVT9Oxx+HkjEjzfw6ogiZ4dFfQ4=
-SHA256 (Pkgfile) = 690fab973a79885046dc16becffb0f1c23979d22c92611448dc365bfcab37178
+RWST1RjWg2md3/7VYPcFHFTBYzPO/TkQ2y61ZqFJuP9Ojx81vaYTn4B8FajmbtC/aiA4rSUliht5TsqQPLWWpZaMNmQu4knVqgA=
+SHA256 (Pkgfile) = 44ce48ccde664089465705be2754cd4d875942a3cc7cd783d8bd48dbc8891a31
 SHA256 (.footprint) = b43db0107b94da436cd30cbb4cb64c674e99f540f2d470e82d80538647981ba5
-SHA256 (firefox-91.6.1esr.tar.bz2) = c0c5f445dcd00f9e9adaa7da3ca649cdec9eaba84b15b89811af10e3eeccb0a8
+SHA256 (firefox-91.7.0esr.tar.bz2) = 6dd95fbd330768283657873d1998b97bc6fc4fe55c3ce7ccdd9409c5db2d5ba6
 SHA256 (policies.json) = cf856011307f7831d74cdacb4e80b6dceaa49882b8dcba008d527a78764903f4
 SHA256 (firefox.desktop) = 0d12e775573338e7361789a6e2115c9e4a140812c229edc036caef26515590cd
