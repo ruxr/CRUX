@@ -8,13 +8,13 @@ buildalso() {
 	rm $name/usr/lib/*.la
 	mkdir -p $name-dev/usr/{lib,share/man}
 	mv $name/usr/include $name-dev/usr
-	mv $name/usr/lib/*.a $name-dev/usr/lib
+	mv $name/usr/lib/*.a $name/usr/lib/pkgconfig $name-dev/usr/lib
 	mv $name/usr/share/man/man3 $name-dev/usr/share/man
 }
 
 name=net-snmp
 version=5.9.1
-release=1
+release=2
 source=(https://download.sourceforge.net/$name/$name-$version.tar.gz \
 	snmpd snmpd.conf snmptrapd snmptrapd.conf)
 
