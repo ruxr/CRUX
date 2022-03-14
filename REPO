@@ -42,13 +42,10 @@ f:7ccf40c25644524a08548901e0f83906:core/.signature
 f:f4a3f5a7da0733f2d9969035132ecceb:core/Pkgfile
 f:2272d839f785ca9ede34716bfb28e0a3:core/core.sh
 f:466bc3b0b74b61895af9bdb176e7872f:core/init
-f:0fe82bfdaed1187b70d399ac60d20813:dhcp/.footprint
-f:1df24f0234a133cf87fd3d9a1a7889bc:dhcp/.signature
-f:18a38a16ee061bf5bd295730874dc256:dhcp/0001-default-config.patch
-f:e93b92aa810bbf4440a0b8892f14472c:dhcp/0002-iproute2.patch
-f:b3f8b3f954410d8727ce17d8af0371c5:dhcp/0003-117-fixed-gcc-10-compilation-issues.patch
-f:89d9ee861303e869a5f035ec9e56e1a3:dhcp/Pkgfile
-f:0378d993b8ab77a021e7d6e5ad00b4d3:dhcp/dhcpd
+f:80a125200b468303dba8ed796ac5aca7:dhcp/.footprint
+f:86f39e80e158567a986cf64ba8bf88cf:dhcp/.signature
+f:b12ea2af82549850a098313336fc5b38:dhcp/Pkgfile
+f:9605e3050abe4de318aa753fe7f059a4:dhcp/dhcpd
 f:c94ed2a0a97a1c58dbf9c518eb8792da:firefox-esr/.footprint
 f:f0b5c78399dcc107f6f795526a70fc2a:firefox-esr/.signature
 f:5a1996ac4388eee39f3e083b4cd9feb6:firefox-esr/Pkgfile

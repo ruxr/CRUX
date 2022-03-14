@@ -42,6 +42,3 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/dhcrelay.8.gz
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/db/
-drwxr-xr-x	root/root	var/state/
-drwxr-xr-x	root/root	var/state/dhcp/
--rw-r--r--	root/root	var/state/dhcp/dhcpd.leases (EMPTY)

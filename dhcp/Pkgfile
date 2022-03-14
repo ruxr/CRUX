@@ -3,32 +3,20 @@
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
 # Build also:	dhcp-dev
 buildalso() {
-	mkdir -p $name-dev/usr/{lib,share/man}
-	mv $name/usr/include $name-dev/usr
-	mv $name/usr/lib/*.a $name-dev/usr/lib
+	mkdir -p $name-dev/usr/share/man
+	mv $name/usr/lib $name-dev/usr
 	mv $name/usr/share/man/man3 $name-dev/usr/share/man
 }
 
 name=dhcp
-version=4.4.2-P1
+version=4.4.3
 release=1
 source=(https://downloads.isc.org/isc/$name/$version/$name-$version.tar.gz
-	0001-default-config.patch
-	0002-iproute2.patch
-	0003-117-fixed-gcc-10-compilation-issues.patch
 	dhcpd)
 
 build() {
 	cd dhcp-$version
-	patch -Np1 -i ../0001-default-config.patch
 
-	# no ifconfig, use ip from iproute2
-	patch -Np1 -i ../0002-iproute2.patch
-
-	# [#117] Fixed gcc 10 compilation issues
-	patch -Np1 -i ../0003-117-fixed-gcc-10-compilation-issues.patch
-
-	CFLAGS="$CFLAGS -fcommon" \
 	./configure --prefix=/usr \
 		--disable-dhcpv6 \
 		--sysconfdir=/etc
@@ -37,8 +25,10 @@ build() {
 	make DESTDIR=$PKG install
 
 	install -D ../dhcpd $PKG/etc/rc.d/dhcpd
-	install -d $PKG/var/state/dhcp $PKG/var/db
-	touch $PKG/var/state/dhcp/dhcpd.leases
+	install -d $PKG/var/db
 	mv $PKG/etc/dhcpd.conf.example $PKG/etc/dhcpd.conf
+	sed -i '1,3d
+		4s%$%\n# /etc/dhcpd.conf: ISC dhcpd(8) configuration file\n#%' \
+			$PKG/etc/dhcpd.conf
 	rm $PKG/{etc,usr/sbin,usr/share/man/man[58]}/dhclient*
 }
