@@ -3,8 +3,8 @@
 # Depends on:	librsvg xorg-libxinerama xorg-libxmu xorg-libxpm
 
 name=jwm
-version=2.4.0
-release=2
+version=2.4.1
+release=1
 source=(http://joewing.net/projects/jwm/releases/jwm-$version.tar.xz
 	example.jwmrc exit.png folder.png lock.png restart.png)
 
