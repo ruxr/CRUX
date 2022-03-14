@@ -2,19 +2,19 @@
 # URL:		https://www.isc.org/bind
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
 # Depends on:	libcap libuv openssl readline zlib
-# Build also:	bindlib bindutils
+# Build also:	bindutils
 buildalso() {
-	mkdir -p bindlib/usr
-	mv $name/usr/lib bindlib/usr
-	mkdir -p bindutils/usr/{bin,share/man/man1}
+	mkdir -p bindutils/usr/{bin,lib,share/man/man1}
 	mv $name/usr/bin/{dig,host,nsupdate} bindutils/usr/bin
 	mv $name/usr/share/man/man1/{dig,host,nsupdate}.* \
 		bindutils/usr/share/man/man1
+	mv $name/usr/lib/* bindutils/usr/lib
+	mv bindutils/usr/lib/libisccc* $name/usr/lib
 }
 
 name=bind
 version=9.18.0
-release=1
+release=2
 source=(https://downloads.isc.org/isc/bind9/$version/$name-$version.tar.xz
 	named.root localhost named named.conf 127.in-addr.arpa)
 
