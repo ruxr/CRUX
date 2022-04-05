@@ -47,8 +47,8 @@ f:86f39e80e158567a986cf64ba8bf88cf:dhcp/.signature
 f:b12ea2af82549850a098313336fc5b38:dhcp/Pkgfile
 f:9605e3050abe4de318aa753fe7f059a4:dhcp/dhcpd
 f:c94ed2a0a97a1c58dbf9c518eb8792da:firefox-esr/.footprint
-f:f0b5c78399dcc107f6f795526a70fc2a:firefox-esr/.signature
-f:5a1996ac4388eee39f3e083b4cd9feb6:firefox-esr/Pkgfile
+f:9af901eb62f7538c27268d764b5bbede:firefox-esr/.signature
+f:3697376c25e74d57603ae8c91fce541e:firefox-esr/Pkgfile
 f:8081bb8fcc54a043457d0c71ed0bd062:firefox-esr/firefox.desktop
 f:a562967c078701d405eff29b0ae220b6:firefox-esr/policies.json
 f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
