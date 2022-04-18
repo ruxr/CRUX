@@ -137,9 +137,9 @@ f:fe06f5d60f19928b9b4483a6bb417448:p5-sqlite/Pkgfile
 f:549a71d71346c65ca6722fafb3142f3f:p7-zip/.footprint
 f:ed76f28de5f37816bf95039aa9738e97:p7-zip/.signature
 f:5fa3c8a0d30942e89a484cfb023cb575:p7-zip/Pkgfile
-f:1886fab58d97652be410cf8fc6b24411:pkgnew/.footprint
-f:86b451d4922bebdc53a84741f7249ce7:pkgnew/.signature
-f:96d5ac60f49f1e43f4aa3aa474ef90ce:pkgnew/Pkgfile
+f:143042d1796720da663e6e770b60f467:pkgnew/.footprint
+f:b1b4f244b269a2521747f4ea7436bbeb:pkgnew/.signature
+f:619cc9ddd877201dfad4ab5251223043:pkgnew/Pkgfile
 f:9ac3dcedba8bf263e61c46c34e65a1e7:rdesktop/.footprint
 f:2e3ae2b949a205825ec9a537fe221a70:rdesktop/.signature
 f:3ad827f32fc51182df25ad8773b05cea:rdesktop/Pkgfile

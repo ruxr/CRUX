@@ -1,5 +1,5 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md39s1ffLrII8AMIuaHh2PfRIxSvBsnHKoFfhbmkCVZFVhBvhmpSsBVPOXx+0Lb0d5kbWVbdSRYvowMYgNTnCpwAk=
-SHA256 (Pkgfile) = 55620b135ac81c171f1be50cbb2d9d73434293fc26ec1e2070ac05e47f4f197d
-SHA256 (.footprint) = 8cc8182c0d1e0f4666211983569de9eb7dd313a6acff1b33012023126d9ddee3
-SHA256 (Pkgnew-2.2.0.tar.xz) = c46f41520025f7fffde8bf8d2d4dcbff5f47e22d4aff8b506c53958633b8f41f
+RWST1RjWg2md35iARnq7YnWrijj47lZF6JfLR9WsaY4kzaS0YmnLDKTsnkfWoN2AVPw1GwZdEmDdH28IEyj0v2cxR49CE/xO6wI=
+SHA256 (Pkgfile) = b69460a25febe89339f02d773447a59807f84c34b4f8f3c3a7d408cbe4fb67e4
+SHA256 (.footprint) = 8cfee3f984976c367dd0193ca6cba175bfaeeaae397db42d51237ed0c14d2775
+SHA256 (Pkgnew-2.2.1.tar.xz) = 5465ab54364cb975275d91c0b1b48012e7cc674619c531fafc9739aad7a85d39
