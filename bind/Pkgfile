@@ -2,6 +2,7 @@
 # URL:		https://www.isc.org/bind
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
 # Depends on:	libcap libuv openssl readline zlib
+# Required user: named 53
 # Build also:	bindutils
 buildalso() {
 	mkdir -p bindutils/usr/{bin,lib,share/man/man1}
