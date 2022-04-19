@@ -1,101 +1,97 @@
 # Description:	CRUX Linux kernel
 # URL:		https://github.com/ruxr/CRUX
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	coreutils dash eudev kmod sed util-linux
+# Depends on:	coreutils dash eudev file kmod sed util-linux
 # Post-install:	yes
 
 name=core
 version=3.6
-release=1
+release=2
 REL=$(uname -r)
+DIR=/usr/src/linux-$REL
 source=(core.sh init
 	https://cdn.kernel.org/pub/linux/kernel/v${REL%%.*}.x/linux-$REL.tar.xz)
 
+unpack_source() {
+	for F in ${source[@]}; do
+		case $F in
+		*/*)	[ -d $DIR ] && continue || rm -rf /usr/src/linux-*
+			mkdir -p /usr/src
+			bsdtar -C /usr/src -opxf $PKGMK_SOURCE_DIR/${F##*/};;
+		*) cp $F $SRC
+		esac
+	done
+}
 build() {
-	DIR=/usr/src/linux-$REL
-
-	# Build kernel
-	if [ -d $DIR ]; then
-		rm -r linux-$REL
-	else
-		rm -rf /usr/src/linux-*
-		mkdir -p /usr/src
-		mv linux-$REL /usr/src
-		make -C $DIR mrproper
-		if [ -s /boot/config ]; then
-			cp /boot/config $DIR/.config
-			make -C $DIR olddefconfig
-		else
-			make -C $DIR defconfig
-			make -C $DIR localmodconfig
-		fi
-	fi
-	make -C $DIR all
-
-	# Create initrd
-	Use() {
-		# coreutils
+	# Create file list for initrd
+	A= N=$(	# coreutils
 		echo /bin/{readlink,sleep}
 		# dash
 		echo /bin/dash
 		# eudev
-		echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
-			sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
+		echo /sbin/{udevadm,udevd}
+		sed '/^eudev$/,/^$/{/\/udev\//!d;/\/$/d;/conf$/d;s%^%/%p};d' \
+			/var/lib/pkg/db
 		# kmod
 		echo /sbin/*mod*
 		# sed
 		echo /bin/sed
 		# util-linux
 		echo /bin/{mount,umount} /sbin/switch_root
-	}
-	Req() {
-		local A F N
-		A="$*" N=; shift
+	)
+	while [ -n "$N" ]; do
+		set -- $N; N=
 		for F do
-			if [ ! -f $F ]; then echo Missing $F; exit 1; fi
-			echo $F
-			F=$([ -L $F ] && readlink -f $F || ldd $F 2>/dev/null |
-				sed '/\//!d;s%^[^/]*/%/%;s/ .*//;s%/\./%/%g
-					s%[^/]*/\.\./%%g;s%/lib64/%/lib/%')
-			for F in $F; do
-				case " $A$N " in *\ $F\ *) continue;; esac
-				N=$N\ $F
-			done
+			case " $A " in
+			*\ $F\ *);;
+			*) echo $F; A=$A\ $F N=$N\ $(case $(file -b $F) in
+				*ELF*) ldd $F | sed '/\//!d;s%^[^/]*%%;s/ .*//
+					s%/\./%/%g;s%[^/]*/\.\./%%g
+					s%/lib64/%/lib/%';;
+				symbolic*) readlink -f $F
+				esac)
+			esac
 		done
-		[ -z "$N" ] || Req "$A" $N
-	}
+	done >initrd.use
 
-	mkdir rootfs
-	cd rootfs
-	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
+	# Create file tree for initrd
+	mkdir core
+	cd core
+	install -d dev mnt proc run sys
+	install ../init .
+	tar -cf - -T ../initrd.use | tar -xf -
+	# Opimize eudev files
+	sed -i '/^#/d;/^$/d;s/\(GROUP=\)"[^"]*"/\1"0"/' */udev/*.d/*
+	mv bin/dash bin/sh
+	ldconfig -r $SRC/core
+
+	# Build kernel
+	if [ -f $DIR/.config ]; then
+		:
+	elif [ -f /boot/config ]; then
+		cp /boot/config $DIR/.config
+		make -C $DIR olddefconfig
+	else
+		make -C $DIR localmodconfig
+	fi
+	make -C $DIR all
+	make -C $DIR INSTALL_MOD_PATH=$SRC/core modules_install
 	rm lib/modules/$REL/{build,source}
-
 	# May add yours modules from linux-firmware package
 	# cp -r /lib/firmware lib
 
-	install -d dev mnt proc run sys 
-	install $SRC/init .
+	# Create initrd
+	find . | sort | cpio -o -H newc | gzip -9 >../initrd-$REL
 
-	Req "" $(Use) >../initrd.use
-	tar -cf - -T ../initrd.use | tar -xf -
-
-	mv bin/dash bin/sh
-
-	# Opimize eudev files
-	sed -i '/^#/d;/^$/d;s/\(GROUP=\)"[^"]*"/\1"0"/' \
-		etc/udev/hwdb.d/* lib/udev/rules.d/*
-
-	ldconfig -r $(pwd -P)
-	find . | sort | cpio -o -H newc | gzip -9 >$SRC/initrd-$REL
-	cd ..
-
-	mkdir -p $PKG/boot core/boot
-	cd core
-	mv $SRC/initrd-$REL boot
+	# Create a self-extracting archive
+	rm -r *
+	mkdir boot
+	mv ../initrd-$REL boot
 	cp $DIR/.config boot/config-$REL
 	cp $DIR/System.map boot/System.map-$REL
 	cp $DIR/arch/x86/boot/bzImage boot/vmlinuz-$REL
-	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
-	{ sed "s/#REL#/$REL/g" $SRC/core.sh; tar -cJf - *
-	} >$SRC/post-install
+	make -C $DIR INSTALL_MOD_PATH=$SRC/core modules_install
+	{ sed "s/#REL#/$REL/g" ../core.sh; tar -cJf - *; } >../post-install
+
+	mkdir -p $PKG/boot
 }
