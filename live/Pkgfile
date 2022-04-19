@@ -5,32 +5,27 @@
 
 name=live
 version=3.6
-release=1
-source=(live.sh inittab rc rc.shutdown rc.single setup-chroot)
+release=2
+source=(live.sh)
 
 build() {
-	mkdir $PKG/boot rootfs
-	cd rootfs
-
-	Use() {
-		# coreutils
+	# Create file list
+	A= N=$(	# coreutils
 		echo /bin/{mkdir,ln,rm,sleep} /usr/bin/chroot
 		# dash
 		echo /bin/dash
 		# glibc
 		echo /sbin/ldconfig
-		pkginfo -l glibc | sed '/lib\//!d;/\/$/d
-			/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
-			/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
-			/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
+		sed '/^glibc$/,/^$/{/lib\//!d;/\/$/d;/\/audit/d;/\/gconv/d
+			/\/getconf/d;/libBrokenLocale/d;/libcidn/d;/libmvec/d
+			/libpcprofile/d;/libthread_db/d;/nss_compat/d;/nss_db/d
+			/nss_hesiod/d;/nss_nis/d;s%^%/%p};d' /var/lib/pkg/db
 		# linux-pam
-		echo /lib/security/pam_{lastlog,motd,rootok,securetty,unix}.so \
-			/etc/pam.d/common-*
+		echo /lib/security/pam_unix.so
 		# ncurses
 		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
 		# openssh
-		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd \
-			/etc/pam.d/sshd
+		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd
 		# pkguse
 		[ ! -x /usr/sbin/pkguse ] || echo /usr/sbin/pkguse
 		# pkgutils
@@ -38,7 +33,7 @@ build() {
 		# sed
 		echo /bin/sed
 		# shadow
-		echo /bin/login /usr/bin/su /etc/pam.d/{login,su}
+		echo /bin/login /usr/bin/su
 		# sysvinit
 		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
 		# tar
@@ -49,41 +44,88 @@ build() {
 		echo /usr/bin/wget
 		# xz
 		echo /usr/bin/xz
-	}
-	Req() {
-		local A F N
-		A="$*" N=; shift
+	)
+	while [ -n "$N" ]; do
+		set -- $N; N=
 		for F do
-			if [ ! -f $F ]; then echo Missing $F; exit 1; fi
-			echo $F
-			F=$([ -L $F ] && readlink -f $F || ldd $F 2>/dev/null |
-				sed '/\//!d;s%^[^/]*/%/%;s/ .*//;s%/\./%/%g
-					s%[^/]*/\.\./%%g;s%/lib64/%/lib/%')
-			for F in $F; do
-				case " $A$N " in *\ $F\ *) continue;; esac
-				N=$N\ $F
-			done
+			case " $A " in
+			*\ $F\ *);;
+			*) echo $F; A=$A\ $F N=$N\ $(case $(file -b $F) in
+				*ELF*) ldd $F | sed '/\//!d;s%^[^/]*%%;s/ .*//
+					s%/\./%/%g;s%[^/]*/\.\./%%g
+					s%/lib64/%/lib/%';;
+				symbolic*) readlink -f $F
+				esac)
+			esac
 		done
-		[ -z "$N" ] || Req "$A" $N
-	}
+	done >live.use
 
-	Req "" $(Use) >../live.use
-	tar -cf - -T ../live.use | tar -xf -
-	mv bin/dash bin/sh
-
+	# Create file tree
+	mkdir rootfs
+	cd rootfs
 	install -d dev mnt proc run sys usr/lib var/{cache,empty,lib,log,run}
 	install -dm 1777 tmp var/{lock,tmp}
 	ln -s lib lib64
 	ln -s lib usr/lib64
+	tar -cf - -T ../live.use | tar -xf -
 	ln -s /proc/mounts etc/mtab
-	touch etc/fstab
-	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
-	echo /bin/sh >etc/shells
-	install -m 644 $SRC/inittab etc
-	install $SRC/rc{,.shutdown,.single} etc
-	install $SRC/setup-chroot bin
+	mv bin/dash bin/sh
+	ldconfig -r $SRC/rootfs
 
-	ldconfig -r $(pwd -P)
+	# Create files
+	cat <<-END >bin/setup-chroot
+		#!/bin/sh
+		mount --bind /proc /mnt/proc
+		mount --bind /sys /mnt/sys
+		mount --rbind /dev /mnt/dev
+		mount --bind /run /mnt/run
+		mount --bind /tmp /mnt/tmp
+		chroot /mnt /bin/sh
+	END
+	touch etc/fstab
+	cat <<-END >etc/inittab
+		id:2:initdefault:
+		rc::sysinit:/etc/rc
+		rs:S1:wait:/etc/rc.single
+		rd:06:wait:/etc/rc.shutdown
+		ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+		c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
+		c2:2:respawn:/sbin/agetty 38400 tty2 linux
+	END
+	mkdir etc/pam.d
+	cat <<-END >etc/pam.d/login
+		auth		required	pam_unix.so nullok
+		account		required	pam_unix.so
+		password	required	pam_unix.so
+		session		required	pam_unix.so
+	END
+	ln etc/pam.d/login etc/pam.d/su
+	ln etc/pam.d/login etc/pam.d/sshd
+	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
+	echo "#!/bin/sh" >etc/rc
+	cat <<-END >etc/rc.shutdown
+		#!/bin/sh
+		echo The system is coming down. Please wait
+		/sbin/killall5 -15
+		/bin/sleep 5
+		/sbin/killall5 -9
+		/bin/umount -a -r
+		[ "\$RUNLEVEL" = 0 ] && /sbin/poweroff -d -f -i || /sbin/reboot -d -f -i
+	END
+	cat <<-END >etc/rc.single
+		#!/bin/sh
+		/sbin/killall5 -15
+		/bin/sleep 5
+		/sbin/killall5 -9
+		/bin/umount -l -R /mnt/tmp /mnt/dev /mnt/run /mnt/sys /mnt/proc
+		/usr/sbin/sshd
+	END
+	echo /bin/sh >etc/shells
+	chmod 555 bin/setup-chroot etc/rc{,.shutdown,.single}
+
+	# Create a self-extracting archive
 	{ cat $SRC/live.sh; tar -cJf - *; } >../CRUX-$version-live.run
 	mv ../CRUX-$version-live.run $PKGMK_PACKAGE_DIR
+
+	mkdir $PKG/boot
 }
