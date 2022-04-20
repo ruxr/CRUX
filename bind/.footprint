@@ -16,20 +16,20 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/named-rrchecker
 -rwxr-xr-x	root/root	usr/bin/nsupdate
 drwxr-xr-x	root/root	usr/lib/
--rwxr-xr-x	root/root	usr/lib/libbind9-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libbind9.so -> libbind9-9.18.1.so
--rwxr-xr-x	root/root	usr/lib/libdns-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libdns.so -> libdns-9.18.1.so
--rwxr-xr-x	root/root	usr/lib/libirs-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libirs.so -> libirs-9.18.1.so
--rwxr-xr-x	root/root	usr/lib/libisc-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libisc.so -> libisc-9.18.1.so
--rwxr-xr-x	root/root	usr/lib/libisccc-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libisccc.so -> libisccc-9.18.1.so
--rwxr-xr-x	root/root	usr/lib/libisccfg-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libisccfg.so -> libisccfg-9.18.1.so
--rwxr-xr-x	root/root	usr/lib/libns-9.18.1.so
-lrwxrwxrwx	root/root	usr/lib/libns.so -> libns-9.18.1.so
+-rwxr-xr-x	root/root	usr/lib/libbind9-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libbind9.so -> libbind9-9.18.2.so
+-rwxr-xr-x	root/root	usr/lib/libdns-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libdns.so -> libdns-9.18.2.so
+-rwxr-xr-x	root/root	usr/lib/libirs-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libirs.so -> libirs-9.18.2.so
+-rwxr-xr-x	root/root	usr/lib/libisc-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libisc.so -> libisc-9.18.2.so
+-rwxr-xr-x	root/root	usr/lib/libisccc-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libisccc.so -> libisccc-9.18.2.so
+-rwxr-xr-x	root/root	usr/lib/libisccfg-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libisccfg.so -> libisccfg-9.18.2.so
+-rwxr-xr-x	root/root	usr/lib/libns-9.18.2.so
+lrwxrwxrwx	root/root	usr/lib/libns.so -> libns-9.18.2.so
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/named
 -rwxr-xr-x	root/root	usr/sbin/rndc
