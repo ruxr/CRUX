@@ -43,8 +43,8 @@ f:15df3af2eeae0d8467a66a081574d0d5:core/Pkgfile
 f:2272d839f785ca9ede34716bfb28e0a3:core/core.sh
 f:466bc3b0b74b61895af9bdb176e7872f:core/init
 f:80a125200b468303dba8ed796ac5aca7:dhcp/.footprint
-f:86f39e80e158567a986cf64ba8bf88cf:dhcp/.signature
-f:b12ea2af82549850a098313336fc5b38:dhcp/Pkgfile
+f:1867c5f6484687298be0acd748b63570:dhcp/.signature
+f:dc6859252fa6221285c5f3c02299383b:dhcp/Pkgfile
 f:9605e3050abe4de318aa753fe7f059a4:dhcp/dhcpd
 f:c94ed2a0a97a1c58dbf9c518eb8792da:firefox-esr/.footprint
 f:ba0f3f7f325d34732f05f0a76acb53e6:firefox-esr/.signature

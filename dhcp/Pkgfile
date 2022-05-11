@@ -4,13 +4,13 @@
 # Build also:	dhcp-dev
 buildalso() {
 	mkdir -p $name-dev/usr/share/man
-	mv $name/usr/lib $name-dev/usr
+	mv $name/usr/{include,lib} $name-dev/usr
 	mv $name/usr/share/man/man3 $name-dev/usr/share/man
 }
 
 name=dhcp
 version=4.4.3
-release=1
+release=2
 source=(https://downloads.isc.org/isc/$name/$version/$name-$version.tar.gz
 	dhcpd)
 
