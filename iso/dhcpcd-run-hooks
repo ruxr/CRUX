@@ -1,8 +1,0 @@
-#!/bin/sh
-case $reason in BOUND) {
-        if [ -n "$new_domain_search" ]; then echo search "$new_domain_search"
-        elif [ -n "$new_domain_name" ]; then echo search "$new_domain_name"
-        fi
-        for ns in $new_domain_name_servers; do echo "nameserver $ns"; done
-        } >/etc/resolv.conf
-esac

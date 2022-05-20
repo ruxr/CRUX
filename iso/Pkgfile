@@ -5,171 +5,284 @@
 
 name=iso
 version=3.6
-release=1
-source=(README dhcpcd-run-hooks group init inittab inputrc
-	isolinux.cfg isolinux.msg issue login.pam nsswitch.conf passwd
-	rc rc.shutdown rc.single seconsole setup setup-chroot shadow)
+release=2
+source=(README init setup)
 
 build() {
-	DIR=$(echo /usr/src/linux-*)
-	case $DIR in *[*\ ]*) exit 1;; esac
-	[ -s $DIR/arch/x86/boot/bzImage ]
+  mkdir -p rootfs isofs/{boot/isolinux,crux}
 
-	# Create initramfs
-	Use() {
-		# coreutils
-		echo /bin/{date,ln,mkdir,readlink,rm,sleep,stty} /usr/bin/chroot
-		# dash
-		echo /bin/dash
-		# dosfstools
-		echo /sbin/mkfs.fat
-		# dhcpcd
-		echo /sbin/dhcpcd /lib/dhcpcd/dev/udev.so
-		# e2fsprogs
-		echo /sbin/mkfs.ext4 /etc/mke2fs.conf
-		# eudev
-		echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
-			sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
-		# glibc
-		pkginfo -l glibc | sed '/lib\//!d;/\/$/d
-			/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
-			/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
-			/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
-		echo /sbin/ldconfig
-		# inetutils
-		echo /bin/hostname
-		# iproute2
-		echo /sbin/ip /etc/iproute2/*
-		# kmod
-		echo /sbin/*mod*
-		# linux-pam
-		echo /lib/security/pam_unix.so
-		# ncurses
-		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
-		# pkgnew
-		echo /usr/sbin/pkguse
-		# pkgutils
-		echo /usr/bin/{pkgadd,pkginfo,pkgrm}
-		# sed
-		echo /bin/sed
-		# shadow
-		echo /bin/login
-		# sysvinit
-		echo /sbin/{init,killall5,poweroff,reboot,shutdown}
-		# tar
-		echo /bin/tar
-		# util-linux
-		echo /bin/{mount,umount} \
-			/sbin/{agetty,mkswap,sfdisk,switch_root}
-		# wget
-		echo /usr/bin/wget
-		# xz
-		echo /usr/bin/xz
-	}
-	Req() {
-		local A F N
-		A="$*" N=; shift
-		for F do
-			if [ ! -f $F ]; then echo Missing $F; exit 1; fi
-			echo $F
-			F=$([ -L $F ] && readlink -f $F || ldd $F 2>/dev/null |
-				sed '/\//!d;s%^[^/]*/%/%;s/ .*//;s%/\./%/%g
-					s%[^/]*/\.\./%%g;s%/lib64/%/lib/%')
-			for F in $F; do
-				case " $A$N " in *\ $F\ *) continue;; esac
-				N=$N\ $F
-			done
+  # Install kernel
+  sh $PKGMK_PACKAGE_DIR/CRUX-$version-kernel.run $SRC/rootfs
+  mv rootfs/boot/vmlinuz isofs/boot
+  rm -r rootfs/boot
+
+  # Create file list for initramfs
+  A= N=$(
+	# coreutils
+	echo /bin/{date,ln,mkdir,readlink,rm,sleep,stty} /usr/bin/chroot
+	# dash
+	echo /bin/dash
+	# dosfstools
+	echo /sbin/mkfs.fat
+	# dhcpcd
+	echo /sbin/dhcpcd /lib/dhcpcd/dev/udev.so
+	# e2fsprogs
+	echo /sbin/mkfs.ext4 /etc/mke2fs.conf
+	# eudev
+	echo /sbin/{udevadm,udevd} $(pkginfo -l eudev |
+		sed '/\/$/d;/udev\//!d;s%^%/%;/conf$/d')
+	# glibc
+	pkginfo -l glibc | sed '/lib\//!d;/\/$/d
+		/\/audit/d;/\/gconv/d;/\/getconf/d;/libBrokenLocale/d
+		/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
+		/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
+	echo /etc/{host,nsswitch}.conf /sbin/ldconfig
+	# inetutils
+	echo /bin/hostname
+	# iproute2
+	echo /sbin/ip /etc/iproute2/*
+	# kmod
+	echo /sbin/*mod*
+	# linux-pam
+	echo /lib/security/pam_unix.so
+	# ncurses
+	echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
+	# pkgnew
+	echo /usr/sbin/pkguse
+	# pkgutils
+	echo /usr/bin/{pkgadd,pkginfo,pkgrm}
+	# readline
+	echo /etc/inputrc
+	# sed
+	echo /bin/sed
+	# shadow
+	echo /bin/login
+	# sysvinit
+	echo /sbin/{init,killall5,poweroff,reboot,shutdown}
+	# tar
+	echo /bin/tar
+	# util-linux
+	echo /bin/{mount,umount} /sbin/{agetty,mkswap,sfdisk,switch_root}
+	# wget
+	echo /usr/bin/wget
+	# xz
+	echo /usr/bin/xz
+  )
+  while [ -n "$N" ]; do
+	set -- $N; N=
+	for F do
+		case " $A " in
+		*\ $F\ *);;
+		*) echo $F; A=$A\ $F N=$N\ $(case $(file -b $F) in
+			*ELF*) ldd $F | sed '/\//!d;s%^[^/]*%%;s/ .*//
+				s%/\./%/%g;s%[^/]*/\.\./%%g
+				s%/lib64/%/lib/%';;
+			symbolic*) readlink -f $F
+			esac)
+		esac
+	done
+  done >initramfs.use
+
+  # Create file tree for initramfs
+  cd rootfs
+  install -d dev etc/pam.d media mnt proc run sys usr \
+	var/{cache,empty,lib{,/dhcpcd,/pkg},log,run}
+  install -dm 1777 tmp var/{lock,tmp}
+  ln -s lib lib64
+  ln -s lib usr/lib64
+  ln -s /proc/mounts etc/mtab
+  tar -cf - -T ../initramfs.use | tar -xf -
+  # Opimize eudev files & etc
+  sed -i '/^#/d;/^$/d' */udev/*.d/* etc/{{host,nsswitch}.conf,inputrc}
+  mv bin/dash bin/sh
+  ldconfig -r $SRC/rootfs
+  
+  # Create files
+  touch etc/{motd,resolv.conf}
+  cat <<-END >bin/seconsole
+	#!/bin/sh
+	if /bin/stty -F /dev/ttyS0 >/dev/null 2>&1; then
+		exec /sbin/agetty 38400 ttyS0 vt100
+	else
+		exec /bin/sleep 365d
+	fi
+	END
+  cat <<-END >bin/setup-chroot
+	#!/bin/sh
+	mount --bind /proc /mnt/proc
+	mount --bind /sys /mnt/sys
+	mount --rbind /dev /mnt/dev
+	mount --bind /run /mnt/run
+	mount --bind /tmp /mnt/tmp
+	chroot /mnt /bin/sh
+	END
+  cat <<-END >etc/dhcpcd.conf
+	clientid
+	option domain_name_servers, domain_name, domain_search
+	END
+  cat <<-END >etc/fstab
+	devpts /dev/pts devpts noexec,nosuid,gid=tty,mode=0620 0 0
+	tmpfs /tmp tmpfs defaults 0 0
+	END
+  cat <<-END >etc/group
+	root::0:
+	daemon::1:
+	sys::2:
+	kmem::3:
+	input::4:
+	tty::5:
+	disk::6:
+	lp::7:
+	cdrom::8:
+	tape::9:
+	audio::10:
+	video::11:
+	dialout::12:
+	kvm::13:
+	nobody::99:
+	cron::100:
+	END
+  echo 127.0.0.1 localhost >etc/hosts
+  cat <<-END >etc/inittab
+	id:2:initdefault:
+	rc::sysinit:/etc/rc
+	rs:S1:wait:/etc/rc.single
+	rd:06:wait:/etc/rc.shutdown
+	su:S:wait:/sbin/sulogin -p
+	c1:2:respawn:/sbin/agetty --autologin root --noclear 38400 tty1 linux
+	c2:2:respawn:/sbin/agetty 38400 tty2 linux
+	c3:2:respawn:/sbin/agetty 38400 tty3 linux
+	s1:2:respawn:/bin/seconsole
+	ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+	END
+  cat <<-END >etc/issue
+
+	CRUX-$version (\n) (\l)
+
+	END
+  cat <<-END >etc/pam.d/login.pam
+	auth		required	pam_unix.so nullok
+	account		required	pam_unix.so
+	password	required	pam_unix.so
+	session		required	pam_unix.so
+	END
+  cat <<-END >etc/passwd
+	root:x:0:0:root:/root:/bin/sh
+	daemon:x:1:1:daemon:/:
+	nobody:x:99:99:nobody:/:
+	END
+  echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
+  cat <<-END >etc/rc
+	#!/bin/sh
+	echo The system is coming up. Please wait
+	/bin/hostname crux-new
+	/bin/mount -a
+	/sbin/ip addr add 127.0.0.1/8 dev lo broadcast + scope host
+	/sbin/ip link set lo up
+	/sbin/dhcpcd -q
+	END
+  cat <<-END >etc/rc.shutdown
+	#!/bin/sh
+	/bin/stty onlcr
+	echo The system is coming down. Please wait
+	/sbin/killall5 -15
+	/bin/sleep 5
+	/sbin/killall5 -9
+	/bin/umount -a -r
+	[ "\$RUNLEVEL" = 0 ] && /sbin/poweroff -d -f -i || /sbin/reboot -d -f -i
+	END
+  cat <<-END >etc/rc.single
+	#!/bin/sh
+	/sbin/killall5 -15
+	/bin/sleep 5
+	/sbin/killall5 -9
+	exec /sbin/init -t1 S
+	END
+  cat <<-END >etc/shadow
+	root::::::::
+	daemon:x:::::::
+	nobody:x:::::::
+	END
+  echo /bin/sh >etc/shells
+  cat <<-END >lib/dhcpcd/dhcpcd-run-hooks
+	#!/bin/sh
+	case \$reason in BOUND) {
+		if [ -n "\$new_domain_search" ]; then
+			echo search "\$new_domain_search"
+		elif [ -n "\$new_domain_name" ]; then
+			echo search "\$new_domain_name"
+		fi
+		for ns in \$new_domain_name_servers; do
+			echo "nameserver \$ns"
 		done
-		[ -z "$N" ] || Req "$A" $N
-	}
+		} >/etc/resolv.conf
+	esac
+	END
+  chmod 755 bin/{seconsole,setup-chroot} etc/rc* lib/dhcpcd/dhcpcd-run-hooks
+  install ../setup bin
+  install ../init ./init
 
-	mkdir rootfs
-	cd rootfs
-	install -d dev etc media mnt proc run sys usr \
-		var/{cache,empty,lib{,/dhcpcd,/pkg},log,run}
-	install -dm 1777 tmp var/{lock,tmp}
-	ln -s lib lib64
-	ln -s lib usr/lib64
-	ln -s /proc/mounts etc/mtab
-
-	Req "" $(Use) >../initramfs.use
-	tar -cf - -T ../initramfs.use | tar -xf -
-
-	# Opimize eudev files
-	sed -i '/^#/d;/^$/d' etc/udev/hwdb.d/* lib/udev/rules.d/*
-
-	echo -e clientid\\noption domain_name_servers, domain_name, \
-		domain_search >etc/dhcpcd.conf
-	echo -e devpts /dev/pts devpts noexec,nosuid,gid=tty,mode=0620 \
-		0 0\\ntmpfs /tmp tmpfs defaults 0 0 >etc/fstab
-	echo 127.0.0.1 localhost >etc/hosts
-	echo -e order hosts,bind\\nmulti on >etc/host.conf
-	echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin >etc/profile
-	echo /bin/sh >etc/shells
-	touch etc/{motd,resolv.conf}
-	install -m644 $SRC/{group,inittab,inputrc,issue,nsswitch.conf,passwd} \
-		etc
-	install -m640 $SRC/shadow etc
-	install -Dm640 $SRC/login.pam etc/pam.d/login
-	install $SRC/rc{,.shutdown,.single} etc
-	install $SRC/{seconsole,setup,setup-chroot} bin
-	install $SRC/dhcpcd-run-hooks lib/dhcpcd
-	install $SRC/init ./init
-	mv bin/dash bin/sh
-	ldconfig -r $(pwd -P)
-
-	find . | awk '
+  # Create package database
+  find . | awk '
 	/\/$/	{ next }
 	/^\./	{ sub("./", ""); if($1 != ".") a[$1] = ""; next }
 	/^$/	{ n = v = ""; next }
-		{
+	{
 		if(v) { if($1 in a) a[$1] = n }
 		else if(n) { p[n] = v = $1 } else { n = $1 }
-		}
+	}
 	END{
-		for(i in a) { n = a[i]; if(n) u[n] = n }
+		for(i in a) if(n = a[i]) u[n] = n
 		asort(u)
 		for(n in u) {
-			n = u[n]
-			print n "\n" p[n]
-			delete f
-			for(i in a) if(a[i] == n) delete a[f[i] = i]
-			asort(f)
-			for(i in f) print f[i]
+			print (n = u[n]) "\n" p[n]
+			delete f; for(i in a) if(a[i] == n) delete a[f[i] = i]
+			asort(f); for(i in f) print f[i]
 			print ""
 		}
-	}
-	' - /var/lib/pkg/db >var/lib/pkg/db
+	}' - /var/lib/pkg/db >var/lib/pkg/db
 
-	make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
-	rm lib/modules/*/{build,source}
+  # Create initramfs
+  find . | sort | cpio -o -H newc | gzip -9 >../initramfs
+  cd ..
+  rm -r rootfs
 
-	# May add yours modules from linux-firmware package
-	# cp -r /lib/firmware lib
+  # Create ISO tree
+  mv initramfs isofs/boot
+  cp README isofs
+  cat <<-END >isofs/boot/isolinux/isolinux.msg
 
-	find . | sort | cpio -o -H newc | gzip -9 >../initramfs
-	cd ..
-	rm -r rootfs
+	Welcome to the CRUX-$version install-media!
 
-	/bin/mkdir -p ISO/{boot/isolinux,crux}
+	Press <Enter> to boot using the default image
 
-	sed -i "s/#VER#/$version/" isolinux.msg
-	/bin/cp -r isolinux.* ISO/boot/isolinux
-	cp /usr/share/syslinux/{isolinux.bin,ldlinux.c32} ISO/boot/isolinux
-	cp $DIR/arch/x86/boot/bzImage ISO/boot/vmlinuz
-	mv initramfs ISO/boot
-	cp README ISO
+	To change root filesystem type: CRUX root=/dev/<device>
 
-	cp $PKGMK_PACKAGE_DIR/*#* $PKGMK_PACKAGE_DIR/PKG.* ISO/crux
+	END
+  cat <<-END >isofs/boot/isolinux/isolinux.cfg
+	SERIAL 0 38400
+	DISPLAY /boot/isolinux/isolinux.msg
+	PROMPT 1
+	DEFAULT CRUX
+	LABEL CRUX
+	  KERNEL /boot/vmlinuz
+	  APPEND initrd=/boot/initramfs console=ttyS0,38400 console=tty0
+	END
+  cp /usr/share/syslinux/{isolinux.bin,ldlinux.c32} isofs/boot/isolinux
 
-	D=$SRC/ISO/boot
-	echo -e "$D 100\n$D/isolinux 200\n$D/isolinux/isolinux.bin 300" >iso
-	genisoimage -R -l -J -V CRUX-$version -A CRUX \
-		-b boot/isolinux/isolinux.bin -c boot/isolinux/isolinux.boot \
-		-no-emul-boot -boot-load-size 4 -boot-info-table \
-		-sort iso -input-charset utf-8 -o CRUX-$version.iso ISO
-	isohybrid CRUX-$version.iso
-	mv CRUX-$version.iso $PKGMK_PACKAGE_DIR
+  # Copy packages & etc
+  cp $PKGMK_PACKAGE_DIR/PKG.* $PKGMK_PACKAGE_DIR/*.run $PKGMK_PACKAGE_DIR/*#* \
+	isofs/crux
 
-	mkdir $PKG/boot
+  # Create ISO image
+  D=$SRC/isofs/boot
+  echo -e "$D 100\n$D/isolinux 200\n$D/isolinux/isolinux.bin 300" >iso
+  genisoimage -R -l -J -V CRUX-$version -A CRUX \
+	-b boot/isolinux/isolinux.bin -c boot/isolinux/isolinux.boot \
+	-no-emul-boot -boot-load-size 4 -boot-info-table \
+	-sort iso -input-charset utf-8 -o CRUX-$version.iso isofs
+  isohybrid CRUX-$version.iso
+  mv CRUX-$version.iso $PKGMK_PACKAGE_DIR
+
+  mkdir $PKG/boot
 }
