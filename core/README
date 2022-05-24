@@ -1,0 +1,10 @@
+NOTE:
+
+To add the kernel firmware, create a file called "firmware" with a list of
+required files (one per line).
+
+To build a kernel for a machine named HOSTNAME, create the initial
+configuration HOSTNAME.config and a list of firmware files HOSTNAME.firmware
+in the /usr/ports/CRUX directory.
+The self-extracting archive CRUX-$version-HOSTNAME-kernel.run will be created
+in the $PKGMK_PACKAGE_DIR directory.

@@ -6,10 +6,10 @@
 
 name=core
 version=3.6
-release=2
+release=3
 REL=$(uname -r)
 DIR=/usr/src/linux-$REL
-source=(core.sh init
+source=(core.sh init firmware
 	https://cdn.kernel.org/pub/linux/kernel/v${REL%%.*}.x/linux-$REL.tar.xz)
 
 unpack_source() {
@@ -18,7 +18,7 @@ unpack_source() {
 		*/*)	[ -d $DIR ] && continue || rm -rf /usr/src/linux-*
 			mkdir -p /usr/src
 			bsdtar -C /usr/src -opxf $PKGMK_SOURCE_DIR/${F##*/};;
-		*) cp $F $SRC
+		*) [ ! -f $F ] || cp $F $SRC
 		esac
 	done
 }
@@ -55,43 +55,61 @@ build() {
 	done >initrd.use
 
 	# Create file tree for initrd
-	mkdir core
+	mkdir -p core/{dev,mnt,proc,run,sys}
 	cd core
-	install -d dev mnt proc run sys
-	install ../init .
 	tar -cf - -T ../initrd.use | tar -xf -
 	# Opimize eudev files
 	sed -i '/^#/d;/^$/d;s/\(GROUP=\)"[^"]*"/\1"0"/' */udev/*.d/*
 	mv bin/dash bin/sh
+	install ../init .
 	ldconfig -r $SRC/core
 
-	# Build kernel
-	if [ -f $DIR/.config ]; then
-		:
-	elif [ -f /boot/config ]; then
-		cp /boot/config $DIR/.config
+	ModFw() {
+		make -C $DIR INSTALL_MOD_PATH=$(pwd -P) modules_install
+		[ -f $1 ] || return 0
+		while read S; do
+			case $S in
+				/lib/firmware/*) install -Dm444 "$S" ."$S"
+			esac
+		done <$1
+	}
+
+	for C in /usr/ports/CRUX/*.config /boot/config; do
+		[ -f "$C" ] || continue
+		cp $C $DIR/.config
+		if [ "$C" = /boot/config ]; then
+			C= F=$SRC/firmware R=$SRC/post-install
+		else
+			F=${C%.config} R=$SRC/CRUX-$version-${F##*/}-kernel.run
+			F=$F.firmware
+		fi
+
+		# Build kernel
 		make -C $DIR olddefconfig
-	else
-		make -C $DIR localmodconfig
-	fi
-	make -C $DIR all
-	make -C $DIR INSTALL_MOD_PATH=$SRC/core modules_install
-	rm lib/modules/$REL/{build,source}
-	# May add yours modules from linux-firmware package
-	# cp -r /lib/firmware lib
+		make -C $DIR all
 
-	# Create initrd
-	find . | sort | cpio -o -H newc | gzip -9 >../initrd-$REL
+		# Create initrd
+		rm -rf lib/{modules,firmware} boot
+		ModFw $F
+		rm lib/modules/$REL/{build,source}
+		find . | sort | cpio -o -H newc | gzip -9 >../initrd-$REL
 
-	# Create a self-extracting archive
-	rm -r *
-	mkdir boot
-	mv ../initrd-$REL boot
-	cp $DIR/.config boot/config-$REL
-	cp $DIR/System.map boot/System.map-$REL
-	cp $DIR/arch/x86/boot/bzImage boot/vmlinuz-$REL
-	make -C $DIR INSTALL_MOD_PATH=$SRC/core modules_install
-	{ sed "s/#REL#/$REL/g" ../core.sh; tar -cJf - *; } >../post-install
+		# Create a self-extracting archive
+		mkdir -p boot/boot
+		cd boot
+		mv $SRC/initrd-$REL boot
+		cp $DIR/.config boot/config-$REL
+		cp $DIR/System.map boot/System.map-$REL
+		cp $DIR/arch/x86/boot/bzImage boot/vmlinuz-$REL
+		ModFw $F
+		{ sed "s/#REL#/$REL/g" $SRC/core.sh; tar -cJf - *; } >$R
+		cd ..
 
-	mkdir -p $PKG/boot
+		if [ -n "$C" ]; then
+			cp $DIR/.config $C
+			mv $R $PKGMK_PACKAGE_DIR
+		fi
+	done
+
+	mkdir $PKG/boot
 }
