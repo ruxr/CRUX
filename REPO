@@ -62,8 +62,8 @@ f:181027e1286c30ac8231d147b0ba4655:iso/README
 f:a80ccb2f23c27744c357282a1f08ffbc:iso/init
 f:cade8e985007c6319e77d63a85fa2e62:iso/setup
 f:d200408a8b8348ea4ddf59f10e8f7cd1:jwm/.footprint
-f:8a1fe2cd40c7d0af160675ed06ff398a:jwm/.signature
-f:5d5043d0841ed3069f5c863b3b038de8:jwm/Pkgfile
+f:e6c6d40ee3f2ab650ed3356db0bfe3a7:jwm/.signature
+f:8bfa4fc741d47d3ae23dbbd722877015:jwm/Pkgfile
 f:d456d4b8540d2e5f133192d9e42c7d85:jwm/example.jwmrc
 f:c9e6fac816135101727695692c7f89db:jwm/exit.png
 f:cdd2bbb7b89f06cd319ed9bdd90a32a1:jwm/folder.png
