@@ -131,8 +131,8 @@ f:9dd9cc85bc62ad47f7036823bd3c1d4d:tftp-hpa/.signature
 f:935724fdedc1a054da4e8644813b5088:tftp-hpa/Pkgfile
 f:22e8629ef19bc276a102c5d4d284c1bd:tftp-hpa/tftp-hpa-0.49-fortify-strcpy-crash.patch
 f:ec65e3a930a8ea41afb7f6d110ca006d:uasm/.footprint
-f:85d90dac308742d77019f0e0b57ea071:uasm/.signature
-f:d9b8d6dee2bc72e35f4258d6ba46266d:uasm/Pkgfile
+f:640b46eb276c5f561f96a7b5c93e1404:uasm/.signature
+f:7879177aab2dfaeba9c0b343552ee913:uasm/Pkgfile
 f:549484be14b2089c3517e56fa5230d4c:uasm/dbgcv.patch
 f:9d31ce00f10db317fc97718413044380:uasm/uasm-nocolor
 f:7e5a7c2772d6b44738f9828a991da723:ucarp/.footprint
