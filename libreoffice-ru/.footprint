@@ -1,6 +1,3 @@
-drwxr-xr-x	root/root	etc/
-drwxr-xr-x	root/root	etc/ld.so.conf.d/
--rw-r--r--	root/root	etc/ld.so.conf.d/libreoffice-ru.conf
 drwxr-xr-x	root/root	opt/
 drwxr-xr-x	root/root	opt/libreoffice7.3/
 drwxr-xr-x	root/root	opt/libreoffice7.3/presets/
@@ -169,6 +166,9 @@ drwxr-xr-x	root/root	opt/libreoffice7.3/program/classes/
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libmysql_jdbclo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libmysqlclo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libnamingservicelo.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libnspr4.so -> /usr/lib/firefox/libnspr4.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libnss3.so -> /usr/lib/firefox/libnss3.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libnssutil3.so -> /usr/lib/firefox/libnssutil3.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libodbclo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libodfgen-0.1-lo.so.1
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libofficebean.so
@@ -179,6 +179,8 @@ drwxr-xr-x	root/root	opt/libreoffice7.3/program/classes/
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libpdffilterlo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libpdfimportlo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libpdfiumlo.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libplc4.so -> /usr/lib/firefox/libplc4.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libplds4.so -> /usr/lib/firefox/libplds4.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libpricinglo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libprotocolhandlerlo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libproxyfaclo.so
@@ -206,8 +208,10 @@ drwxr-xr-x	root/root	opt/libreoffice7.3/program/classes/
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libsduilo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libslideshowlo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libsmdlo.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libsmime3.so -> /usr/lib/firefox/libsmime3.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libsmlo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libsolverlo.so
+lrwxrwxrwx	root/root	opt/libreoffice7.3/program/libssl3.so -> /usr/lib/firefox/libssl3.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libstaroffice-0.0-lo.so.0
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libstocserviceslo.so
 -rwxr-xr-x	root/root	opt/libreoffice7.3/program/libstoragefdlo.so

@@ -6,7 +6,7 @@
 
 name=libreoffice-ru
 version=7.3.4
-release=1
+release=2
 Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
 LOR=libreoffice${version%.[0-9]*}
 source=(
@@ -82,7 +82,7 @@ build() {
 	mkdir -p $PKG/usr/share/pixmaps
 	ln -s /usr/share/icons/hicolor/32x32/apps/$LOR-startcenter.png \
 		$PKG/usr/share/pixmaps/soffice.png
-
-	mkdir -p $PKG/etc/ld.so.conf.d
-	echo /usr/lib/firefox >$PKG/etc/ld.so.conf.d/$name.conf
+	for F in {libnspr4,libnss3,libnssutil3,libplc4,libplds4,libsmime3,libssl3}.so; do
+		ln -s /usr/lib/firefox/$F $PKG/opt/$LOR/program/$F
+	done 
 }
