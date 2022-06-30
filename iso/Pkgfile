@@ -5,7 +5,7 @@
 
 name=iso
 version=3.6
-release=2
+release=3
 source=(README init setup)
 
 build() {
@@ -160,7 +160,7 @@ build() {
 	CRUX-$version (\n) (\l)
 
 	END
-  cat <<-END >etc/pam.d/login.pam
+  cat <<-END >etc/pam.d/login
 	auth		required	pam_unix.so nullok
 	account		required	pam_unix.so
 	password	required	pam_unix.so

@@ -56,8 +56,8 @@ f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
 f:12ffba03884b61f7ffad60086b10566f:i2c-tools/.signature
 f:83373c55fc7cd2cec6bc980109a969f2:i2c-tools/Pkgfile
 f:69a3474d06f47d14f6d94bffc89dc23f:iso/.footprint
-f:dfad9b590d0ad616c9a9fc833d13a4dc:iso/.signature
-f:e343ac9ec2bfaf4ebdddf7f439889c66:iso/Pkgfile
+f:269fa733222b911f9e21bff14e39ad26:iso/.signature
+f:1e9523113223a16da3596521d4ef6545:iso/Pkgfile
 f:181027e1286c30ac8231d147b0ba4655:iso/README
 f:a80ccb2f23c27744c357282a1f08ffbc:iso/init
 f:cade8e985007c6319e77d63a85fa2e62:iso/setup
