@@ -5,8 +5,8 @@
 # Post-install:	yes
 
 name=libreoffice-ru
-version=7.3.4
-release=2
+version=7.3.5
+release=1
 Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
 LOR=libreoffice${version%.[0-9]*}
 source=(
