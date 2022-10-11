@@ -44,9 +44,9 @@ f:3457d9fdcd6e7efd586215d98b178de7:core/README
 f:2272d839f785ca9ede34716bfb28e0a3:core/core.sh
 f:466bc3b0b74b61895af9bdb176e7872f:core/init
 f:80a125200b468303dba8ed796ac5aca7:dhcp/.footprint
-f:1867c5f6484687298be0acd748b63570:dhcp/.signature
-f:dc6859252fa6221285c5f3c02299383b:dhcp/Pkgfile
-f:9605e3050abe4de318aa753fe7f059a4:dhcp/dhcpd
+f:dfb90f56f4decfb94639912593e2f3d9:dhcp/.signature
+f:290179d2a6999994c4905aefebb80cce:dhcp/Pkgfile
+f:5d435b4922f68144909012eccb386d71:dhcp/dhcpd
 f:1bd6f2ff4d4ecfe80a8ea1fd9daf6d33:firefox-esr/.footprint
 f:b13af62408719ff7f4f91f7a0d5d11fe:firefox-esr/.signature
 f:52e74d4eb8444d7d152ac64b9c177593:firefox-esr/Pkgfile

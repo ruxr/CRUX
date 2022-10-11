@@ -5,12 +5,12 @@
 
 SSD=/sbin/start-stop-daemon
 PRG=/usr/sbin/dhcpd
-PID=/var/run/dhcpd.pid
+PID=/run/dhcpd.pid
 OPT=-q
 
 case $1 in
 start)
-	/bin/touch /var/db/dhcpd.leases
+	touch /var/db/dhcpd.leases
 	$SSD --start --pidfile $PID --exec $PRG -- $OPT
 	;;
 stop)

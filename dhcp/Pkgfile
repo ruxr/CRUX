@@ -10,7 +10,7 @@ buildalso() {
 
 name=dhcp
 version=4.4.3
-release=2
+release=3
 source=(https://downloads.isc.org/isc/$name/$version/$name-$version.tar.gz
 	dhcpd)
 
