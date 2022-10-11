@@ -6,13 +6,13 @@
 
 name=ntp
 version=4.2.8p15
-release=1
+release=2
 source=(https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/$name-$version.tar.gz
-	ntpd ntp.conf ntp-64bit.diff)
+	ntpd ntp.conf ntp.patch)
 
 build () {
 	cd $name-$version
-	patch -p1 -i ../ntp-64bit.diff
+	patch -p1 -i ../ntp.patch
 	sed -i '25611,25674d' configure
 
 	./configure \
