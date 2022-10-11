@@ -57,5 +57,3 @@ drwxrwx---	root/named	var/named/
 -rw-r-----	root/named	var/named/127.in-addr.arpa
 -rw-r-----	root/named	var/named/localhost
 -rw-r-----	root/named	var/named/named.root
-drwxr-xr-x	root/root	var/run/
-drwxrwx---	root/named	var/run/named/

@@ -4,7 +4,7 @@
 #
 
 SSD=/sbin/start-stop-daemon
-PID=/var/run/named/named.pid
+PID=/run/named/named.pid
 PRG=/usr/sbin/named
 KEY=/etc/named/rndc.key
 OPT="-u named -c /etc/named/named.conf"
@@ -12,6 +12,7 @@ OPT="-u named -c /etc/named/named.conf"
 case $1 in
 start)
 	[ -s $KEY ] || /usr/sbin/rndc-confgen | /bin/sed '2,5!d' >$KEY
+	install -dm770 -g named ${PID%/*)
 	$SSD --start --pidfile $PID --exec $PRG -- $OPT
 	;;
 stop)
