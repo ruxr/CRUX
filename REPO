@@ -38,8 +38,8 @@ f:1015d8c62fb185a970ae81788f521d7c:brother_dcp1600/Pkgfile
 f:a763b2ca4a29d3d0ebbff30ba5f6253c:brother_dcp1600/README
 f:6c6e0ba049c9c5b4fdcd852e9a565b40:brother_dcp1600/postinstall
 f:69a3474d06f47d14f6d94bffc89dc23f:core/.footprint
-f:c3c92ff1c618013f1c670426c291174d:core/.signature
-f:d6fea8d972a093e6d8d3c3108ce16ba1:core/Pkgfile
+f:50e6157ef3510d3ef100647f206cf48c:core/.signature
+f:4ecad2d129b5fea033496f8a30a998bc:core/Pkgfile
 f:3457d9fdcd6e7efd586215d98b178de7:core/README
 f:2272d839f785ca9ede34716bfb28e0a3:core/core.sh
 f:466bc3b0b74b61895af9bdb176e7872f:core/init
