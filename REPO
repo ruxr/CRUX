@@ -88,12 +88,12 @@ f:6a222de64295f4e968f5805f8e9884e4:lshw/Pkgfile
 f:8d06c979827e103458ffe146b7e74422:mrtg/.footprint
 f:98aaa2feb9ae2cdfb4bf7aa600da2f3b:mrtg/.signature
 f:c54583c860fded8574b783e8a039881c:mrtg/Pkgfile
-f:d6c1948b3706e80a9182a1d987f5dac7:net-snmp/.footprint
-f:3aaa28d19287c8cf9fa9d523fbc71fc0:net-snmp/.signature
-f:5c8543356c0abd473958e487da88f886:net-snmp/Pkgfile
-f:ce4586653e05b1189dfeb5c43f18caf8:net-snmp/snmpd
+f:6b586c901bafa22dc98fbda2b3344989:net-snmp/.footprint
+f:67628d2080a0d98a1156e0838e596656:net-snmp/.signature
+f:262f9c815821a30cdd2e27ee7e94eebf:net-snmp/Pkgfile
+f:d012a277b8394f3e391fd0a04e8900b5:net-snmp/snmpd
 f:fbf08c7861ec1fd473b9b50e0cdac6b0:net-snmp/snmpd.conf
-f:837125ddb491248680ac4784a73cf3c7:net-snmp/snmptrapd
+f:1acff4fa4d2f1bfa5b3ce619636279a2:net-snmp/snmptrapd
 f:c84e4b484564143c791dc38d1138d3fd:net-snmp/snmptrapd.conf
 f:d8ad7cb64caaa9328381dbf62a47b079:ntp/.footprint
 f:e3cf7451845ae8d1c5ce889705f03f3f:ntp/.signature

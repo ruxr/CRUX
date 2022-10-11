@@ -5,7 +5,7 @@
 
 SSD=/sbin/start-stop-daemon
 PRG=/usr/sbin/snmpd
-PID=/var/run/snmpd.pid
+PID=/run/snmpd.pid
 OPT="-A -p $PID -Ls 7 -u snmp -g snmp"
 
 case $1 in
