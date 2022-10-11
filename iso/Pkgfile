@@ -4,8 +4,8 @@
 # Depends on:	ALL cdrkit core syslinux
 
 name=iso
-version=3.6
-release=3
+version=3.7
+release=1
 source=(README init setup)
 
 build() {
@@ -37,6 +37,7 @@ build() {
 		/libmvec/d;/libcidn/d;/libpcprofile/d;/libthread_db/d
 		/nss_compat/d;/nss_db/d;/nss_hesiod/d;/nss_nis/d;s%^%/%'
 	echo /etc/{host,nsswitch}.conf /sbin/ldconfig
+	echo /usr/lib/gconv/IBM850.so # for mkfs.fat
 	# inetutils
 	echo /bin/hostname
 	# iproute2
@@ -86,10 +87,11 @@ build() {
   # Create file tree for initramfs
   cd rootfs
   install -d dev etc/pam.d media mnt proc run sys usr \
-	var/{cache,empty,lib{,/dhcpcd,/pkg},log,run}
+	var/{cache,empty,lib{,/dhcpcd,/pkg},log}
   install -dm 1777 tmp var/{lock,tmp}
   ln -s lib lib64
   ln -s lib usr/lib64
+  ln -s ../run var/run
   ln -s /proc/mounts etc/mtab
   tar -cf - -T ../initramfs.use | tar -xf -
   # Opimize eudev files & etc
