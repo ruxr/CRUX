@@ -136,11 +136,11 @@ f:7879177aab2dfaeba9c0b343552ee913:uasm/Pkgfile
 f:549484be14b2089c3517e56fa5230d4c:uasm/dbgcv.patch
 f:9d31ce00f10db317fc97718413044380:uasm/uasm-nocolor
 f:7e5a7c2772d6b44738f9828a991da723:ucarp/.footprint
-f:02b94991903e737bccc6e82a1b0fb87e:ucarp/.signature
+f:a5463d05f534bd07f38290121ead15e4:ucarp/.signature
 f:3f20699aaf2ef8139dcd337f1e7f06ab:ucarp/01-fix-getopt.patch
 f:09d26233c37956cf08e629554a91b8cd:ucarp/02-fix-downscript-on-error.patch
 f:48516a95c6a428f5e53cd0883380ffbd:ucarp/Pkgfile
-f:a2eea34434babe246fed4623acd88318:ucarp/ucarp
+f:dff129a93d4c1151b696d23ad28f7bc4:ucarp/ucarp
 f:2ccfdc464b88c437b38bd0324cf1fef3:ucarp/ucarp.8
 f:79d8b7037f93bd7ca7af000bad333692:ucarp/ucarp.conf
 f:348c9b01d003a781a4336e2b6bb8f312:xorg-font-paratype-ttf/.footprint

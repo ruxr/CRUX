@@ -7,7 +7,7 @@
 
 SSD=/sbin/start-stop-daemon
 PRG=/usr/sbin/ucarp
-PID=/var/run/ucarp.pid
+PID=/run/ucarp.pid
 OPT="-nz -u $0 -d $0 $UCARP"
 
 case $* in
