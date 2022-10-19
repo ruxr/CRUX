@@ -1,9 +1,0 @@
-untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md3wA4lvkklAQpRPnJjyG0dglPAGPYE8ZIVOWZYZZ7kua0Nze5CmeE4VWOD0rtjAs3aCKRGurWrFyoLPsRZc5qZgs=
-SHA256 (Pkgfile) = 4f125b369e99ded7a66ce8fd4968dfa84ee4808c7c455d3c58a82a08432674c1
-SHA256 (.footprint) = 4590edb8e2436f467d938550c4bf55e689a454458ecaa157ed124db0240db2fc
-SHA256 (NVIDIA-Linux-x86_64-340.108-no-compat32.run) = 995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77
-SHA256 (90-nvidia-uvm.rules) = c35c61cebf5bf9a112ac06539bdc670a388afa4b50a7f8223a114fbeafedb140
-SHA256 (0001-kernel-5.7.patch) = c8bda5fb238fbebc5bf6ae4b7646e48b30a96b9060ced20d93c53c14ac3161f6
-SHA256 (0002-kernel-5.8.patch) = 10b91c8dbc269ff1d8e3e8a1866926c309ff3912d191a05cd5724a3139776f32
-SHA256 (0003-kernel-5.9.patch) = e06af37ffa2203698594e0f58816b809feced9b2374927e13b85fd5c18fa3114

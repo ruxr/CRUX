@@ -24,10 +24,8 @@
 | live | Live-update script |
 | locale | Russian system locales |
 | lshw | Show detailed computer configuration information |
-| mrtg | Multirouter traffic grapher |
 | net-snmp | SNMP daemon and client tools |
 | ntp | Network Time Protocol software |
-| nvidia340 | NVIDIA Linux Display Driver (version 340) |
 | p5-dbi | Database independent interface for Perl |
 | p5-sqlite | Perl DBI driver for SQLite |
 | p7-zip | File archiver with a high compression ratio |
