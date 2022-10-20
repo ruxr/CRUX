@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md3+qr98NYfuJqmDmUBLvujKZQe3kFUHXdlGVoU8k1bZz2sNaSdJ2v/DpsvxShKmIX1bcolhju97vWmyql+MPAswA=
-SHA256 (Pkgfile) = 7ffa27306f8c2e27ecab064b616d0ddcef31e36ad77383c32ac7d69c5cc18140
+RWST1RjWg2md328JB0DMDohJ39i1q784T8qC88kY9JXtPx8QkLMK1WwI9h0DkLZL1fHSEgtX9KLBjOs1RJihA8ATg49p22s7GAs=
+SHA256 (Pkgfile) = 77ca3ee1874ef59b6e9b2db29aecbaebab3b9d4d8829bdc3c449a5e2629e6e97
 SHA256 (.footprint) = 1c4c34ecc5151273bcb4c1530dc5402bedfab690c4560dd5fd574183f6945480
-SHA256 (LibreOffice_7.4.0_Linux_x86-64_rpm.tar.gz) = c197358662073ca3df618872843e7eeaa54113dd39ae9af54bec41fb50bf9a39
-SHA256 (LibreOffice_7.4.0_Linux_x86-64_rpm_langpack_ru.tar.gz) = cda51626deab0373a272de045ddd8b3d50ebe30fb4d6d0da634deca92bc2b0e2
+SHA256 (LibreOffice_7.4.2_Linux_x86-64_rpm.tar.gz) = a6d1232c513ab54d5186f35ffeadc3198d4f3d882f39876ee97839d117733bab
+SHA256 (LibreOffice_7.4.2_Linux_x86-64_rpm_langpack_ru.tar.gz) = e1c8b5a21379320071ec8f749fb0f287a8ccfd94f11eda8ebdf2ab8728c2409f
