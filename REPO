@@ -83,9 +83,9 @@ f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
 f:8dd825ba404de9f11d9ed384a4b3ca37:lshw/.footprint
 f:6425746ba90988bffdda9b5c7249d9e8:lshw/.signature
 f:6a222de64295f4e968f5805f8e9884e4:lshw/Pkgfile
-f:6b586c901bafa22dc98fbda2b3344989:net-snmp/.footprint
-f:67628d2080a0d98a1156e0838e596656:net-snmp/.signature
-f:262f9c815821a30cdd2e27ee7e94eebf:net-snmp/Pkgfile
+f:06c06c7b3f47829698decde71af64ec7:net-snmp/.footprint
+f:dd53060d469cb4eaa7087a2521be873f:net-snmp/.signature
+f:2c1af321cf3558f1418c728e607538e6:net-snmp/Pkgfile
 f:d012a277b8394f3e391fd0a04e8900b5:net-snmp/snmpd
 f:fbf08c7861ec1fd473b9b50e0cdac6b0:net-snmp/snmpd.conf
 f:1acff4fa4d2f1bfa5b3ce619636279a2:net-snmp/snmptrapd

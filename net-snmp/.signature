@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md3zDGs5nBkJwrmDquSYtMX3DoH5F/c8vOIkK3CCswSVNapGQh1CQLU5bS6WQcVQGmkPNS0uJ6hGsvoTKiD2YXUAY=
-SHA256 (Pkgfile) = 0b452c8f15d077d3d9326891ef4305ec39c962fe95ce41737b6c813f9c3c22d7
-SHA256 (.footprint) = 6798a19fa687e51a2ef197f656b6219bd39871cbf297ba9b9fd9e3dc93e9b3eb
-SHA256 (net-snmp-5.9.1.tar.gz) = eb7fd4a44de6cddbffd9a92a85ad1309e5c1054fb9d5a7dd93079c8953f48c3f
+RWST1RjWg2md39SroIprSOMxGclCEwu/860KVeihf3dOwA7hmSDC7qr4HCJcAUwQ9rkNm15Sw2fF/4qccrMQq3Q6BSI7l9vk6go=
+SHA256 (Pkgfile) = 38622607459c4f63ccd9f70bf2dfdb26ca98a2d8accee2b22104efc2dd49f3f1
+SHA256 (.footprint) = 3c8c6eab725054edb11dcf6e3071cba1aa90222a32979f7fc887ce4a1fa33528
+SHA256 (net-snmp-5.9.3.tar.gz) = 2097f29b7e1bf3f1300b4bae52fa2308d0bb8d5d3998dbe02f9462a413a2ef0a
 SHA256 (snmpd) = 7239d6d902c199df8910114b62d888486eb66bb9ea6f4ad5377d035bed3a9ed1
 SHA256 (snmpd.conf) = e06fcf41c2d5852ca58cfb75f7f14adb247963bfa88f1689464dc6e2812b43ea
 SHA256 (snmptrapd) = 1d0a04716dfb96e3949dce975fbfdeaabc2e670c43f88c9abf9e9161f774611b

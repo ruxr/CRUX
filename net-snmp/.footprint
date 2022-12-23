@@ -113,7 +113,6 @@ drwxr-xr-x	root/root	usr/include/net-snmp/library/
 -rw-r--r--	root/root	usr/include/net-snmp/library/data_list.h
 -rw-r--r--	root/root	usr/include/net-snmp/library/default_store.h
 -rw-r--r--	root/root	usr/include/net-snmp/library/dir_utils.h
--rw-r--r--	root/root	usr/include/net-snmp/library/factory.h
 -rw-r--r--	root/root	usr/include/net-snmp/library/fd_event_manager.h
 -rw-r--r--	root/root	usr/include/net-snmp/library/file_utils.h
 -rw-r--r--	root/root	usr/include/net-snmp/library/getopt.h
@@ -234,25 +233,25 @@ drwxr-xr-x	root/root	usr/include/net-snmp/system/
 -rw-r--r--	root/root	usr/include/net-snmp/version.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libnetsnmp.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so -> libnetsnmp.so.40.1.0
-lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so.40 -> libnetsnmp.so.40.1.0
--rwxr-xr-x	root/root	usr/lib/libnetsnmp.so.40.1.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so -> libnetsnmp.so.40.2.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so.40 -> libnetsnmp.so.40.2.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmp.so.40.2.0
 -rw-r--r--	root/root	usr/lib/libnetsnmpagent.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so -> libnetsnmpagent.so.40.1.0
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so.40 -> libnetsnmpagent.so.40.1.0
--rwxr-xr-x	root/root	usr/lib/libnetsnmpagent.so.40.1.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so -> libnetsnmpagent.so.40.2.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so.40 -> libnetsnmpagent.so.40.2.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmpagent.so.40.2.0
 -rw-r--r--	root/root	usr/lib/libnetsnmphelpers.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so -> libnetsnmphelpers.so.40.1.0
-lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so.40 -> libnetsnmphelpers.so.40.1.0
--rwxr-xr-x	root/root	usr/lib/libnetsnmphelpers.so.40.1.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so -> libnetsnmphelpers.so.40.2.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so.40 -> libnetsnmphelpers.so.40.2.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmphelpers.so.40.2.0
 -rw-r--r--	root/root	usr/lib/libnetsnmpmibs.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so -> libnetsnmpmibs.so.40.1.0
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so.40 -> libnetsnmpmibs.so.40.1.0
--rwxr-xr-x	root/root	usr/lib/libnetsnmpmibs.so.40.1.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so -> libnetsnmpmibs.so.40.2.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so.40 -> libnetsnmpmibs.so.40.2.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmpmibs.so.40.2.0
 -rw-r--r--	root/root	usr/lib/libnetsnmptrapd.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so -> libnetsnmptrapd.so.40.1.0
-lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so.40 -> libnetsnmptrapd.so.40.1.0
--rwxr-xr-x	root/root	usr/lib/libnetsnmptrapd.so.40.1.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so -> libnetsnmptrapd.so.40.2.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so.40 -> libnetsnmptrapd.so.40.2.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmptrapd.so.40.2.0
 drwxr-xr-x	root/root	usr/lib/perl5/
 drwxr-xr-x	root/root	usr/lib/perl5/site_perl/
 drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/
