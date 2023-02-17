@@ -22,10 +22,10 @@ d:tftp-hpa
 d:uasm
 d:ucarp
 d:xorg-font-paratype-ttf
-f:dd8da09688cbf0fc9b6beebe06d9a55d:bind/.footprint
-f:6d33eadff0f45ce94924bee5615799c1:bind/.signature
+f:65117101896c71a5f42a6daa6fdbfabf:bind/.footprint
+f:236ff86925a2faa8da4f6384565c104a:bind/.signature
 f:101af2542cecc44cbcd143197b713313:bind/127.in-addr.arpa
-f:b96ff3b12aa18cbd3ebf563444fa3e81:bind/Pkgfile
+f:7775da0e4cb9a27e6c3e3e6aeadb4e7c:bind/Pkgfile
 f:ad29978e62ec286befe582ad9ef1205e:bind/localhost
 f:e3e6c787d890bcc670e3b70f7fe727d9:bind/named
 f:91417a23bc73cf64b717ae6834baa9ae:bind/named.conf

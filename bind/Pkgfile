@@ -14,7 +14,7 @@ buildalso() {
 }
 
 name=bind
-version=9.18.11
+version=9.18.12
 release=1
 source=(https://downloads.isc.org/isc/bind9/$version/$name-$version.tar.xz
 	named.root localhost named named.conf 127.in-addr.arpa)
