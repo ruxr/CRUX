@@ -1,0 +1,33 @@
+# Description:	Free implementation of the Remote Desktop Protocol (RDP)
+# URL:		https://www.freerdp.com/
+# Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
+# Depends on:	cmake cups ffmpeg xorg-libxcursor xorg-libxdamage xorg-libxinerama xorg-libxkbfile xorg-libxrandr
+
+name=freerdp
+version=2.10.0
+release=1
+source=(https://github.com/$name/$name/archive/$version.tar.gz)
+
+build() {
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_SKIP_INSTALL_RPATH=ON \
+		-DWITH_FFMPEG=OFF \
+		-DWITH_PULSE=ON \
+		-DWITH_PCSC=ON \
+		-DWITH_JPEG=ON \
+		-DWITH_SERVER=ON \
+		-DWITH_SWSCALE=ON \
+		-DWITH_CHANNELS=ON \
+		-DWITH_CLIENT_CHANNELS=ON \
+		-DWITH_SERVER_CHANNELS=ON \
+		-DCHANNEL_URBDRC_CLIENT=ON \
+		-Wno-dev \
+		-B build \
+		-S FreeRDP-$version
+
+	cmake --build build
+	DESTDIR=$PKG cmake --install build
+}

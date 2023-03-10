@@ -3,6 +3,7 @@ d:brother_dcp1600
 d:core
 d:dhcp
 d:firefox-esr
+d:freerdp
 d:i2c-tools
 d:iso
 d:jwm
@@ -49,6 +50,9 @@ f:143ea20b0a94315ff722e3f9b0478a51:firefox-esr/.signature
 f:068d29fe8a29791cd147f85d56103e1e:firefox-esr/Pkgfile
 f:8081bb8fcc54a043457d0c71ed0bd062:firefox-esr/firefox.desktop
 f:a562967c078701d405eff29b0ae220b6:firefox-esr/policies.json
+f:8ace829009c8f62ac674a8c3a5376ec0:freerdp/.footprint
+f:ad7c1cdd0eb335111789692d61066500:freerdp/.signature
+f:7d2568a2c3617184a1fe61d56de1a67d:freerdp/Pkgfile
 f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
 f:12ffba03884b61f7ffad60086b10566f:i2c-tools/.signature
 f:83373c55fc7cd2cec6bc980109a969f2:i2c-tools/Pkgfile

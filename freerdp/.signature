@@ -1,0 +1,5 @@
+untrusted comment: verify with /etc/ports/ruxr.pub
+RWST1RjWg2md34VhB0l7RiAdLWMBo3ONFU1HfVd0jAD6TZlFV0B6ajyerKGz/S1onrjlB+bmhKZ4fLgCsKr8H+t9Ndz8CTOPrAE=
+SHA256 (Pkgfile) = dba872742e48a9bb9b1a93147d4fd87df8a283059ec3926101c8bb0b94d47813
+SHA256 (.footprint) = beec865b1cb370be8d53727558b77e7fce5ae0ba7f13e49a7a6b97a60441a5b2
+SHA256 (2.10.0.tar.gz) = 88fa59f8e8338d5cb2490d159480564562a5624f3a3572c89fa3070b9626835c
