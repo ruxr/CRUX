@@ -111,9 +111,9 @@ f:70702991d19ff80347f7742c2d02320d:pkgnew/Pkgfile
 f:9ac3dcedba8bf263e61c46c34e65a1e7:rdesktop/.footprint
 f:2e3ae2b949a205825ec9a537fe221a70:rdesktop/.signature
 f:3ad827f32fc51182df25ad8773b05cea:rdesktop/Pkgfile
-f:53141d046bc17c5bcb9d3ce5a37d2d80:rss/.footprint
-f:02707f8993236fe84265ee57069c15f3:rss/.signature
-f:6a79f552fb67c3aae667e4bcef36c73a:rss/Pkgfile
+f:6c7e946367e05b11f801b60bf8e9d5e3:rss/.footprint
+f:a06cd71f0c6c94fda5fa962adf52ab3f:rss/.signature
+f:7c885d7c330b1cc396ff6528ba7c5457:rss/Pkgfile
 f:2764cc6c0e4154b1a45ac5521d75c970:tftp-hpa/.footprint
 f:9dd9cc85bc62ad47f7036823bd3c1d4d:tftp-hpa/.signature
 f:935724fdedc1a054da4e8644813b5088:tftp-hpa/Pkgfile

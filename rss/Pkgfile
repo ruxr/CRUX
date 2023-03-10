@@ -4,7 +4,7 @@
 # Depends on:	sqlite3 xdelta3 xz
 
 name=rss
-version=1.20.2
+version=1.23.0
 release=1
 source=(https://github.com/ruxr/Rss/releases/download/V$version/Rss-$version.tar.bz2)
 

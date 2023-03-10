@@ -1,9 +1,9 @@
 drwxr-xr-x	root/root	bin/
 -r-xr-xr-x	root/root	bin/Rss
 drwxr-xr-x	root/root	etc/
--rwxr-xr-x	root/root	etc/Check
 drwxr-xr-x	root/root	etc/cron.d/
 -rw-r--r--	root/root	etc/cron.d/Rss
+-rwxr-xr-x	root/root	etc/rc.Rss
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
