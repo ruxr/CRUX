@@ -16,7 +16,6 @@ d:p5-dbi
 d:p5-sqlite
 d:p7-zip
 d:pkgnew
-d:rdesktop
 d:rss
 d:tftp-hpa
 d:uasm
@@ -108,9 +107,6 @@ f:4ac983356dfe9ba8a7b31e1c25706e5f:p7-zip/Pkgfile
 f:143042d1796720da663e6e770b60f467:pkgnew/.footprint
 f:763e75cb163b7b19ac9fe22f38d3db4c:pkgnew/.signature
 f:70702991d19ff80347f7742c2d02320d:pkgnew/Pkgfile
-f:9ac3dcedba8bf263e61c46c34e65a1e7:rdesktop/.footprint
-f:2e3ae2b949a205825ec9a537fe221a70:rdesktop/.signature
-f:3ad827f32fc51182df25ad8773b05cea:rdesktop/Pkgfile
 f:6c7e946367e05b11f801b60bf8e9d5e3:rss/.footprint
 f:a06cd71f0c6c94fda5fa962adf52ab3f:rss/.signature
 f:7c885d7c330b1cc396ff6528ba7c5457:rss/Pkgfile
