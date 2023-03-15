@@ -9,13 +9,16 @@ buildalso() {
 }
 
 name=dhcp
-version=4.4.3
-release=3
+version=4.4.3-P1
+release=1
 source=(https://downloads.isc.org/isc/$name/$version/$name-$version.tar.gz
+	0001-99-replace-hostname-with-uname-n.patch
 	dhcpd)
 
 build() {
 	cd dhcp-$version
+
+	patch -Np1 < ../0001-99-replace-hostname-with-uname-n.patch
 
 	./configure --prefix=/usr \
 		--disable-dhcpv6 \
