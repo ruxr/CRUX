@@ -1,4 +1,3 @@
-d:bind
 d:brother_dcp1600
 d:core
 d:dhcp
@@ -22,14 +21,6 @@ d:tftp-hpa
 d:uasm
 d:ucarp
 d:xorg-font-paratype-ttf
-f:321f44af8fe6aa509d66e5784050bae7:bind/.footprint
-f:73e104f6f53c3900f13b59b1bf94668f:bind/.signature
-f:101af2542cecc44cbcd143197b713313:bind/127.in-addr.arpa
-f:559018c9271142e03aec5034eba5a115:bind/Pkgfile
-f:ad29978e62ec286befe582ad9ef1205e:bind/localhost
-f:e3e6c787d890bcc670e3b70f7fe727d9:bind/named
-f:91417a23bc73cf64b717ae6834baa9ae:bind/named.conf
-f:805e3b1562c1024ad6f3638d0fa60ea5:bind/named.root
 f:8948458865e3af72ec65750fe9eb3657:brother_dcp1600/.footprint
 f:0caf642649af82276ef704df4e5522d7:brother_dcp1600/.signature
 f:1015d8c62fb185a970ae81788f521d7c:brother_dcp1600/Pkgfile
