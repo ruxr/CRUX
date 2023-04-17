@@ -408,6 +408,8 @@ drwxr-xr-x	root/root	opt/libreoffice7.5/share/config/
 -rw-rw-r--	root/root	opt/libreoffice7.5/share/config/images_sifr_dark_svg.zip
 -rw-rw-r--	root/root	opt/libreoffice7.5/share/config/images_sifr_svg.zip
 -rw-rw-r--	root/root	opt/libreoffice7.5/share/config/images_sukapura.zip
+-rw-rw-r--	root/root	opt/libreoffice7.5/share/config/images_sukapura_dark.zip
+-rw-rw-r--	root/root	opt/libreoffice7.5/share/config/images_sukapura_dark_svg.zip
 -rw-rw-r--	root/root	opt/libreoffice7.5/share/config/images_sukapura_svg.zip
 drwxr-xr-x	root/root	opt/libreoffice7.5/share/config/soffice.cfg/
 drwxr-xr-x	root/root	opt/libreoffice7.5/share/config/soffice.cfg/cui/
