@@ -38,8 +38,8 @@ f:d0ae9a6e7d773169205b451384ca602e:dhcp/0001-99-replace-hostname-with-uname-n.pa
 f:9d4c8a3fc39ab7d080506d850199d46a:dhcp/Pkgfile
 f:5d435b4922f68144909012eccb386d71:dhcp/dhcpd
 f:1f2e0d0456a6097fa0983887ecf4a13c:firefox-esr/.footprint
-f:4f0f3b9d1928e197abce49db2a3832a1:firefox-esr/.signature
-f:90f21e13beb15db25bfb3c675b15e39b:firefox-esr/Pkgfile
+f:f6f27284564a4190fd30d8c0c1e912d8:firefox-esr/.signature
+f:00b37e8955ca02e79e46526a8ad026b3:firefox-esr/Pkgfile
 f:8081bb8fcc54a043457d0c71ed0bd062:firefox-esr/firefox.desktop
 f:a562967c078701d405eff29b0ae220b6:firefox-esr/policies.json
 f:8ace829009c8f62ac674a8c3a5376ec0:freerdp/.footprint
