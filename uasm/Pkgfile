@@ -2,7 +2,7 @@
 # URL:		http://www.terraspace.co.uk/uasm.html
 
 name=uasm
-version=2.55
+version=2.56.2
 release=1
 source=(https://github.com/Terraspace/UASM/archive/refs/tags/v$version.tar.gz
 	uasm-nocolor dbgcv.patch)
