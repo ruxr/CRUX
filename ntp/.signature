@@ -1,8 +1,7 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md30OxPQP9z54aNEjY7pjZw0VqOcJ66I7vwx31yWsgCv3SmANSWEvZwa9jBnnAz/QNi1IlJV8+C9MgJKMrp7x+Rgk=
-SHA256 (Pkgfile) = a136d0fe515ecdaaf128192618bd7ef1360d31c7dd7c9936b52dec85ee6fafde
+RWST1RjWg2md3zque02A2QmMe+pOR+4/0hEbs6kymVmTDKLvjpEiJ/I0az+8oqng3h2Kd/sn86rXn+pCJH13Rv74Y+BnFdcguwc=
+SHA256 (Pkgfile) = cd878c36b93a0f6121ae686455ab12e3604d987024947c6f92636f501b6380cd
 SHA256 (.footprint) = 04965b91e9bdfd1b36820a103d2e557b404b97ef8fa7e0321559a7e778fb0b92
-SHA256 (ntp-4.2.8p15.tar.gz) = f65840deab68614d5d7ceb2d0bb9304ff70dcdedd09abb79754a87536b849c19
+SHA256 (ntp-4.2.8p17.tar.gz) = 103dd272e6a66c5b8df07dce5e9a02555fcd6f1397bdfb782237328e89d3a866
 SHA256 (ntpd) = 4d014afe147654bc709d5a5378861c4f90c9a2a8ebcf1ce82f2801f4d7ab90b0
 SHA256 (ntp.conf) = ba548afcd4cbfc7e687b7ed96dba1773c965582bfd4e79e2dc2f1a2cf5ff6560
-SHA256 (ntp.patch) = c3fbc0766977bb768299ef32823ac234cdd3729b2af893f565cd353b77c54dcf

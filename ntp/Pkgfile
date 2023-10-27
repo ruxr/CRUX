@@ -5,15 +5,13 @@
 # Required user: ntp 77
 
 name=ntp
-version=4.2.8p15
-release=2
+version=4.2.8p17
+release=1
 source=(https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/$name-$version.tar.gz
-	ntpd ntp.conf ntp.patch)
+	ntpd ntp.conf)
 
 build () {
 	cd $name-$version
-	patch -p1 -i ../ntp.patch
-	sed -i '25611,25674d' configure
 
 	./configure \
 		--prefix=/usr \
