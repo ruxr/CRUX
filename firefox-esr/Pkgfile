@@ -3,7 +3,7 @@
 # Depends on:  alsa-lib gtk3 dbus-glib
 
 name=firefox-esr
-version=115.6.0esr
+version=115.7.0esr
 release=1
 source=(http://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/firefox-$version.tar.bz2 \
 	policies.json firefox.desktop)
