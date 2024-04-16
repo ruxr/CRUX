@@ -12,5 +12,6 @@ source=()
 build() {
 	/bin/mkdir -p $PKG/usr/lib/locale
 	/usr/bin/localedef -i ru_RU -f UTF-8 ru_RU.UTF-8 --prefix=$PKG
-	/usr/bin/localedef -i ru_RU -f KOI8-R ru_RU.KOI8-R --prefix=$PKG
+	/usr/bin/localedef -i C -f UTF-8 C.UTF-8 --prefix=$PKG
+#	/usr/bin/localedef -i ru_RU -f KOI8-R ru_RU.KOI8-R --prefix=$PKG
 }

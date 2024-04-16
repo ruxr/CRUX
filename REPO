@@ -73,8 +73,8 @@ f:432bb4d5a10d1c8a9198fa801e992f2a:live/Pkgfile
 f:134182ee5720caf0dd54a52e253fc33e:live/README
 f:7f8807c84c4b9af90ba822f1728bf5ad:live/live.sh
 f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
-f:3135d941358e3587e8489db7aa433389:locale/.signature
-f:87a3a92700c9ea92175d9dc5c2c87909:locale/Pkgfile
+f:dc6ab111999cfec279680036b7f240fa:locale/.signature
+f:356c48e607d92adaa897a13b91d06426:locale/Pkgfile
 f:8dd825ba404de9f11d9ed384a4b3ca37:lshw/.footprint
 f:6425746ba90988bffdda9b5c7249d9e8:lshw/.signature
 f:6a222de64295f4e968f5805f8e9884e4:lshw/Pkgfile
