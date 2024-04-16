@@ -120,7 +120,6 @@ drwxr-xr-x	root/root	opt/libreoffice24.2/program/classes/
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libemboleobj.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libepoxy.so
 -rwxrwxr-x	root/root	opt/libreoffice24.2/program/libetonyek-0.1-lo.so.1
--rwxrwxr-x	root/root	opt/libreoffice24.2/program/libexslt.so.0
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libfilelo.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libflatlo.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libgcc3_uno.so
@@ -254,11 +253,9 @@ lrwxrwxrwx	root/root	opt/libreoffice24.2/program/libssl3.so -> /usr/lib/firefox/
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libwriterfilterlo.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libwriterlo.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libwriterperfectlo.so
--rwxrwxr-x	root/root	opt/libreoffice24.2/program/libxml2.so.2
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libxmlreaderlo.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libxmlsecurity.so
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/libxsec_xmlsec.so
--rwxrwxr-x	root/root	opt/libreoffice24.2/program/libxslt.so.1
 -rw-r--r--	root/root	opt/libreoffice24.2/program/lounorc
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/minidump_upload
 -rwxr-xr-x	root/root	opt/libreoffice24.2/program/oosplash
