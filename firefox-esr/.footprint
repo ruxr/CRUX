@@ -3,7 +3,6 @@ drwxr-xr-x	root/root	usr/bin/
 lrwxrwxrwx	root/root	usr/bin/firefox -> /usr/lib/firefox/firefox
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/firefox/
--rw-r--r--	root/root	usr/lib/firefox/Throbber-small.gif
 -rw-r--r--	root/root	usr/lib/firefox/application.ini
 drwxr-xr-x	root/root	usr/lib/firefox/browser/
 drwxr-xr-x	root/root	usr/lib/firefox/browser/chrome/
@@ -14,10 +13,8 @@ drwxr-xr-x	root/root	usr/lib/firefox/browser/chrome/icons/default/
 -rw-r--r--	root/root	usr/lib/firefox/browser/chrome/icons/default/default32.png
 -rw-r--r--	root/root	usr/lib/firefox/browser/chrome/icons/default/default48.png
 -rw-r--r--	root/root	usr/lib/firefox/browser/chrome/icons/default/default64.png
--rw-r--r--	root/root	usr/lib/firefox/browser/crashreporter-override.ini
 -rw-r--r--	root/root	usr/lib/firefox/browser/omni.ja
 -rwxr-xr-x	root/root	usr/lib/firefox/crashreporter
--rw-r--r--	root/root	usr/lib/firefox/crashreporter.ini
 drwxr-xr-x	root/root	usr/lib/firefox/defaults/
 drwxr-xr-x	root/root	usr/lib/firefox/defaults/pref/
 -rw-r--r--	root/root	usr/lib/firefox/defaults/pref/channel-prefs.js
@@ -40,6 +37,7 @@ drwxr-xr-x	root/root	usr/lib/firefox/icons/
 -rw-r--r--	root/root	usr/lib/firefox/icons/updater.png
 drwxr-xr-x	root/root	usr/lib/firefox/lib/
 -rwxr-xr-x	root/root	usr/lib/firefox/libfreeblpriv3.so
+-rwxr-xr-x	root/root	usr/lib/firefox/libgkcodecs.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libipcclientcerts.so
 -rwxr-xr-x	root/root	usr/lib/firefox/liblgpllibs.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libmozavcodec.so
@@ -63,8 +61,6 @@ drwxr-xr-x	root/root	usr/lib/firefox/lib/
 -rw-r--r--	root/root	usr/lib/firefox/omni.ja
 -rwxr-xr-x	root/root	usr/lib/firefox/pingsender
 -rw-r--r--	root/root	usr/lib/firefox/platform.ini
--rwxr-xr-x	root/root	usr/lib/firefox/plugin-container
--rw-r--r--	root/root	usr/lib/firefox/plugin-container.sig
 -rw-r--r--	root/root	usr/lib/firefox/precomplete
 -rw-r--r--	root/root	usr/lib/firefox/removed-files (EMPTY)
 -rw-r--r--	root/root	usr/lib/firefox/update-settings.ini
