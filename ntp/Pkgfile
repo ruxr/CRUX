@@ -6,7 +6,7 @@
 
 name=ntp
 version=4.2.8p18
-release=1
+release=2
 source=(https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/$name-$version.tar.gz
 	ntpd ntp.conf)
 

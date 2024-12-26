@@ -6,7 +6,7 @@
 SSD=/sbin/start-stop-daemon
 PRG=/usr/sbin/ntpd
 PID=/run/ntpd.pid
-OPT="-u ntp:ntp"
+OPT="-u ntp:ntp -p $PID"
 
 case $1 in
 start)
