@@ -3,9 +3,9 @@
 # Depends on:	uasm
 
 name=p7-zip
-version=24.08
+version=24.09
 release=1
-source=(https://7-zip.org/a/7z2408-src.tar.xz)
+source=(https://7-zip.org/a/7z2409-src.tar.xz)
 
 build() {
 	cd CPP/7zip/Bundles/Alone2
