@@ -1,8 +1,8 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md3xPNkY/91E2Dgx8BQRYhqFBOjFyE1E2wKJGk2gqMvYBtMhc4LQbNEd/P0DB909alSfAgsdrTVTaKZyR553oXowU=
-SHA256 (Pkgfile) = 628e0b95faf7feb5f56fc27278387e06ae7e9244178f331f67312fc0f5f889ee
+RWST1RjWg2md39sL0IFYTk6wp6SmGmCmpWnflu4ndJtKImDlZH+r/c6icDox/fqWnm0DDm0uIoc3Hk3Kw8U15JAXFcSuKKc7cQk=
+SHA256 (Pkgfile) = e2ca0779bd2dd93f1be6ad95485e1cb5c63aa414f639b29be53eaa43b841af31
 SHA256 (.footprint) = 65af2e991a105df96f40a8c9108b06824e8082a579b4e1b0ced6467675186328
-SHA256 (jwm-2.4.3.tar.xz) = ee3b4ee0c452ef31fcb9303ab50aaf496cf5bdf7b5f1fdc9a1251b7175ca67ab
+SHA256 (jwm-2.4.6.tar.xz) = b5871ec28317594b3fa22b83ed5524cc911d498c455eaab3ae68def195dd802d
 SHA256 (example.jwmrc) = 693e8d9da86fb819edabfd5ba428b188dda5d4de82900bfbd1a2b520a59d9c4a
 SHA256 (exit.png) = 83c4950a81421c978a2421ca241b466d4f1a06cd910eb4ac9d725429ab4012af
 SHA256 (folder.png) = 753bf9338dc549241b0f5a1c0fb5f6a95f4c8f125b2076f4a7f3b023cf120e86
