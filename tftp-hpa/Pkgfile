@@ -4,7 +4,7 @@
 
 name=tftp-hpa
 version=5.2
-release=2
+release=3
 source=(https://www.kernel.org/pub/software/network/tftp/$name/$name-$version.tar.xz
 	tftp-hpa-0.49-fortify-strcpy-crash.patch)
 
@@ -14,6 +14,9 @@ build () {
 
 	patch -Np1 -i $SRC/tftp-hpa-0.49-fortify-strcpy-crash.patch
 	sed -i 's/^\(sigjmp_buf toplevel;\)/extern \1/' tftp/tftp.c
+echo '38a39
+> void (*bsd_signal(int signum, void (*handler) (int)));
+' | patch tftp/extern.h
 
 	./configure --prefix=/usr --without-tcpwrappers
 	make

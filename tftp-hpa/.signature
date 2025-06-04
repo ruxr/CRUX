@@ -1,6 +1,6 @@
 untrusted comment: verify with /etc/ports/ruxr.pub
-RWST1RjWg2md34AO3JBu7LlB78rz2AHG2I3QqrRaw6C73eiJ+NwKtgRDcOkNxapelVZC/xKwfw5WYf+SLS2FS/tyZhER4mFrrQ4=
-SHA256 (Pkgfile) = d20268fab8cbadb7e171328091fc00b481a99a2a2ed9ea6b8139c16f8b141487
+RWST1RjWg2md35ko7hvx150OMV/ueNkRhXEPgbQKw/1qzZg3Rb7K9eMSF/9Ky2cW42aD5o8rdnqMuxOxtZYOuOg3sTexGw8SLQk=
+SHA256 (Pkgfile) = 892dc2e589b3774d24ed4cd57474c8a1c4b7a4f46672a4a2315af830964531cf
 SHA256 (.footprint) = 43cbffa51e0c132c7b66c6fe4ed7b2d7c3a46d67c71258446e93911b2bcd979c
 SHA256 (tftp-hpa-5.2.tar.xz) = afee361df96a2f88344e191f6a25480fd714e1d28d176c3f10cc43fa206b718b
 SHA256 (tftp-hpa-0.49-fortify-strcpy-crash.patch) = 4862bc4bf61b8abbcfc22c4bc6714a5cf8d52e9db1b1d7f7b4c5059ef89ced2f
