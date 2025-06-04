@@ -69,7 +69,7 @@ f:3021062e84a62c5134eb24fb25301457:libreoffice-ru/Pkgfile
 f:772cfb8a66793d8a7c36bd1364890a2c:libreoffice-ru/post-install
 f:69a3474d06f47d14f6d94bffc89dc23f:live/.footprint
 f:630f64bb8cefe023b75dca208a06c550:live/.signature
-f:432bb4d5a10d1c8a9198fa801e992f2a:live/Pkgfile
+f:7e12fe8b827c0668515353306c9ba1ef:live/Pkgfile
 f:134182ee5720caf0dd54a52e253fc33e:live/README
 f:7f8807c84c4b9af90ba822f1728bf5ad:live/live.sh
 f:7ff09bd05295915824e170f9c9eb296f:locale/.footprint
@@ -101,8 +101,8 @@ f:549a71d71346c65ca6722fafb3142f3f:p7-zip/.footprint
 f:1b7de68646f16b2b86b3fe6ab11f3f40:p7-zip/.signature
 f:187fb10ad5738038d1feee96d981f9ea:p7-zip/Pkgfile
 f:143042d1796720da663e6e770b60f467:pkgnew/.footprint
-f:7e6cd80109a8737ab79a7be240021e5b:pkgnew/.signature
-f:668274acf50040073fea06f5e7eb5661:pkgnew/Pkgfile
+f:a5d8cc4b630a9b66140c594e23089547:pkgnew/.signature
+f:e2eb2f47b98d1fb9abe6d75ace0903f0:pkgnew/Pkgfile
 f:6c7e946367e05b11f801b60bf8e9d5e3:rss/.footprint
 f:a06cd71f0c6c94fda5fa962adf52ab3f:rss/.signature
 f:7c885d7c330b1cc396ff6528ba7c5457:rss/Pkgfile
