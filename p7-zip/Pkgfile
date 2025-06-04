@@ -1,10 +1,9 @@
 # Description:	File archiver with a high compression ratio
 # URL:		https://www.7-zip.org
-# Depends on:	uasm
 
 name=p7-zip
 version=24.09
-release=1
+release=2
 source=(https://7-zip.org/a/7z2409-src.tar.xz)
 
 build() {
