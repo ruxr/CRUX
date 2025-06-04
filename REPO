@@ -42,9 +42,9 @@ f:39b1aa224ac1478483ad0a0d25cc9ca1:firefox-esr/.signature
 f:64fe195b99f682da2b8e3dc431950de8:firefox-esr/Pkgfile
 f:8081bb8fcc54a043457d0c71ed0bd062:firefox-esr/firefox.desktop
 f:a562967c078701d405eff29b0ae220b6:firefox-esr/policies.json
-f:6cb42bb10bed341f6e9e0f7da593a6fb:freerdp/.footprint
-f:f7d3d62befe4056111b77b0a9743b3c1:freerdp/.signature
-f:d24953934d336c5f06d7973b3d70719b:freerdp/Pkgfile
+f:8789ecb44a55ba2ed9dab51f42f896b3:freerdp/.footprint
+f:069aab919926688745f655711b6e75be:freerdp/.signature
+f:da5d971e01cfa2defb00497dc3746d5b:freerdp/Pkgfile
 f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
 f:12ffba03884b61f7ffad60086b10566f:i2c-tools/.signature
 f:83373c55fc7cd2cec6bc980109a969f2:i2c-tools/Pkgfile

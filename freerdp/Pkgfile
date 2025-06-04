@@ -1,32 +1,45 @@
 # Description:	Free implementation of the Remote Desktop Protocol (RDP)
 # URL:		https://www.freerdp.com/
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	cmake cups ffmpeg xorg-libxcursor xorg-libxdamage xorg-libxinerama xorg-libxkbfile xorg-libxrandr
+# Depends on:	cmake cups ffmpeg fuse3 icu json-c krb5 libwebp xorg-libxcursor xorg-libxdamage xorg-libxinerama xorg-libxkbfile xorg-libxrandr
 
 name=freerdp
-version=2.11.5
+version=3.15.0
 release=1
 source=(https://github.com/$name/$name/archive/$version/$name-$version.tar.gz)
 
 build() {
-	cmake \
+	cmake	-B build \
+		-DCHANNEL_URBDRC_CLIENT=ON  \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_SKIP_INSTALL_RPATH=ON \
-		-DWITH_FFMPEG=OFF \
-		-DWITH_PULSE=ON \
-		-DWITH_PCSC=ON \
-		-DWITH_JPEG=ON \
-		-DWITH_SERVER=ON \
-		-DWITH_SWSCALE=ON \
+		-DPROXY_PLUGINDIR=/usr/lib/$name/server/proxy/plugins \
+		-DWITH_ALSA=ON \
 		-DWITH_CHANNELS=ON \
 		-DWITH_CLIENT_CHANNELS=ON \
+		-DWITH_CUPS=ON \
+		-DWITH_DSP_FFMPEG=ON \
+		-DWITH_FFMPEG=ON \
+		-DWITH_FUSE=ON \
+		-DWITH_ICU=ON \
+		-DWITH_JPEG=ON \
+		-DWITH_PCSC=ON \
+		-DWITH_PULSE=ON \
+		-DWITH_SERVER=ON \
 		-DWITH_SERVER_CHANNELS=ON \
-		-DCHANNEL_URBDRC_CLIENT=ON \
-		-Wno-dev \
-		-B build \
-		-S FreeRDP-$version
+		-DWITH_SYSTEMD=ON \
+		-DWITH_SWSCALE=ON \
+		-DWITH_VERBOSE_WINPR_ASSERT=OFF \
+		-DWITH_WINPR_TOOLS=ON \
+		-DWITH_X11=ON \
+		-DWINPR_UTILS_IMAGE_PNG=ON \
+		-DWINPR_UTILS_IMAGE_JPEG=ON  \
+		-DWINPR_UTILS_IMAGE_WEBP=ON \
+		-DWITH_CLIENT_SDL3=OFF \
+		-S FreeRDP-$version \
+		-W no-dev
 
 	cmake --build build
 	DESTDIR=$PKG cmake --install build
