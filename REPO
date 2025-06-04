@@ -86,8 +86,9 @@ f:fbf08c7861ec1fd473b9b50e0cdac6b0:net-snmp/snmpd.conf
 f:1acff4fa4d2f1bfa5b3ce619636279a2:net-snmp/snmptrapd
 f:c84e4b484564143c791dc38d1138d3fd:net-snmp/snmptrapd.conf
 f:d8ad7cb64caaa9328381dbf62a47b079:ntp/.footprint
-f:3de6ce77b4ffe9d3c76c6e04d864f84e:ntp/.signature
-f:e447cf115e3ac5564ddf7b8b103c806b:ntp/Pkgfile
+f:90904627839faa10ede9f3a2c081b415:ntp/.signature
+f:77c24551d272585feca4e2fe251bfe19:ntp/Pkgfile
+f:384198f9c10e96dcbcae33e5892e0ffc:ntp/ntp-4.2.8.p18-fix-build.patch
 f:f8dc7c95d1a9fd64d8343b9d5d1a1af8:ntp/ntp.conf
 f:447bae08881c773c571c5037827048ef:ntp/ntpd
 f:cf81b5e75e10ff66b72a1dc0ed159a84:p5-dbi/.footprint

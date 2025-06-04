@@ -1,26 +1,53 @@
 # Description:	Network Time Protocol software
 # URL:		https://www.ntp.org
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	libcap
+# Depends on:	libcap libedit libmd
 # Required user: ntp 77
 
 name=ntp
 version=4.2.8p18
-release=2
+release=3
 source=(https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/$name-$version.tar.gz
-	ntpd ntp.conf)
+	ntp-4.2.8.p18-fix-build.patch ntpd ntp.conf)
 
 build () {
 	cd $name-$version
+
+	patch -Np1 < ../ntp-4.2.8.p18-fix-build.patch
+echo '
+3667,3669c3667,3669
+< 	MD5Update(&ctx, salt, sizeof(salt));
+< 	MD5Update(&ctx, &ts_i, sizeof(ts_i));
+< 	MD5Update(&ctx, &ts_f, sizeof(ts_f));
+---
+> 	MD5Update(&ctx, (const uint8_t *) salt, sizeof(salt));
+> 	MD5Update(&ctx, (const uint8_t *) &ts_i, sizeof(ts_i));
+> 	MD5Update(&ctx, (const uint8_t *) &ts_f, sizeof(ts_f));
+3671c3671
+< 		MD5Update(&ctx, &SOCK_ADDR4(addr), sizeof(SOCK_ADDR4(addr)));
+---
+> 		MD5Update(&ctx, (const uint8_t *) &SOCK_ADDR4(addr), sizeof(SOCK_ADDR4(addr)));
+3673c3673
+< 		MD5Update(&ctx, &SOCK_ADDR6(addr), sizeof(SOCK_ADDR6(addr)));
+---
+> 		MD5Update(&ctx, (const uint8_t *) &SOCK_ADDR6(addr), sizeof(SOCK_ADDR6(addr)));
+3675,3676c3675,3676
+< 	MD5Update(&ctx, &NSRCPORT(addr), sizeof(NSRCPORT(addr)));
+< 	MD5Update(&ctx, salt, sizeof(salt));
+---
+> 	MD5Update(&ctx, (const uint8_t *) &NSRCPORT(addr), sizeof(NSRCPORT(addr)));
+> 	MD5Update(&ctx, (const uint8_t *) salt, sizeof(salt));
+' | patch ntpd/ntp_control.c
+
+	autoreconf -fiv
 
 	./configure \
 		--prefix=/usr \
 		--without-{crypto,ntpsnmpd,net-snmp-config,gtest} \
 		--disable-{autokey,debugging,ipv6,nls,saveconfig,all-clocks} \
-		--enable-LOCAL-CLOCK \
-		CFLAGS="$CFLAGS" \
-		LDFLAGS="$LDFLAGS"
-
+		--enable-ntp-signd \
+		--enable-linuxcaps \
+		--enable-LOCAL-CLOCK
 	make
 	make DESTDIR=$PKG install
 
