@@ -4,7 +4,7 @@
 # Depends on:	coreutils dash openssh pkgutils sed shadow sysvinit wget
 
 name=live
-version=3.7
+version=3.8
 release=1
 source=(live.sh)
 
@@ -21,11 +21,12 @@ build() {
 			/libpcprofile/d;/libthread_db/d;/nss_compat/d;/nss_db/d
 			/nss_hesiod/d;/nss_nis/d;s%^%/%p};d' /var/lib/pkg/db
 		# linux-pam
-		echo /lib/security/pam_unix.so
+		pkginfo -l linux-pam | sed '/\/$/d;/^etc/d;/^usr/d;s%^%/%'
 		# ncurses
 		echo /usr/share/terminfo/{l/linux,v/vt100,x/xterm}
 		# openssh
-		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd
+		echo /etc/ssh/{moduli,sshd_config} /usr/sbin/sshd \
+			/usr/lib/ssh/sshd-{auth,session}
 		# pkguse
 		[ ! -x /usr/sbin/pkguse ] || echo /usr/sbin/pkguse
 		# pkgutils
@@ -63,12 +64,13 @@ build() {
 	# Create file tree
 	mkdir rootfs
 	cd rootfs
-	install -d dev mnt proc run sys usr/lib var/{cache,empty,lib,log,run}
+	install -d dev etc/pam.d mnt proc run sys usr var/{cache,empty,lib,log}
 	install -dm 1777 tmp var/{lock,tmp}
 	ln -s lib lib64
 	ln -s lib usr/lib64
+	ln -s ../run var/run
 	tar -cf - -T ../live.use | tar -xf -
-	ln -s /proc/mounts etc/mtab
+	ln -s /proc/self/mounts etc/mtab
 	mv bin/dash bin/sh
 	ldconfig -r $SRC/rootfs
 
@@ -89,14 +91,13 @@ build() {
 		rs:S1:wait:/etc/rc.single
 		rd:06:wait:/etc/rc.shutdown
 		ca::ctrlaltdel:/sbin/shutdown -t3 -r now
-		c1:2:respawn:/sbin/agetty --noclear 38400 tty1 linux
+		c1:2:respawn:/sbin/agetty --autologin root --noclear 38400 tty1 linux
 		c2:2:respawn:/sbin/agetty 38400 tty2 linux
 	END
-	mkdir etc/pam.d
 	cat <<-END >etc/pam.d/login
 		auth		required	pam_unix.so nullok
 		account		required	pam_unix.so
-		password	required	pam_unix.so
+		password	required	pam_unix.so shadow sha512
 		session		required	pam_unix.so
 	END
 	ln etc/pam.d/login etc/pam.d/su
