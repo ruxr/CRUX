@@ -27,7 +27,6 @@
 | net-snmp | SNMP daemon and client tools |
 | ntp | Network Time Protocol software |
 | p5-dbi | Database independent interface for Perl |
-| p5-sqlite | Perl DBI driver for SQLite |
 | p7-zip | File archiver with a high compression ratio |
 | pkgnew | A set of shell scripts for administering packages |
 | rdesktop | Open source client for Windows NT Terminal Server |
