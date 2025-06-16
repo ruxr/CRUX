@@ -12,7 +12,6 @@ d:locale
 d:lshw
 d:net-snmp
 d:ntp
-d:p5-dbi
 d:p7-zip
 d:pkgnew
 d:rss
@@ -89,9 +88,6 @@ f:77c24551d272585feca4e2fe251bfe19:ntp/Pkgfile
 f:384198f9c10e96dcbcae33e5892e0ffc:ntp/ntp-4.2.8.p18-fix-build.patch
 f:f8dc7c95d1a9fd64d8343b9d5d1a1af8:ntp/ntp.conf
 f:447bae08881c773c571c5037827048ef:ntp/ntpd
-f:cf81b5e75e10ff66b72a1dc0ed159a84:p5-dbi/.footprint
-f:cadb05e0fe7799d19f192257c5e4cbae:p5-dbi/.signature
-f:3398992058d2b67098c5e6866a9371fa:p5-dbi/Pkgfile
 f:549a71d71346c65ca6722fafb3142f3f:p7-zip/.footprint
 f:1b7de68646f16b2b86b3fe6ab11f3f40:p7-zip/.signature
 f:187fb10ad5738038d1feee96d981f9ea:p7-zip/Pkgfile
