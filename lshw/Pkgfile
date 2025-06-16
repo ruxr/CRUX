@@ -3,7 +3,7 @@
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
 
 name=lshw
-version=B.02.19.2
+version=B.02.20
 release=1
 source=(https://ezix.org/software/files/lshw-$version.tar.gz)
 
