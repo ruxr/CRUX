@@ -46,8 +46,8 @@ f:8789ecb44a55ba2ed9dab51f42f896b3:freerdp/.footprint
 f:069aab919926688745f655711b6e75be:freerdp/.signature
 f:da5d971e01cfa2defb00497dc3746d5b:freerdp/Pkgfile
 f:6fb04acce682d2fe20a01d4cfc5a88ce:i2c-tools/.footprint
-f:12ffba03884b61f7ffad60086b10566f:i2c-tools/.signature
-f:83373c55fc7cd2cec6bc980109a969f2:i2c-tools/Pkgfile
+f:3cab7edb5fe10d65640493367cefcb24:i2c-tools/.signature
+f:8cd5814d276a9ca2a85043c0bf3703bd:i2c-tools/Pkgfile
 f:69a3474d06f47d14f6d94bffc89dc23f:iso/.footprint
 f:25a5eb6033683899a374dc44a6f8592a:iso/.signature
 f:97401170318a2ece0180fc8f2703e31d:iso/Pkgfile
