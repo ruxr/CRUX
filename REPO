@@ -89,8 +89,8 @@ f:384198f9c10e96dcbcae33e5892e0ffc:ntp/ntp-4.2.8.p18-fix-build.patch
 f:f8dc7c95d1a9fd64d8343b9d5d1a1af8:ntp/ntp.conf
 f:447bae08881c773c571c5037827048ef:ntp/ntpd
 f:549a71d71346c65ca6722fafb3142f3f:p7-zip/.footprint
-f:1b7de68646f16b2b86b3fe6ab11f3f40:p7-zip/.signature
-f:187fb10ad5738038d1feee96d981f9ea:p7-zip/Pkgfile
+f:a7a0cccf6730715738201b39fe21a9b1:p7-zip/.signature
+f:ba804c68fe76cc3059676d17d6903651:p7-zip/Pkgfile
 f:143042d1796720da663e6e770b60f467:pkgnew/.footprint
 f:a5d8cc4b630a9b66140c594e23089547:pkgnew/.signature
 f:e2eb2f47b98d1fb9abe6d75ace0903f0:pkgnew/Pkgfile

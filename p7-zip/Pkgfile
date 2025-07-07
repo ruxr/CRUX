@@ -2,9 +2,9 @@
 # URL:		https://www.7-zip.org
 
 name=p7-zip
-version=24.09
-release=2
-source=(https://7-zip.org/a/7z2409-src.tar.xz)
+version=25.00
+release=1
+source=(https://7-zip.org/a/7z2500-src.tar.xz)
 
 build() {
 	cd CPP/7zip/Bundles/Alone2
