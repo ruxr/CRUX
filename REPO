@@ -34,9 +34,9 @@ f:5b8b5e86a652ab5903531947685b2af2:dhcp/.signature
 f:d0ae9a6e7d773169205b451384ca602e:dhcp/0001-99-replace-hostname-with-uname-n.patch
 f:9d4c8a3fc39ab7d080506d850199d46a:dhcp/Pkgfile
 f:5d435b4922f68144909012eccb386d71:dhcp/dhcpd
-f:48e6a6f893a392ccb1ccfaf5c5839350:firefox-esr/.footprint
-f:f6686a17f2358776da8ccbef8aea91a5:firefox-esr/.signature
-f:ffc6edb5d62acf77fb2ee117ad6aa7eb:firefox-esr/Pkgfile
+f:8f6c3223d4795d6ad51f7e1d17b1e01f:firefox-esr/.footprint
+f:d4fb35859e419a1b6e1637e662b6fe0d:firefox-esr/.signature
+f:ac4ce13e98f0788f44b8a4eafd4a55be:firefox-esr/Pkgfile
 f:8081bb8fcc54a043457d0c71ed0bd062:firefox-esr/firefox.desktop
 f:a562967c078701d405eff29b0ae220b6:firefox-esr/policies.json
 f:8789ecb44a55ba2ed9dab51f42f896b3:freerdp/.footprint

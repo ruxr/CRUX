@@ -3,9 +3,9 @@
 # Depends on:  alsa-lib gtk3 dbus-glib
 
 name=firefox-esr
-version=128.14.0esr
+version=140.3.1esr
 release=1
-source=(http://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/firefox-$version.tar.bz2 \
+source=(http://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/firefox-$version.tar.xz \
 	policies.json firefox.desktop)
 
 build() {
@@ -15,8 +15,6 @@ build() {
 	ln -s /usr/lib/firefox/firefox $PKG/usr/bin/firefox
 	mkdir -p $PKG/usr/lib/firefox/lib
 
-	#We don't want these 'features'
-	rm -r $PKG/usr/lib/firefox/browser/features
 	# Disable autoupdate
 	mkdir $PKG/usr/lib/firefox/distribution
 

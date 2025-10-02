@@ -14,6 +14,7 @@ drwxr-xr-x	root/root	usr/lib/firefox/browser/chrome/icons/default/
 -rw-r--r--	root/root	usr/lib/firefox/browser/chrome/icons/default/default48.png
 -rw-r--r--	root/root	usr/lib/firefox/browser/chrome/icons/default/default64.png
 -rw-r--r--	root/root	usr/lib/firefox/browser/omni.ja
+-rwxr-xr-x	root/root	usr/lib/firefox/crashhelper
 -rwxr-xr-x	root/root	usr/lib/firefox/crashreporter
 drwxr-xr-x	root/root	usr/lib/firefox/defaults/
 drwxr-xr-x	root/root	usr/lib/firefox/defaults/pref/
@@ -38,7 +39,6 @@ drwxr-xr-x	root/root	usr/lib/firefox/icons/
 drwxr-xr-x	root/root	usr/lib/firefox/lib/
 -rwxr-xr-x	root/root	usr/lib/firefox/libfreeblpriv3.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libgkcodecs.so
--rwxr-xr-x	root/root	usr/lib/firefox/libipcclientcerts.so
 -rwxr-xr-x	root/root	usr/lib/firefox/liblgpllibs.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libmozavcodec.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libmozavutil.so
@@ -48,7 +48,6 @@ drwxr-xr-x	root/root	usr/lib/firefox/lib/
 -rwxr-xr-x	root/root	usr/lib/firefox/libmozwayland.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libnspr4.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libnss3.so
--rwxr-xr-x	root/root	usr/lib/firefox/libnssckbi.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libnssutil3.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libplc4.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libplds4.so
@@ -57,7 +56,6 @@ drwxr-xr-x	root/root	usr/lib/firefox/lib/
 -rwxr-xr-x	root/root	usr/lib/firefox/libssl3.so
 -rwxr-xr-x	root/root	usr/lib/firefox/libxul.so
 -rw-r--r--	root/root	usr/lib/firefox/libxul.so.sig
--rwxr-xr-x	root/root	usr/lib/firefox/minidump-analyzer
 -rw-r--r--	root/root	usr/lib/firefox/omni.ja
 -rwxr-xr-x	root/root	usr/lib/firefox/pingsender
 -rw-r--r--	root/root	usr/lib/firefox/platform.ini
