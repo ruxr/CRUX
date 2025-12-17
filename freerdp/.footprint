@@ -1,11 +1,6 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
--rwxr-xr-x	root/root	usr/bin/freerdp-proxy
--rwxr-xr-x	root/root	usr/bin/freerdp-shadow-cli
 -rwxr-xr-x	root/root	usr/bin/sfreerdp
--rwxr-xr-x	root/root	usr/bin/sfreerdp-server
--rwxr-xr-x	root/root	usr/bin/winpr-hash
--rwxr-xr-x	root/root	usr/bin/winpr-makecert
 -rwxr-xr-x	root/root	usr/bin/xfreerdp
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/freerdp3/
@@ -65,6 +60,7 @@ drwxr-xr-x	root/root	usr/include/freerdp3/freerdp/client/
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/location.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/printer.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/rail.h
+-rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/rdpdr.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/rdpei.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/rdpgfx.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/client/rdpsnd.h
@@ -178,6 +174,7 @@ drwxr-xr-x	root/root	usr/include/freerdp3/freerdp/server/proxy/
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/settings_types_private.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/streamdump.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/svc.h
+-rw-r--r--	root/root	usr/include/freerdp3/freerdp/timer.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/transport_io.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/types.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/update.h
@@ -205,14 +202,6 @@ drwxr-xr-x	root/root	usr/include/freerdp3/freerdp/utils/
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/utils/string.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/version.h
 -rw-r--r--	root/root	usr/include/freerdp3/freerdp/window.h
-drwxr-xr-x	root/root	usr/include/rdtk0/
-drwxr-xr-x	root/root	usr/include/rdtk0/rdtk/
--rw-r--r--	root/root	usr/include/rdtk0/rdtk/api.h
--rw-r--r--	root/root	usr/include/rdtk0/rdtk/build-config.h
--rw-r--r--	root/root	usr/include/rdtk0/rdtk/buildflags.h
--rw-r--r--	root/root	usr/include/rdtk0/rdtk/config.h
--rw-r--r--	root/root	usr/include/rdtk0/rdtk/rdtk.h
--rw-r--r--	root/root	usr/include/rdtk0/rdtk/version.h
 drwxr-xr-x	root/root	usr/include/winpr3/
 drwxr-xr-x	root/root	usr/include/winpr3/winpr/
 -rw-r--r--	root/root	usr/include/winpr3/winpr/asn1.h
@@ -295,97 +284,32 @@ drwxr-xr-x	root/root	usr/lib/cmake/FreeRDP-Client3/
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Client3/FreeRDP-ClientConfigVersion.cmake
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Client3/FreeRDP-ClientTargets-release.cmake
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Client3/FreeRDP-ClientTargets.cmake
-drwxr-xr-x	root/root	usr/lib/cmake/FreeRDP-Proxy3/
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Proxy3/FreeRDP-ProxyConfig.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Proxy3/FreeRDP-ProxyConfigVersion.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Proxy3/FreeRDP-ProxyTargets-release.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Proxy3/FreeRDP-ProxyTargets.cmake
-drwxr-xr-x	root/root	usr/lib/cmake/FreeRDP-Server3/
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Server3/FreeRDP-ServerConfig.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Server3/FreeRDP-ServerConfigVersion.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Server3/FreeRDP-ServerTargets-release.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Server3/FreeRDP-ServerTargets.cmake
-drwxr-xr-x	root/root	usr/lib/cmake/FreeRDP-Shadow3/
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Shadow3/FreeRDP-ShadowConfig.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Shadow3/FreeRDP-ShadowConfigVersion.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Shadow3/FreeRDP-ShadowTargets-release.cmake
--rw-r--r--	root/root	usr/lib/cmake/FreeRDP-Shadow3/FreeRDP-ShadowTargets.cmake
 drwxr-xr-x	root/root	usr/lib/cmake/FreeRDP3/
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP3/FreeRDPConfig.cmake
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP3/FreeRDPConfigVersion.cmake
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP3/FreeRDPTargets-release.cmake
 -rw-r--r--	root/root	usr/lib/cmake/FreeRDP3/FreeRDPTargets.cmake
-drwxr-xr-x	root/root	usr/lib/cmake/WinPR-tools3/
--rw-r--r--	root/root	usr/lib/cmake/WinPR-tools3/WinPR-toolsConfig.cmake
--rw-r--r--	root/root	usr/lib/cmake/WinPR-tools3/WinPR-toolsConfigVersion.cmake
--rw-r--r--	root/root	usr/lib/cmake/WinPR-tools3/WinPR-toolsTargets-release.cmake
--rw-r--r--	root/root	usr/lib/cmake/WinPR-tools3/WinPR-toolsTargets.cmake
 drwxr-xr-x	root/root	usr/lib/cmake/WinPR3/
 -rw-r--r--	root/root	usr/lib/cmake/WinPR3/WinPRConfig.cmake
 -rw-r--r--	root/root	usr/lib/cmake/WinPR3/WinPRConfigVersion.cmake
 -rw-r--r--	root/root	usr/lib/cmake/WinPR3/WinPRTargets-release.cmake
 -rw-r--r--	root/root	usr/lib/cmake/WinPR3/WinPRTargets.cmake
-drwxr-xr-x	root/root	usr/lib/cmake/rdtk0/
--rw-r--r--	root/root	usr/lib/cmake/rdtk0/rdtk-release.cmake
--rw-r--r--	root/root	usr/lib/cmake/rdtk0/rdtk.cmake
--rw-r--r--	root/root	usr/lib/cmake/rdtk0/rdtkConfig.cmake
--rw-r--r--	root/root	usr/lib/cmake/rdtk0/rdtkConfigVersion.cmake
-drwxr-xr-x	root/root	usr/lib/freerdp/
-drwxr-xr-x	root/root	usr/lib/freerdp/server/
-drwxr-xr-x	root/root	usr/lib/freerdp/server/proxy/
-drwxr-xr-x	root/root	usr/lib/freerdp/server/proxy/plugins/
--rwxr-xr-x	root/root	usr/lib/freerdp/server/proxy/plugins/proxy-bitmap-filter-plugin.so
--rwxr-xr-x	root/root	usr/lib/freerdp/server/proxy/plugins/proxy-demo-plugin.so
--rwxr-xr-x	root/root	usr/lib/freerdp/server/proxy/plugins/proxy-dyn-channel-dump-plugin.so
 lrwxrwxrwx	root/root	usr/lib/libfreerdp-client3.so -> libfreerdp-client3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-client3.so.3 -> libfreerdp-client3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libfreerdp-client3.so.3.15.0
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-server-proxy3.so -> libfreerdp-server-proxy3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-server-proxy3.so.3 -> libfreerdp-server-proxy3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libfreerdp-server-proxy3.so.3.15.0
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-server3.so -> libfreerdp-server3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-server3.so.3 -> libfreerdp-server3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libfreerdp-server3.so.3.15.0
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-shadow-subsystem3.so -> libfreerdp-shadow-subsystem3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-shadow-subsystem3.so.3 -> libfreerdp-shadow-subsystem3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libfreerdp-shadow-subsystem3.so.3.15.0
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-shadow3.so -> libfreerdp-shadow3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-shadow3.so.3 -> libfreerdp-shadow3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libfreerdp-shadow3.so.3.15.0
+lrwxrwxrwx	root/root	usr/lib/libfreerdp-client3.so.3 -> libfreerdp-client3.so.3.19.1
+-rwxr-xr-x	root/root	usr/lib/libfreerdp-client3.so.3.19.1
 lrwxrwxrwx	root/root	usr/lib/libfreerdp3.so -> libfreerdp3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp3.so.3 -> libfreerdp3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libfreerdp3.so.3.15.0
-lrwxrwxrwx	root/root	usr/lib/librdtk0.so -> librdtk0.so.0
-lrwxrwxrwx	root/root	usr/lib/librdtk0.so.0 -> librdtk0.so.0.2.0
--rwxr-xr-x	root/root	usr/lib/librdtk0.so.0.2.0
-lrwxrwxrwx	root/root	usr/lib/libwinpr-tools3.so -> libwinpr-tools3.so.3
-lrwxrwxrwx	root/root	usr/lib/libwinpr-tools3.so.3 -> libwinpr-tools3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libwinpr-tools3.so.3.15.0
+lrwxrwxrwx	root/root	usr/lib/libfreerdp3.so.3 -> libfreerdp3.so.3.19.1
+-rwxr-xr-x	root/root	usr/lib/libfreerdp3.so.3.19.1
 lrwxrwxrwx	root/root	usr/lib/libwinpr3.so -> libwinpr3.so.3
-lrwxrwxrwx	root/root	usr/lib/libwinpr3.so.3 -> libwinpr3.so.3.15.0
--rwxr-xr-x	root/root	usr/lib/libwinpr3.so.3.15.0
+lrwxrwxrwx	root/root	usr/lib/libwinpr3.so.3 -> libwinpr3.so.3.19.1
+-rwxr-xr-x	root/root	usr/lib/libwinpr3.so.3.19.1
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/freerdp-client3.pc
--rw-r--r--	root/root	usr/lib/pkgconfig/freerdp-server-proxy3.pc
--rw-r--r--	root/root	usr/lib/pkgconfig/freerdp-server3.pc
--rw-r--r--	root/root	usr/lib/pkgconfig/freerdp-shadow3.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/freerdp3.pc
--rw-r--r--	root/root	usr/lib/pkgconfig/rdtk0.pc
--rw-r--r--	root/root	usr/lib/pkgconfig/winpr-tools3.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/winpr3.pc
 drwxr-xr-x	root/root	usr/share/
-drwxr-xr-x	root/root	usr/share/FreeRDP/
-drwxr-xr-x	root/root	usr/share/FreeRDP/images/
--rw-r--r--	root/root	usr/share/FreeRDP/images/test_icon.bmp
--rw-r--r--	root/root	usr/share/FreeRDP/images/test_icon.jpg
--rw-r--r--	root/root	usr/share/FreeRDP/images/test_icon.png
--rw-r--r--	root/root	usr/share/FreeRDP/images/test_icon.webp
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
--rw-r--r--	root/root	usr/share/man/man1/freerdp-proxy.1.gz
--rw-r--r--	root/root	usr/share/man/man1/freerdp-shadow-cli.1.gz
--rw-r--r--	root/root	usr/share/man/man1/winpr-hash.1.gz
--rw-r--r--	root/root	usr/share/man/man1/winpr-makecert.1.gz
 -rw-r--r--	root/root	usr/share/man/man1/xfreerdp.1.gz
 drwxr-xr-x	root/root	usr/share/man/man7/
 -rw-r--r--	root/root	usr/share/man/man7/wlog.7.gz
