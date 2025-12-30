@@ -216,6 +216,8 @@ drwxr-xr-x	root/root	usr/include/net-snmp/system/
 -rw-r--r--	root/root	usr/include/net-snmp/system/openbsd4.h
 -rw-r--r--	root/root	usr/include/net-snmp/system/openbsd5.h
 -rw-r--r--	root/root	usr/include/net-snmp/system/openbsd6.h
+-rw-r--r--	root/root	usr/include/net-snmp/system/openbsd7.h
+-rw-r--r--	root/root	usr/include/net-snmp/system/openbsd8.h
 -rw-r--r--	root/root	usr/include/net-snmp/system/osf5.h
 -rw-r--r--	root/root	usr/include/net-snmp/system/solaris.h
 -rw-r--r--	root/root	usr/include/net-snmp/system/solaris2.3.h
@@ -232,65 +234,65 @@ drwxr-xr-x	root/root	usr/include/net-snmp/system/
 -rw-r--r--	root/root	usr/include/net-snmp/version.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libnetsnmp.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so -> libnetsnmp.so.40.2.1
-lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so.40 -> libnetsnmp.so.40.2.1
--rwxr-xr-x	root/root	usr/lib/libnetsnmp.so.40.2.1
+lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so -> libnetsnmp.so.45.0.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmp.so.45 -> libnetsnmp.so.45.0.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmp.so.45.0.0
 -rw-r--r--	root/root	usr/lib/libnetsnmpagent.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so -> libnetsnmpagent.so.40.2.1
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so.40 -> libnetsnmpagent.so.40.2.1
--rwxr-xr-x	root/root	usr/lib/libnetsnmpagent.so.40.2.1
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so -> libnetsnmpagent.so.45.0.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpagent.so.45 -> libnetsnmpagent.so.45.0.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmpagent.so.45.0.0
 -rw-r--r--	root/root	usr/lib/libnetsnmphelpers.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so -> libnetsnmphelpers.so.40.2.1
-lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so.40 -> libnetsnmphelpers.so.40.2.1
--rwxr-xr-x	root/root	usr/lib/libnetsnmphelpers.so.40.2.1
+lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so -> libnetsnmphelpers.so.45.0.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmphelpers.so.45 -> libnetsnmphelpers.so.45.0.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmphelpers.so.45.0.0
 -rw-r--r--	root/root	usr/lib/libnetsnmpmibs.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so -> libnetsnmpmibs.so.40.2.1
-lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so.40 -> libnetsnmpmibs.so.40.2.1
--rwxr-xr-x	root/root	usr/lib/libnetsnmpmibs.so.40.2.1
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so -> libnetsnmpmibs.so.45.0.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmpmibs.so.45 -> libnetsnmpmibs.so.45.0.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmpmibs.so.45.0.0
 -rw-r--r--	root/root	usr/lib/libnetsnmptrapd.a
-lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so -> libnetsnmptrapd.so.40.2.1
-lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so.40 -> libnetsnmptrapd.so.40.2.1
--rwxr-xr-x	root/root	usr/lib/libnetsnmptrapd.so.40.2.1
+lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so -> libnetsnmptrapd.so.45.0.0
+lrwxrwxrwx	root/root	usr/lib/libnetsnmptrapd.so.45 -> libnetsnmptrapd.so.45.0.0
+-rwxr-xr-x	root/root	usr/lib/libnetsnmptrapd.so.45.0.0
 drwxr-xr-x	root/root	usr/lib/perl5/
 drwxr-xr-x	root/root	usr/lib/perl5/site_perl/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/Bundle/
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/Bundle/MakefileSubs.pm
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/ASN.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/OID.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/TrapReceiver.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/agent.pm
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/agent/
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/agent/Support.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/agent/default_store.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/agent/netsnmp_request_infoPtr.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/NetSNMP/default_store.pm
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/SNMP.pm
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/ASN/
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/ASN/ASN.so
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/ASN/autosplit.ix
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/OID/
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/OID/OID.so
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/OID/autosplit.ix
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/TrapReceiver/
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/TrapReceiver/TrapReceiver.so
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/TrapReceiver/autosplit.ix
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/agent/
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/agent/agent.so
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/agent/autosplit.ix
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/agent/default_store/
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/agent/default_store/autosplit.ix
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/agent/default_store/default_store.so
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/default_store/
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/default_store/autosplit.ix
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/NetSNMP/default_store/default_store.so
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/SNMP/
--r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/SNMP/SNMP.so
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.36/linux-thread-multi/auto/SNMP/autosplit.ix
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/Bundle/
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/Bundle/MakefileSubs.pm
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/ASN.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/OID.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/TrapReceiver.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/agent.pm
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/agent/
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/agent/Support.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/agent/default_store.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/agent/netsnmp_request_infoPtr.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/NetSNMP/default_store.pm
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/SNMP.pm
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/ASN/
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/ASN/ASN.so
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/ASN/autosplit.ix
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/OID/
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/OID/OID.so
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/OID/autosplit.ix
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/TrapReceiver/
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/TrapReceiver/TrapReceiver.so
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/TrapReceiver/autosplit.ix
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/agent/
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/agent/agent.so
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/agent/autosplit.ix
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/agent/default_store/
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/agent/default_store/autosplit.ix
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/agent/default_store/default_store.so
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/default_store/
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/default_store/autosplit.ix
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/NetSNMP/default_store/default_store.so
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/SNMP/
+-r-xr-xr-x	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/SNMP/SNMP.so
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.40/linux-thread-multi/auto/SNMP/autosplit.ix
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/netsnmp-agent.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/netsnmp.pc

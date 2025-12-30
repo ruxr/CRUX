@@ -13,7 +13,7 @@ buildalso() {
 }
 
 name=net-snmp
-version=5.9.4
+version=5.9.5.2
 release=1
 source=(https://download.sourceforge.net/$name/$name-$version.tar.gz \
 	snmpd snmpd.conf snmptrapd snmptrapd.conf)
