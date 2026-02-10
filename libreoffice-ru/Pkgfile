@@ -1,11 +1,11 @@
 # Description:	Full featured cross platform office suite for russian (binary)
 # URL:		https://www.libreoffice.org
 # Maintainer:	Roman Oreshnikov, r dot oreshnikov at gmail dot com
-# Depends on:	avahi cups desktop-file-utils gst-plugins-base gtk3 jdk8-bin firefox-esr
+# Depends on:	gst-plugins-base gtk4 jdk8-bin nss qt6-multimedia
 # Post-install:	yes
 
 name=libreoffice-ru
-version=25.2.0
+version=26.2.0
 release=1
 Url=http://libreoffice-mirror.rbc.ru/pub/libreoffice/libreoffice/stable/$version/rpm/x86_64
 LOR=libreoffice${version%.[0-9]*}
@@ -82,7 +82,4 @@ build() {
 	mkdir -p $PKG/usr/share/pixmaps
 	ln -s /usr/share/icons/hicolor/32x32/apps/$LOR-startcenter.png \
 		$PKG/usr/share/pixmaps/soffice.png
-	for F in {libnspr4,libnss3,libnssutil3,libplc4,libplds4,libsmime3,libssl3}.so; do
-		ln -s /usr/lib/firefox/$F $PKG/opt/$LOR/program/$F
-	done 
 }
