@@ -295,14 +295,14 @@ drwxr-xr-x	root/root	usr/lib/cmake/WinPR3/
 -rw-r--r--	root/root	usr/lib/cmake/WinPR3/WinPRTargets-release.cmake
 -rw-r--r--	root/root	usr/lib/cmake/WinPR3/WinPRTargets.cmake
 lrwxrwxrwx	root/root	usr/lib/libfreerdp-client3.so -> libfreerdp-client3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp-client3.so.3 -> libfreerdp-client3.so.3.19.1
--rwxr-xr-x	root/root	usr/lib/libfreerdp-client3.so.3.19.1
+lrwxrwxrwx	root/root	usr/lib/libfreerdp-client3.so.3 -> libfreerdp-client3.so.3.22.0
+-rwxr-xr-x	root/root	usr/lib/libfreerdp-client3.so.3.22.0
 lrwxrwxrwx	root/root	usr/lib/libfreerdp3.so -> libfreerdp3.so.3
-lrwxrwxrwx	root/root	usr/lib/libfreerdp3.so.3 -> libfreerdp3.so.3.19.1
--rwxr-xr-x	root/root	usr/lib/libfreerdp3.so.3.19.1
+lrwxrwxrwx	root/root	usr/lib/libfreerdp3.so.3 -> libfreerdp3.so.3.22.0
+-rwxr-xr-x	root/root	usr/lib/libfreerdp3.so.3.22.0
 lrwxrwxrwx	root/root	usr/lib/libwinpr3.so -> libwinpr3.so.3
-lrwxrwxrwx	root/root	usr/lib/libwinpr3.so.3 -> libwinpr3.so.3.19.1
--rwxr-xr-x	root/root	usr/lib/libwinpr3.so.3.19.1
+lrwxrwxrwx	root/root	usr/lib/libwinpr3.so.3 -> libwinpr3.so.3.22.0
+-rwxr-xr-x	root/root	usr/lib/libwinpr3.so.3.22.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/freerdp-client3.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/freerdp3.pc

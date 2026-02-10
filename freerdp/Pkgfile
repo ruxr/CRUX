@@ -4,7 +4,7 @@
 # Depends on:	cmake cups ffmpeg fuse3 jansson krb5 xorg-libxcursor xorg-libxinerama xorg-libxkbfile xorg-libxrandr
 
 name=freerdp
-version=3.19.1
+version=3.22.0
 release=1
 source=(https://github.com/$name/$name/archive/$version/$name-$version.tar.gz)
 
